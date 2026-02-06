@@ -1,0 +1,28 @@
+name: Build PDFs
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        note: [ "tensors-beginners" ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX for ${{ matrix.note }}
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ matrix.note }}/main.tex
+
+      - name: Deploy PDFs
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ matrix.note }}
+          keep_files: true
