@@ -18,7 +18,8 @@ jobs:
       - name: Compile LaTeX for ${{ matrix.note }}
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ${{ matrix.note }}/main.tex
+	  working_directory: ${{ matrix.note }}
+          root_file: main.tex
 
       - name: Deploy PDFs
         uses: peaceiris/actions-gh-pages@v4
