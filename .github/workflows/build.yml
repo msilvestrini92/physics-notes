@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        note: [ "tensors-beginners" ]
+        note: [ "tensors-for-beginners" ]
 
     steps:
       - uses: actions/checkout@v4
