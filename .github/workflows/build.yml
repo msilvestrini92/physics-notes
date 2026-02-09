@@ -23,9 +23,15 @@ jobs:
           working_directory: ${{ matrix.note }}
           root_file: main.tex
 
+      - name: Prepare deployment directory
+        run: |
+          mkdir -p deploy
+          cp ${{ matrix.note }}/main.pdf deploy/${{ matrix.note }}.pdf
+          cp index.html deploy/ || true
+
       - name: Deploy PDFs
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ matrix.note }}
+          publish_dir: deploy
           keep_files: true
