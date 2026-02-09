@@ -2,9 +2,32 @@
 
 Physical laws must not depend on how we label space.
 
+\subsection*{Why Does This Matter?}
+
+In physics, we describe phenomena using mathematical equations. However, these equations should describe reality itself, not our particular choice of coordinates. Consider:
+
+\begin{itemize}
+    \item \textbf{Newton's Laws}: The force on an object doesn't change if you rotate your coordinate system
+    \item \textbf{Maxwell's Equations}: Electromagnetic fields behave the same regardless of your reference frame
+    \item \textbf{General Relativity}: The curvature of spacetime is independent of coordinate choice
+\end{itemize}
+
+This principle is fundamental: \emph{physical reality is invariant, even though our descriptions of it may change with coordinates}.
+
 \subsection*{Example: Velocity}
 A particle moving in space has a velocity that exists independently of coordinates.
 If we rotate our coordinate axes, the particle does not suddenly move differently — only the \emph{numbers} describing its velocity change.
+
+For instance, a ball moving northward at 5 m/s has the same physical motion whether you describe it in:
+\begin{itemize}
+    \item Coordinates aligned north-south and east-west
+    \item Coordinates rotated 45 degrees
+    \item Polar coordinates centered at your location
+\end{itemize}
+
+The velocity vector itself (the geometric object) remains the same. Only its components (the numbers in your coordinate system) change.
+
+\subsection*{The Core Distinction}
 
 This distinction between:
 \begin{itemize}
@@ -15,7 +38,13 @@ is the core motivation for tensors.
 
 \subsection*{Key Principle}
 \begin{quote}
-If a quantity represents something physical or geometric, then changing coordinates must not change the object itself.
+If a quantity represents something physical or geometric, then changing coordinates must not change the object itself, only how we describe it.
 \end{quote}
 
-Tensors are defined so this principle is automatically satisfied.
+Tensors are defined so this principle is automatically satisfied. They provide a mathematical framework where:
+\begin{enumerate}
+    \item Objects exist independently of coordinates
+    \item We can compute how their components transform when we change coordinates
+    \item Physical laws written in tensor notation are automatically coordinate-independent
+\end{enumerate}
+

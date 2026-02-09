@@ -225,3 +225,26 @@ We'll see later indeed, that vectors are contra-variant tensors and from now on,
 \begin{align*}
     \begingroup\color{green}\vec{v}\endgroup = \sum_{i=1}^{n} \begingroup\color{cyan}v^i\endgroup \begingroup\color{blue}\vec{e_i}\endgroup = \sum_{i=1}^{n} \begingroup\color{magenta}\tilde{v^i}\endgroup \begingroup\color{red}\tilde{\vec{e_i}}\endgroup
 \end{align*}
+
+\subsection*{Exercises}
+
+\begin{exercise}
+Given the forward transformation matrix
+\[
+F = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}
+\]
+\begin{enumerate}
+    \item Compute the backward transformation matrix $B = F^{-1}$
+    \item If a vector has components $v^1 = 2, v^2 = 3$ in the old basis, find its components in the new basis
+    \item Verify that $B \cdot \tilde{v} = v$ gives you back the original components
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Consider a vector $\vec{v} = \begin{bmatrix} 4 \\ 4 \end{bmatrix}$ in a standard orthonormal basis.
+\begin{enumerate}
+    \item If the basis vectors are scaled by a factor of 2, what are the new vector components?
+    \item If the basis vectors are rotated counterclockwise by 45°, write down the forward transformation matrix
+    \item Explain in words why vector components transform opposite to basis vectors
+\end{enumerate}
+\end{exercise}

@@ -120,14 +120,14 @@ With $F$ being a $n \times n$ matrix:
 
 We can then write down in compact form, for both $F$ and $B$:
 
-\begin{subequations}
+\begin{subequations}\label{eq:forward-backward}
 \begin{empheq}[box=\widefbox]{align}
-    \begingroup\color{red}\tilde{\vec{e_i}}\endgroup = \sum_{j=1}^{n} F_{ji} \begingroup\color{blue}\vec{e_j}\endgroup \\
-    \begingroup\color{blue}\vec{e_i}\endgroup = \sum_{j=1}^{n} B_{ji} \begingroup\color{red}\tilde{\vec{e_j}}\endgroup
+    \begingroup\color{red}\tilde{\vec{e_i}}\endgroup = \sum_{j=1}^{n} F_{ji} \begingroup\color{blue}\vec{e_j}\endgroup \label{eq:forward} \\
+    \begingroup\color{blue}\vec{e_i}\endgroup = \sum_{j=1}^{n} B_{ji} \begingroup\color{red}\tilde{\vec{e_j}}\endgroup \label{eq:backward}
 \end{empheq}
 \end{subequations}
 
-As you can already guess, the $F$ and $B$ matrices are one the inverse of the other: $B = F^{-1}$, and to simply prove it, we can easily re-arrange and subsitute the above \ref{eq5} and \ref{eq6}:
+As you can already guess, the $F$ and $B$ matrices are one the inverse of the other: $B = F^{-1}$, and to simply prove it, we can easily re-arrange and substitute equations \ref{eq:forward} and \ref{eq:backward}:
 
 \begin{align*}
     \begingroup\color{blue}\vec{e_i}\endgroup &= \sum_{j=1}^{n} B_{ji} \begingroup\color{red}\tilde{\vec{e_j}}\endgroup \\
