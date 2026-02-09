@@ -1,0 +1,8 @@
+\begin{tikzpicture}[node distance=18mm]
+    \node (in) {$\color{red}\{\tilde{\vec{e_1}}, \tilde{\vec{e_2}}\}$};
+    \node[draw, rectangle, minimum width=10mm, minimum height=7mm, right=of in] (B) {$B$};
+    \node (out) [right=of B] {$\color{blue}\{\vec{e_1}, \vec{e_2}\}$};
+
+    \draw[->] (in) -- (B);
+    \draw[->] (B) -- (out);
+\end{tikzpicture}

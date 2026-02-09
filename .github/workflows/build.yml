@@ -18,7 +18,7 @@ jobs:
       - name: Compile LaTeX for ${{ matrix.note }}
         uses: xu-cheng/latex-action@v3
         with:
-	  working_directory: ${{ matrix.note }}
+          working_directory: ${{ matrix.note }}
           root_file: main.tex
 
       - name: Deploy PDFs

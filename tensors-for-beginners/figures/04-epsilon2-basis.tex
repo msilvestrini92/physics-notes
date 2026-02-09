@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=0.95]
+  \clip (-2.2,-1.6) rectangle (2.2,1.6);
+
+  % epsilon^2: horizontal family of lines
+  \foreach \y in {-1.5,-1.0,...,1.5} {
+    \draw[gray!55, line width=0.35pt] (-2.2,\y) -- (2.2,\y);
+  }
+
+  % direction markers
+  \draw[->, black, line width=0.4pt] (-1.1,-0.55) -- (-1.1,-0.15);
+  \draw[->, black, line width=0.4pt] (0.9,-0.55) -- (0.9,-0.15);
+
+  % vector v
+  \fill[black] (-0.35,-0.25) circle (1.2pt);
+  \draw[->, very thick, orange!85!yellow] (-0.35,-0.25) -- (1.75,0.85);
+
+  \node[anchor=south] at (0,1.0) {$\epsilon^2$};
+\end{tikzpicture}

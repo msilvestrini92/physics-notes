@@ -42,19 +42,7 @@ This is done by drawing curves of constant elevation value. And by looking at a 
 Continuing with out example, we can start asking, where is this function equal to zero? $2x + 1y = 0$ ? This is the line $y = -2x$, same we can do for 1, 2, 3 and for negative as well.
 
 \begin{center}
-\begin{tikzpicture}[scale=1.5]
-  \draw[step=1cm,gray!30,very thin] (-2,-2) grid (3,3);
-  \draw[->] (-2,0) -- (3,0) node[right] {$x$};
-  \draw[->] (0,-1) -- (0,3) node[above] {$y$};
-  \draw[->,thick,blue] (0,0) -- (1,0) node[above] {$\vec{e_1}$};
-  \draw[->,thick,blue] (0,0) -- (0,1) node[above] {$\vec{e_2}$};
-  \draw[black,thick,domain=-1.5:1] plot (\x,{-2*\x}) node[above] {0};
-  \draw[black,thick,domain=-1:1.5] plot (\x,{-2*\x+1}) node[above] {1};
-  \draw[black,thick,domain=-0.5:2] plot (\x,{-2*\x+2}) node[above] {2};
-  \draw[black,thick,domain=0:2.5] plot (\x,{-2*\x+3}) node[above] {3};
-  \draw[black,thick,domain=0.5:2.5] plot (\x,{-2*\x+4}) node[above] {4};
-  \draw[black,thick,domain=1:3] plot (\x,{-2*\x+5}) node[above] {5};
-\end{tikzpicture}
+\input{figures/04-covector-lines}
 \end{center}
 
 The stack is increasing towards the upper right so it has a direction towards north-east in our case.
@@ -75,61 +63,17 @@ Let's continue on how we can visualize two covector addition.
 \begin{center}
 \begin{minipage}[t]{0.32\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.9]
-  % beta: vertical family of lines
-  \clip (-2.2,-1.6) rectangle (2.2,1.6);
-  \foreach \x in {-2,-1.3,...,2} {
-    \draw[gray!55, line width=0.35pt] (\x,-1.6) -- (\x,1.6);
-  }
-  % direction markers
-  \draw[->, black, line width=0.4pt] (-0.5,-0.9) -- (-0.1,-0.9);
-  \draw[->, black, line width=0.4pt] (-0.5,0.1) -- (-0.1,0.1);
-
-  % vector v
-  \fill[black] (-0.6,-0.2) circle (1.2pt);
-  \draw[->, very thick, orange!85!yellow] (-0.6,-0.2) -- (1.5,1.0) node[above right] {$\vec{v}$};
-
-  \node at (-1.8,1.35) {$\beta$};
-\end{tikzpicture}
+\input{figures/04-covector-beta}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.32\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.9]
-  % gamma: horizontal family of lines
-  \clip (-2.2,-1.6) rectangle (2.2,1.6);
-  \foreach \y in {-1.5,-1.0,...,1.5} {
-    \draw[gray!55, line width=0.35pt] (-2.2,\y) -- (2.2,\y);
-  }
-  % direction markers
-  \draw[->, black, line width=0.4pt] (-1.0,-0.6) -- (-1.0,-0.2);
-  \draw[->, black, line width=0.4pt] (0.9,-0.6) -- (0.9,-0.2);
-
-  % vector v
-  \fill[black] (-0.3,-0.03) circle (1.2pt);
-  \draw[->, very thick, orange!85!yellow] (-0.3,-0.02) -- (1.6,1.0) node[above right] {$\vec{v}$};
-
-  \node at (-1.8,1.35) {$\gamma$};
-\end{tikzpicture}
+\input{figures/04-covector-gamma}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.32\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.9]
-  % beta + gamma: diagonal family of lines
-  \clip (-2.2,-1.6) rectangle (2.2,1.6);
-  \begin{scope}[rotate=45]
-    \foreach \x in {-3,-2.55,...,3} {
-      \draw[gray!55, line width=0.35pt] (\x,-3) -- (\x,3);
-    }
-  \end{scope}
-
-  % vector v
-  \fill[black] (-0.3,-0.2) circle (1.2pt);
-  \draw[->, very thick, orange!85!yellow] (-0.3,-0.2) -- (1.6,1.15) node[above right] {$\vec{v}$};
-
-  \node at (-1.4,1.35) {$\beta + \gamma$};
-\end{tikzpicture}
+\input{figures/04-covector-sum}
 \end{minipage}
 \end{center}
 
@@ -206,46 +150,12 @@ So what these covectors are doing, is projecting out vector components.
 \begin{center}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.95]
-  \clip (-2.2,-1.6) rectangle (2.2,1.6);
-
-  % epsilon^1: vertical family of lines
-  \foreach \x in {-2,-1.5,...,2} {
-    \draw[gray!55, line width=0.35pt] (\x,-1.6) -- (\x,1.6);
-  }
-
-  % direction markers
-  \draw[->, black, line width=0.4pt] (-0.3,-0.95) -- (0.1,-0.95);
-  \draw[->, black, line width=0.4pt] (-0.3,0.15) -- (0.1,0.15);
-
-  % vector v
-  \fill[black] (-0.55,-0.25) circle (1.2pt);
-  \draw[->, very thick, orange!85!yellow] (-0.55,-0.25) -- (1.7,0.9);
-
-  \node[anchor=south] at (0,1.0) {$\epsilon^1$};
-\end{tikzpicture}
+\input{figures/04-epsilon1-basis}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\begin{tikzpicture}[scale=0.95]
-  \clip (-2.2,-1.6) rectangle (2.2,1.6);
-
-  % epsilon^2: horizontal family of lines
-  \foreach \y in {-1.5,-1.0,...,1.5} {
-    \draw[gray!55, line width=0.35pt] (-2.2,\y) -- (2.2,\y);
-  }
-
-  % direction markers
-  \draw[->, black, line width=0.4pt] (-1.1,-0.55) -- (-1.1,-0.15);
-  \draw[->, black, line width=0.4pt] (0.9,-0.55) -- (0.9,-0.15);
-
-  % vector v
-  \fill[black] (-0.35,-0.25) circle (1.2pt);
-  \draw[->, very thick, orange!85!yellow] (-0.35,-0.25) -- (1.75,0.85);
-
-  \node[anchor=south] at (0,1.0) {$\epsilon^2$};
-\end{tikzpicture}
+\input{figures/04-epsilon2-basis}
 \end{minipage}
 \end{center}
 
@@ -274,27 +184,7 @@ We've now written a covector $\alpha$ as linear combination of our epsilon covec
 We may try to understand this visually and geometrically, since so far we derived this algebraically.
 
 \begin{center}
-\begin{tikzpicture}[scale=1.2]
-  \clip (-2.6,-2.0) rectangle (2.6,2.0);
-
-  % Diagonal level sets for a generic covector alpha
-  \begin{scope}[rotate=25]
-    \foreach \x in {-4,-3.4,...,4} {
-      \draw[gray!55, line width=0.35pt] (\x,-4) -- (\x,4);
-    }
-    % small direction markers (indicating increasing values)
-    \draw[->, black, line width=0.4pt] (-0.6,-0.6) -- (-0.25,-0.6);
-    \draw[->, black, line width=0.4pt] (0.2,0.6) -- (0.55,0.6);
-  \end{scope}
-
-  % Basis vectors e1, e2
-  \fill[black] (0,-0.5) circle (1.2pt);
-  \draw[->, very thick, blue!70] (0,-0.5) -- (1.5,-0.5) node[below right] {$\vec{e}_1$};
-  \draw[->, very thick, blue!70] (0,-0.5) -- (0,1.1) node[above] {$\vec{e}_2$};
-
-  % labels
-  \node at (-0.35,1.65) {$\alpha$};
-\end{tikzpicture}
+\input{figures/04-alpha-covector}
 \end{center}
 
 We can get the components of $\alpha$ by applying the covector to the basis vectors: $\alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) = \alpha_1$ and $\alpha\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) = \alpha_2$.
@@ -304,56 +194,7 @@ In terms of the dual basis $\{\epsilon^1,\epsilon^2\}$ we can visualize the deco
 \]
 
 \begin{center}
-\begin{tikzpicture}[scale=1.0]
-  % Layout anchors
-  \node (A) at (0,0) {};
-
-  % -------- left: alpha --------
-  \begin{scope}[shift={(-5.2,0)}]
-    \clip (-1.8,-1.4) rectangle (1.8,1.4);
-    \begin{scope}[rotate=25]
-      \foreach \x in {-3,-2.4,...,3} {
-        \draw[gray!55, line width=0.35pt] (\x,-3) -- (\x,3);
-      }
-      \draw[->, black, line width=0.4pt] (-0.5,-0.55) -- (-0.2,-0.55);
-      \draw[->, black, line width=0.4pt] (0.2,0.55) -- (0.5,0.55);
-    \end{scope}
-    \fill[black] (0,0) circle (1.2pt);
-    \node[anchor=south] at (0,1.0) {$\alpha$};
-  \end{scope}
-
-  % -------- equals sign --------
-  \node at (-2.6,0) {$=$};
-
-  % -------- middle: alpha1 * epsilon1 --------
-  \node at (-1.6,0) {$\alpha_1$};
-  \begin{scope}[shift={(0.2,0)}]
-    \clip (-1.8,-1.4) rectangle (1.8,1.4);
-    \foreach \x in {-2,-1.5,...,2} {
-      \draw[gray!55, line width=0.35pt] (\x,-1.4) -- (\x,1.4);
-    }
-    \draw[->, black, line width=0.4pt] (-0.15,-0.75) -- (0.2,-0.75);
-    \draw[->, black, line width=0.4pt] (-0.15,0.35) -- (0.2,0.35);
-    \fill[black] (0,0) circle (1.2pt);
-    \node[anchor=south] at (0,0.9) {$\epsilon^1$};
-  \end{scope}
-
-  % -------- plus sign --------
-  \node at (2.6,0) {$+$};
-
-  % -------- right: alpha2 * epsilon2 --------
-  \node at (3.7,0) {$\alpha_2$};
-  \begin{scope}[shift={(5.4,0)}]
-    \clip (-1.8,-1.4) rectangle (1.8,1.4);
-    \foreach \y in {-1.2,-0.8,...,1.2} {
-      \draw[gray!55, line width=0.35pt] (-1.8,\y) -- (1.8,\y);
-    }
-    \draw[->, black, line width=0.4pt] (-0.9,-0.15) -- (-0.9,0.2);
-    \draw[->, black, line width=0.4pt] (0.9,-0.15) -- (0.9,0.2);
-    \fill[black] (0,0) circle (1.2pt);
-    \node[anchor=south] at (0,0.9) {$\epsilon^2$};
-  \end{scope}
-\end{tikzpicture}
+\input{figures/04-dual-basis-decomposition}
 \end{center}
 
 The process is, we start with our vector basis $\color{blue}\vec{e_1}, \vec{e_2}$, then using this $\begingroup\color{violet}\epsilon^i\endgroup\left(\begingroup\color{blue}\vec{e_j}\endgroup\right) = \delta^i{}_j$, we get the dual covector basis, and then using those we can express any covector as a combination of the dual basis. \\ 
@@ -388,15 +229,7 @@ For this we need to apply the covector $\alpha$ to the new basis vectors:
 And taking this coordinate systems in example:
 
 \begin{center}
-\begin{tikzpicture}[scale=1.5]
-  \draw[step=1cm,gray!30,very thin] (-2,-1) grid (3,3);
-  \draw[->] (-2,0) -- (3,0) node[right] {$x$};
-  \draw[->] (0,-1) -- (0,3) node[above] {$y$};
-  \draw[->,thick,blue] (0,0) -- (1,0) node[above] {$\vec{e_1}$};
-  \draw[->,thick,blue] (0,0) -- (0,1) node[above] {$\vec{e_2}$};
-  \draw[->,thick,red] (0,0) -- (2,1) node[above] {$\tilde{\vec{e_1}}$};
-  \draw[->,thick,red] (0,0) -- (-0.5,0.25) node[above] {$\tilde{\vec{e_2}}$};
-\end{tikzpicture}
+\input{figures/04-basis-vectors-example}
 \end{center}
 
 We see that $\begingroup\color{red}\tilde{\vec{e_1}}\endgroup = \left(2\begingroup\color{blue}\vec{e_1}\endgroup + 1\begingroup\color{blue}\vec{e_2}\endgroup\right)$ and $\begingroup\color{red}\tilde{\vec{e_2}}\endgroup = \left(-1/2\begingroup\color{blue}\vec{e_1}\endgroup + 1/4\begingroup\color{blue}\vec{e_2}\endgroup\right)$ so:
