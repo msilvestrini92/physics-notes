@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Motivation: Coordinate Independence in Physics}{2}{section.1}%
+\contentsline {section}{\numberline {2}Forward and Backward Transformations}{2}{section.2}%
+\contentsline {section}{\numberline {3}Vectors}{4}{section.3}%
+\contentsline {section}{\numberline {4}Covectors and covector components}{8}{section.4}%

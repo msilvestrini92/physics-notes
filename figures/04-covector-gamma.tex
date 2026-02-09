@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=0.9]
+  % gamma: horizontal family of lines
+  \clip (-2.2,-1.6) rectangle (2.2,1.6);
+  \foreach \y in {-1.5,-1.0,...,1.5} {
+    \draw[gray!55, line width=0.35pt] (-2.2,\y) -- (2.2,\y);
+  }
+  % direction markers
+  \draw[->, black, line width=0.4pt] (-1.0,-0.6) -- (-1.0,-0.2);
+  \draw[->, black, line width=0.4pt] (0.9,-0.6) -- (0.9,-0.2);
+
+  % vector v
+  \fill[black] (-0.3,-0.03) circle (1.2pt);
+  \draw[->, very thick, orange!85!yellow] (-0.3,-0.02) -- (1.6,1.0) node[above right] {$\vec{v}$};
+
+  \node at (-1.8,1.35) {$\gamma$};
+\end{tikzpicture}

@@ -1,0 +1,155 @@
+\section{Forward and Backward Transformations}
+
+Forward and backward transformations refer to the rules that make us move back and forward between different coordinate systems.
+
+Tensors are invariant under a coordinate system change, so we need to understand how we move back and forward between different systems.
+
+Let's assume we have 2 coordinate systems, an old basis $\vec{e_i}$ and a new basis $\tilde{\vec{e_i}}$, in $\mathbb{R}^2$:
+
+\begin{itemize}
+    \item Old basis = $\color{blue} \{\vec{e_1}, \vec{e_2}\}$
+    \item New basis = $\color{red}\{\tilde{\vec{e_1}}, \tilde{\vec{e_2}}\}$
+\end{itemize}
+
+Moving from the old basis to the new basis, we want to express the new basis in terms of the old one, so:
+
+\begin{equation} \label{eq1}
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup = A \begingroup\color{blue}\vec{e_1}\endgroup + B \begingroup\color{blue}\vec{e_2}\endgroup
+\end{equation}
+\begin{equation} \label{eq2}
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup = C \begingroup\color{blue}\vec{e_1}\endgroup + D \begingroup\color{blue}\vec{e_2}\endgroup
+\end{equation}
+
+The coefficients $A, B, C, D$ can be inserted into a 2x2 matrix, writing down the basis vectors as \emph{row} vectors:
+
+\begin{equation}
+    \begingroup\color{blue}[\vec{e_1}, \vec{e_2}]\endgroup
+    \begin{bmatrix}
+    A & C\\
+    B & D
+    \end{bmatrix}
+\end{equation}
+
+You can see that performing the row-to-column multiplication, you obtain exactly the results in \ref{eq1} and \ref{eq2}.
+
+This might be confusing at first, because we're writing down vectors as row-vectors and not column-vectors, as you usually see in textbooks.
+The reason is that we're dealing with \emph{basis vectors} and not \emph{vector components} (which will be written in column form), and this is very important to make the multiplication we'll see later make sense and to enforce the fact that basis vectors transform differently (covariant) with respect to vector components (contravariant).
+
+That being said, we can define the matrix $F$ as forward matrix, to move from the old to the new basis vector coordinate systems:
+
+\begin{equation}
+    F = 
+    \begin{bmatrix}
+    F_{11} & F_{12}\\
+    F_{21} & F_{22}
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \begingroup\color{red}[\tilde{\vec{e_1}}\endgroup, \begingroup\color{red}\tilde{\vec{e_2}}]\endgroup = \begingroup\color{blue}[\vec{e_1}, \vec{e_2}]\endgroup 
+    \begin{bmatrix}
+    F_{11} & F_{12}\\
+    F_{21} & F_{22}
+    \end{bmatrix}
+\end{equation}
+
+And re-writing \ref{eq1} and \ref{eq2}:
+
+\begin{equation} 
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup = F_{11} \begingroup\color{blue}\vec{e_1}\endgroup + F_{21} \begingroup\color{blue}\vec{e_2}\endgroup
+\end{equation}
+\begin{equation} 
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup = F_{12} \begingroup\color{blue}\vec{e_1}\endgroup + F_{22} \begingroup\color{blue}\vec{e_2}\endgroup
+\end{equation}
+
+Now, the same can be done in the opposite direction, i.e. from the new basis to the old basis:
+
+\begin{equation} \label{eq3}
+    \begingroup\color{blue}\vec{e_1}\endgroup = E \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + F \begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{equation}
+\begin{equation} \label{eq4}
+    \begingroup\color{blue}\vec{e_2}\endgroup = G \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + H \begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{equation}
+
+Obtaining with the same logic, a matrix that we'll call $B$ for backward:
+
+\begin{equation}
+    B = 
+    \begin{bmatrix}
+    B_{11} & B_{12}\\
+    B_{21} & B_{22}
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \begingroup\color{blue}[\vec{e_1}\endgroup, \begingroup\color{blue}\vec{e_2}]\endgroup = \begingroup\color{red}[\tilde{\vec{e_1}}\endgroup, \begingroup\color{red}\tilde{\vec{e_2}}]\endgroup
+    \begin{bmatrix}
+    B_{11} & B_{12}\\
+    B_{21} & B_{22}
+    \end{bmatrix}
+\end{equation}
+
+And re-writing \ref{eq3} and \ref{eq4}:
+
+\begin{equation} \label{eq:3}
+    \begingroup\color{blue}\vec{e_1}\endgroup = B_{11} \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + B_{21} \begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{equation}
+\begin{equation} \label{eq:4}
+    \begingroup\color{blue}\vec{e_2}\endgroup = B_{12} \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + B_{22} \begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{equation}
+
+All this can be extended to any $\mathbb{R}^n$ space dimension:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup &= F_{11}\begingroup\color{blue}\vec{e_1}\endgroup + F_{21}\begingroup\color{blue}\vec{e_2}\endgroup + \cdots + F_{n1}\begingroup\color{blue}\vec{e_n}\endgroup \\
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup &= F_{12}\begingroup\color{blue}\vec{e_1}\endgroup + F_{22}\begingroup\color{blue}\vec{e_2}\endgroup + \cdots + F_{n2}\begingroup\color{blue}\vec{e_n}\endgroup \\
+    \qquad &\qquad \vdots \\
+    \begingroup\color{red}\tilde{\vec{e_n}}\endgroup &= F_{1n}\begingroup\color{blue}\vec{e_1}\endgroup + F_{2n}\begingroup\color{blue}\vec{e_2}\endgroup + \cdots + F_{nn}\begingroup\color{blue}\vec{e_n}\endgroup
+\end{align*}
+
+With $F$ being a $n \times n$ matrix:
+
+\begin{equation}
+    \begin{bmatrix}
+    F_{11} & F_{12} & \cdots & F_{1n}\\
+    F_{21} & F_{22} & \cdots & F_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    F_{n1} & F_{n2} & \cdots & F_{nn}
+    \end{bmatrix}
+\end{equation}
+
+We can then write down in compact form, for both $F$ and $B$:
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \begingroup\color{red}\tilde{\vec{e_i}}\endgroup = \sum_{j=1}^{n} F_{ji} \begingroup\color{blue}\vec{e_j}\endgroup \\
+    \begingroup\color{blue}\vec{e_i}\endgroup = \sum_{j=1}^{n} B_{ji} \begingroup\color{red}\tilde{\vec{e_j}}\endgroup
+\end{empheq}
+\end{subequations}
+
+As you can already guess, the $F$ and $B$ matrices are one the inverse of the other: $B = F^{-1}$, and to simply prove it, we can easily re-arrange and subsitute the above \ref{eq5} and \ref{eq6}:
+
+\begin{align*}
+    \begingroup\color{blue}\vec{e_i}\endgroup &= \sum_{j=1}^{n} B_{ji} \begingroup\color{red}\tilde{\vec{e_j}}\endgroup \\
+    \begingroup\color{blue}\vec{e_i}\endgroup &= \sum_{j} B_{ji}\left(\sum_{k} F_{kj} \begingroup\color{blue}\tilde{\vec{e_k}}\endgroup\right) \\
+    \begingroup\color{blue}\vec{e_i}\endgroup &= \sum_{k} \left(\sum_{j} F_{kj} B_{ji} \right)\begingroup\color{blue}\tilde{\vec{e_k}}\endgroup  \\
+\end{align*}
+
+Now, to make sense of this, you see that we have the $\begingroup\color{blue}blue\endgroup$ new basis vectors on both left and right side of the equation, so they obviously have to match when $i = k$, which means that:
+
+\begin{equation}
+    \sum_{j} F_{kj} B_{ji} = \begin{cases}
+            1, &         \text{if } i=k,\\
+            0, &         \text{if } i\neq k.
+    \end{cases}
+\end{equation}
+
+Which, if we expand in $\mathbb{R}^n$, represents the identity matrix.
+And this behavior is so common that we have a name for it, called the Kronecker delta:
+
+\begin{equation}
+    \delta_{ik} = \begin{cases}
+            1, &         \text{if } i=k,\\
+            0, &         \text{if } i\neq k.
+    \end{cases}
+\end{equation}
