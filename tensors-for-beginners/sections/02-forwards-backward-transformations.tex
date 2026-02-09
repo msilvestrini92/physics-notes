@@ -153,3 +153,39 @@ And this behavior is so common that we have a name for it, called the Kronecker 
             0, &         \text{if } i\neq k.
     \end{cases}
 \end{equation}
+
+\subsection*{Exercises}
+
+\begin{exercise}
+Consider the following basis transformation in $\mathbb{R}^2$:
+\[
+\tilde{\vec{e_1}} = 2\vec{e_1} + \vec{e_2}, \quad \tilde{\vec{e_2}} = -\vec{e_1} + \vec{e_2}
+\]
+\begin{enumerate}
+    \item Write down the forward transformation matrix $F$
+    \item Compute the backward transformation matrix $B = F^{-1}$
+    \item Verify that $FB = I$ (the identity matrix)
+    \item Express the old basis vectors in terms of the new basis using the matrix $B$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Understanding the Kronecker delta:
+\begin{enumerate}
+    \item Write out $\sum_{j=1}^{3} \delta_{ij}$ for $i = 1, 2, 3$. What pattern do you notice?
+    \item Evaluate $\sum_{j=1}^{n} F_{kj} B_{ji}$ and explain why it equals $\delta_{ki}$
+    \item Show that for any vector components $v^i$, the expression $\sum_{i=1}^{n} \delta_{ij} v^i = v^j$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Consider a rotation by angle $\theta$ counterclockwise. The forward transformation is:
+\[
+F = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}
+\]
+\begin{enumerate}
+    \item Compute $B = F^{-1}$ (use the formula for 2×2 matrix inverse)
+    \item Compare $B$ with $F$. What geometric transformation does $B$ represent?
+    \item Verify that rotating by $\theta$ then by $-\theta$ returns you to the original basis
+\end{enumerate}
+\end{exercise}

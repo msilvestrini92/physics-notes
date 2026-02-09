@@ -402,3 +402,72 @@ $}
     \item Covector components are covariant (low index), transform like the basis vector transform
     \item  Dual vector basis are contravariant (high index), transform opposite to the basis vector transformation
 \end{itemize}
+
+\subsection*{Exercises}
+
+\begin{exercise}
+Consider a covector $\alpha$ with components $[\alpha_1, \alpha_2] = [3, -1]$ in the standard basis $\{\vec{e_1}, \vec{e_2}\}$.
+\begin{enumerate}
+    \item Evaluate $\alpha(\vec{v})$ where $\vec{v}$ has components $v^1 = 2, v^2 = 4$
+    \item If we scale $\alpha$ by a factor of 2, what happens to the output $\alpha(\vec{v})$?
+    \item If instead we scale $\vec{v}$ by a factor of 2, what happens to the output?
+    \item Verify that $\alpha(2\vec{u} + 3\vec{w}) = 2\alpha(\vec{u}) + 3\alpha(\vec{w})$ (linearity)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Understanding the dual basis:
+\begin{enumerate}
+    \item Given basis vectors $\vec{e_1} = \begin{bmatrix}1\\0\end{bmatrix}$ and $\vec{e_2} = \begin{bmatrix}0\\1\end{bmatrix}$, verify that $\epsilon^1(\vec{e_1}) = 1$ and $\epsilon^1(\vec{e_2}) = 0$
+    \item For a covector $\alpha = 2\epsilon^1 + 5\epsilon^2$, compute $\alpha(\vec{e_1})$ and $\alpha(\vec{e_2})$
+    \item A vector $\vec{v} = 3\vec{e_1} + 4\vec{e_2}$. Compute $\epsilon^1(\vec{v})$ and $\epsilon^2(\vec{v})$
+    \item What is the relationship between $\epsilon^i(\vec{v})$ and the vector components $v^i$?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Covector transformations:
+Using the same transformation from the vectors section with matrices:
+\[
+F = \begin{bmatrix} 2 & -1/2 \\ 1 & 1/4 \end{bmatrix}, \quad
+B = \begin{bmatrix} 1/4 & 1/2 \\ -1 & 2 \end{bmatrix}
+\]
+\begin{enumerate}
+    \item A covector has components $[\alpha_1, \alpha_2] = [4, 2]$ in the old basis. Find its components in the new basis
+    \item Compare this result with how vector components transform. Which matrix (F or B) is used?
+    \item Verify that $\alpha(\vec{v})$ gives the same scalar value in both coordinate systems
+    \item Explain in words why covector components are covariant (transform like basis vectors)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Visualizing covectors:
+\begin{enumerate}
+    \item Draw the level sets (lines where the function equals a constant) for the covector $\alpha = [1, 1]$
+    \item A vector $\vec{v} = \begin{bmatrix}3\\2\end{bmatrix}$ pierces these level sets. How many lines does it cross?
+    \item Verify this by computing $\alpha(\vec{v})$
+    \item If we double the covector to $2\alpha = [2, 2]$, how does the spacing of level sets change?
+    \item How does the answer to part (c) change when using $2\alpha$ instead of $\alpha$?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Contravariant vs. Covariant:
+\begin{enumerate}
+    \item Complete this table for the transformation rules:
+    \begin{center}
+    \begin{tabular}{|l|c|c|}
+    \hline
+    Quantity & Index Position & Transforms with \\
+    \hline
+    Basis vectors $\vec{e_i}$ & subscript & ? \\
+    Vector components $v^i$ & superscript & ? \\
+    Dual basis $\epsilon^i$ & superscript & ? \\
+    Covector components $\alpha_i$ & subscript & ? \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \item Why do we write vector components with upper indices and covector components with lower indices?
+    \item Give an intuitive explanation for why vector components transform opposite to basis vectors
+\end{enumerate}
+\end{exercise}
