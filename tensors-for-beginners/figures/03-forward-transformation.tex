@@ -1,8 +1,8 @@
-\begin{tikzpicture}[node distance=18mm]
+\begin{tikzpicture}[node distance=20mm, thick]
     \node (in) {$\color{blue}\{\vec{e_1}, \vec{e_2}\}$};
-    \node[draw, rectangle, minimum width=10mm, minimum height=7mm, right=of in] (F) {$F$};
+    \node[draw, rectangle, rounded corners, fill=blue!10, minimum width=15mm, minimum height=10mm, right=of in] (F) {$\mathbf{F}$};
     \node (out) [right=of F] {$\color{red}\{\tilde{\vec{e_1}}, \tilde{\vec{e_2}}\}$};
 
-    \draw[->] (in) -- (F);
-    \draw[->] (F) -- (out);
+    \draw[->,line width=1.2pt,blue] (in) -- (F);
+    \draw[->,line width=1.2pt,red] (F) -- (out);
 \end{tikzpicture}
