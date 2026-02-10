@@ -1,0 +1,631 @@
+\section{Linear Maps}
+
+We'll present linear maps with different definitions, one more practical, one geometric and finally the more abstract definition.
+
+Practically, matrices are the coordinate version of linear maps. If you represent vectors as column, covectors as row vectors, linear maps are
+represented by matrices.
+How do matrices act on vectors? Let's see a simple example:
+
+\begin{equation}
+    \begingroup\color{red}\begin{bmatrix}
+        3 & 4\\
+        -1 & 2
+    \end{bmatrix}\endgroup \begin{bmatrix}
+        2\\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        2\\
+        0
+    \end{bmatrix}
+\end{equation}
+
+What is actually doing? 
+If we test using a "copy" of the basis vectors $\vec{e_1}, \vec{e_2}$, we see that the outputs are
+respectively, the first and second column of the matrix:
+
+\begin{equation}
+    \begin{bmatrix}
+        \begingroup\color{red}3\endgroup & 4\\
+        \begingroup\color{red}-1\endgroup & 2
+    \end{bmatrix} \begin{bmatrix}
+        1\\
+        0
+    \end{bmatrix} = \begin{bmatrix}
+        \begingroup\color{red}3\endgroup\\
+        \begingroup\color{red}-1\endgroup
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{bmatrix}
+        3 & \begingroup\color{red}4\endgroup\\
+        -1 & \begingroup\color{red}2\endgroup
+    \end{bmatrix} \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        \begingroup\color{red}4\endgroup\\
+        \begingroup\color{red}2\endgroup
+    \end{bmatrix}
+\end{equation}
+
+\textbf{Why do we stress about these being copies of basis vectors? Because Linear Maps tranform 
+input vectors, they do not transform the basis.}
+The $i^{th}$ column of the matrix is the image of the $i^{th}$ copy of the basis vector.
+
+Geometrically, linear maps are spatial transforms that:
+\begin{itemize}
+    \item Keep gridlines parallel
+    \item Keep gridlines evenly spaced
+    \item Keep the origin stationary
+\end{itemize}
+
+And abstractly, linear maps are maps from a vector space to another:
+
+\begin{equation}
+    \textit{L}:\textit{V} \to \textit{W}
+\end{equation}
+
+And obey linearity rules:
+
+\begin{align*}
+    \textit{L}\left(\vec{v} + \vec{w}\right) &= \textit{L}\left(\vec{v}\right) + \textit{L}\left(\vec{w}\right)\\
+    \textit{L}\left(n\vec{v}\right) &= n\textit{L}\left(\vec{v}\right)
+\end{align*}
+
+Now let's see how the abstract and coordinate definitions are related to each other. Let's review the formula for matrix multiplication of a 2x2 matrix:
+
+\begin{equation}
+    \begin{bmatrix}
+        a & b\\
+        c & d
+    \end{bmatrix} \begin{bmatrix}
+        \begingroup\color{red}x\endgroup\\
+        \begingroup\color{blue}y\endgroup
+    \end{bmatrix} = 
+        \begin{bmatrix}
+            a\begingroup\color{red}x\endgroup + b\begingroup\color{blue}y\endgroup\\
+            c\begingroup\color{red}x\endgroup + d\begingroup\color{blue}y\endgroup
+        \end{bmatrix}
+\end{equation}
+
+At a first glance, this rule may come out from nowhere, but this is actually a direct consequence of the abstract definition above.
+To show this, let's start by saying that we have a linear map $\textit{L}:\textit{V} \to \textit{V}$ acting on a vector $\vec{v}$ to produce some output vector $\vec{w}$.
+\textbf{The assumption to stay in the same vector space is needed to ensure we can use the same basis vectors on both inputs and outputs}:
+
+\begin{align*}
+    \begingroup\color{violet}\vec{w}\endgroup &= 
+    \textit{L}\left(\begingroup\color{orange}\vec{v}\endgroup\right) = 
+    \textit{L}\left(\begingroup\color{orange}v^1\endgroup\begingroup\color{blue}\vec{e_1}\endgroup + 
+    \begingroup\color{orange}v^2\endgroup\begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \begingroup\color{orange}v^1\endgroup\textit{L}\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) + \begingroup\color{orange}v^2\endgroup\textit{L}\left(\begingroup\color{blue}\vec{e_2}\endgroup\right)
+\end{align*}
+
+These $\textit{L}\left(\begingroup\color{blue}\vec{e_1}\endgroup\right)$ and $\textit{L}\left(\begingroup\color{blue}\vec{e_2}\endgroup\right)$ are
+just vectors in $\textit{V}$ so we can write them down in terms of the basis vectors:
+
+\begin{align*}
+    \textit{L}\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) &= \textit{L}^1_1\begingroup\color{blue}\vec{e_1}\endgroup + \textit{L}^2_1\begingroup\color{blue}\vec{e_2}\endgroup\\
+    \textit{L}\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) &= \textit{L}^1_2\begingroup\color{blue}\vec{e_1}\endgroup + \textit{L}^2_2\begingroup\color{blue}\vec{e_2}\endgroup
+\end{align*}
+
+\begin{align*}
+    \begingroup\color{violet}\vec{w}\endgroup &= \begingroup\color{orange}v^1\endgroup\left(\textit{L}^1_1\begingroup\color{blue}\vec{e_1}\endgroup + \textit{L}^2_1\begingroup\color{blue}\vec{e_2}\endgroup\right) + \begingroup\color{orange}v^2\endgroup\left(\textit{L}^1_2\begingroup\color{blue}\vec{e_1}\endgroup + \textit{L}^2_2\begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \left(\textit{L}^1_1\begingroup\color{orange}v^1\endgroup + \textit{L}^1_2\begingroup\color{orange}v^2\endgroup\right) \begingroup\color{blue}\vec{e_1}\endgroup + \left(\textit{L}^2_1\begingroup\color{orange}v^1\endgroup + \textit{L}^2_2\begingroup\color{orange}v^2\endgroup\right) \begingroup\color{blue}\vec{e_2}\endgroup\\
+    &= \begingroup\color{violet}w^1\endgroup\begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{violet}w^2\endgroup\begingroup\color{blue}\vec{e_2}\endgroup
+\end{align*}
+
+So we've derived how to transform the $v$ coefficients into the $w$ coefficients.
+
+\begin{align*}
+    \begingroup\color{violet}w^1\endgroup &= \textit{L}^1_1\begingroup\color{orange}v^1\endgroup + \textit{L}^1_2\begingroup\color{orange}v^2\endgroup\\
+    \begingroup\color{violet}w^2\endgroup &= \textit{L}^2_1\begingroup\color{orange}v^1\endgroup + \textit{L}^2_2\begingroup\color{orange}v^2\endgroup
+\end{align*}
+
+which are nothing more than the usual 2x2 matrix multiplication rule:
+
+\begin{equation}
+    \begin{bmatrix}
+        L^1_1 & L^1_2\\
+        L^2_1c & L^2_2
+    \end{bmatrix} \begin{bmatrix}
+        \begingroup\color{orange}v^1\endgroup\\
+        \begingroup\color{orange}v^2\endgroup
+    \end{bmatrix} = 
+        \begin{bmatrix}
+            \begingroup\color{violet}w^1\endgroup\\
+            \begingroup\color{violet}w^2\endgroup
+        \end{bmatrix}
+\end{equation}
+
+For any number of dimensions, we can write:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{w}\endgroup = \textit{L}\left(\begingroup\color{orange}\vec{v}\endgroup\right) = \sum_{i=1}^{n}\begingroup\color{violet}w^i\endgroup\begingroup\color{blue}\vec{e_i}\endgroup
+\end{equation}
+
+And the linear maps coefficients:
+
+\begin{equation}
+    \textit{L}\left(\begingroup\color{blue}\vec{e_i}\endgroup\right) = \sum_{j=1}^{n}\textit{L}^j_i\begingroup\color{blue}\vec{e_j}\endgroup
+\end{equation}
+
+And we can transform finally, the $v$ components into $w$ components:
+
+\begin{equation}
+    \begingroup\color{violet}w^i\endgroup = \sum_{j=1}^{n}\textit{L}^i_j\begingroup\color{orange}v^j\endgroup
+\end{equation}
+
+which is indeed the matrix multiplication formula applied to n-dimension space.
+
+% You may find in some places, that covectors are defined to be "basically" row vectors, so you may think that's just it, if you have a vector written in column, you flip it and you have a covector, but that's not quite right and simple.
+
+% Column-vectors and row-vectors are fundamentally different types of objects.
+% The reason you may think are basically the same but flipped, is that we normally deal with \emph{orthonormal basis}, which is a basis where all vectors are one unit long and perpendicular to each other. But generally, this is not true in any coordinate system. 
+
+% To realize this, we need to think at row vectors as functions acting on column vectors, so let's think about a general covector $\alpha$ acting on a general vector $\vec{v}$:
+
+% \begin{equation}
+%     \alpha(\vec{v}) = \alpha_1 v^1 + \alpha_2 v^2 + \cdots + \alpha_n v^b = \sum_{i=1}^{n}\alpha_i v^i
+% \end{equation}
+
+% Ultimately, a covector is a function that takes an input from a vector space and returns a scalar as output:
+
+% \begin{equation}
+%     \alpha: \textit{V} \to \mathbb{R}
+% \end{equation}
+
+% They obey the linearity rule:
+% \begin{equation}
+%     \alpha(n\vec{v} + m\vec{w}) = n\alpha(\vec{v}) + m\alpha(\vec{w})
+% \end{equation}
+
+% How can we visualized these covectors though? There's a nice way of doing it and we can start by thinking about a generic 2D covector as a function on two variables $x$ and $y$:
+
+% \begin{align*}
+%     \begin{bmatrix}
+%     2 & 1
+%     \end{bmatrix} \left(
+%         \begin{bmatrix}
+%         x \\
+%         y
+%     \end{bmatrix}
+%     \right) = 2x + 1y
+% \end{align*}
+
+% So how do we visualize a function of two variables that produces one output?
+% This is very similar to what topographers do to visualize on a piece of 2D paper a topographic map of some mountains and valley.
+% This is done by drawing curves of constant elevation value. And by looking at a map like this, we know that when we see these lines very close together they represent a place where the elevation changes very steeply, whereas where they are less dense, the elevation does not change so steeply.\\
+
+% Continuing with our example, we can start asking, where is this function equal to zero? $2x + 1y = 0$ ? This is the line $y = -2x$, same we can do for 1, 2, 3 and for negative as well.
+
+% \begin{center}
+% \input{figures/04-covector-lines}
+% \end{center}
+
+% The stack is increasing towards the upper right so it has a direction towards north-east in our case.
+
+% You can actually think about a covector $\alpha$ acting on a vector $\vec{v}$ as giving a scalar output, equals to the number of times the vector pierces one of the covector's lines.
+
+% Now what happens if we scale up the covector, let's say by a factor of 2?
+% We basically make is much denser, hence the vector will pierce the lines double the time it did before.
+% And the result would be the same if we choose instead, of scaling up the vector by 2, as the vector will then pierce a double number of lines, being its magnitude longer.
+
+% Let's continue on how we can visualize two covector addition.
+
+% \begin{align*}
+%     \beta(\begingroup\color{orange}\vec{v}\endgroup) = 3\\
+%     \gamma(\begingroup\color{orange}\vec{v}\endgroup) = 2
+% \end{align*}
+
+% \begin{center}
+% \begin{minipage}[t]{0.32\linewidth}
+% \centering
+% \input{figures/04-covector-beta}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.32\linewidth}
+% \centering
+% \input{figures/04-covector-gamma}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.32\linewidth}
+% \centering
+% \input{figures/04-covector-sum}
+% \end{minipage}
+% \end{center}
+
+% The diagrams are not perfect, but a sum of covectors $\beta$ and $\gamma$ would show as a stack with the same density as $\beta$ in the beta-direction, and same density as $\gamma$ in the gamma-direction, which in this case would visualize as a NE-pointing stack, and since $\beta$ has an horizontal density of 3 and $\gamma$ a vertical density of 2, the sum will simply be the vector piercing the lines 5 times.
+
+% \begin{align*}
+%     \left(\beta + \gamma\right)(\begingroup\color{orange}\vec{v}\endgroup) = 5\\
+%     \left(\beta + \gamma\right)(\begingroup\color{orange}\vec{v}\endgroup) = \beta(\begingroup\color{orange}\vec{v}\endgroup) + \gamma(\begingroup\color{orange}\vec{v}\endgroup)
+% \end{align*}
+
+% Summing up, we've seen that for covectors, we also are able to scale them, and perform addition, and that gives us a hint about the fact that covectors are actually part of a Vector space.\\
+% We have that the set of covectors that act on vectors in $V$ form a new vector space called the \emph{dual space} $V^*$, with its own set of addition and scalar operations:
+
+% \begin{align*}
+%     \left(V, S, +, \cdot \right) \\
+%     \left(V^*, S, \begingroup\color{red}+, \cdot\endgroup \right)
+% \end{align*}
+
+% The elements of $V^*$ are covectors, which are functions that go from $\textit{V}$ to the real numbers $\mathbb{R}$, with their own addition and scaling rules:
+
+% \begin{align*}
+%     \left(n\begingroup\color{red}\cdot\endgroup \alpha\right)\left(\begingroup\color{orange}\vec{v}\endgroup\right) = n\alpha\left(\begingroup\color{orange}\vec{v}\endgroup\right) \\
+%     \left(\beta \begingroup\color{red}+\endgroup \gamma\right)(\begingroup\color{orange}\vec{v}\endgroup) = \beta(\begingroup\color{orange}\vec{v}\endgroup) + \gamma(\begingroup\color{orange}\vec{v}\endgroup)
+% \end{align*}
+
+% As per vectors, covectors are also invariant, they're purely geometric object, independend of the reference frame/coordinate system used to describe them.
+% Their components though, exactly like vector components, are not invariant.
+
+% When we write a column vector, for example, as follows, we represent it by how much of each basis vector I need to make this vector, so as a linear combination of the "scaled" basis vectors (scaled by the vector components values):
+
+% \begin{equation}
+%     \left[ \begin{matrix}
+%         2 \\
+%         1
+%     \end{matrix}\right]_{\color{blue}\vec{e_i}} \text{ we mean } 2\begingroup\color{blue}\vec{e_1}\endgroup + 1\begingroup\color{blue}\vec{e_2}\endgroup
+% \end{equation}
+
+% But what does it mean to do this for covectors? Which are functions? Like if I write down 
+
+% \begin{equation}
+%     \left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]
+% \end{equation}
+
+% This is not as intuitive because remember that covectors do not live in the same vector space, they live in the dual vector space, and they are functions from vectors to real numbers, so we can't use basis vectors in $V$ to represent covectors of $V^*$.\\
+
+% What we can do is intruduce two special covectors, such that, considering the basis $\color{blue} \{\vec{e_1}, \vec{e_2}\}$ for $V$:
+
+% \begin{align*}
+%     \begingroup\color{violet}\epsilon^1\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) &= 1 & \begingroup\color{violet}\epsilon^1\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) &= 0 \\
+%     \begingroup\color{violet}\epsilon^2\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) &= 0 & \begingroup\color{violet}\epsilon^2\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) &= 1
+% \end{align*}
+
+% so basically:
+
+% \begin{equation}
+%     \begingroup\color{violet}\epsilon^i\endgroup\left(\begingroup\color{blue}\vec{e_j}\endgroup\right) = \delta^i{}_j = \begin{cases}
+%             1, &         \text{if } i=j,\\
+%             0, &         \text{if } i\neq j.
+%     \end{cases}
+% \end{equation}
+
+% What happens when we apply such covectors to a generic vector?
+
+% \begin{align*}
+%     \begingroup\color{violet}\epsilon^1\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) = \begingroup\color{violet}\epsilon^1\endgroup\left(v^1 \begingroup\color{blue}\vec{e_1}\endgroup + v^2 \begingroup\color{blue}\vec{e_2}\endgroup\right) = v^1 \\
+%     \begingroup\color{violet}\epsilon^2\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) = \begingroup\color{violet}\epsilon^2\endgroup\left(v^1 \begingroup\color{blue}\vec{e_1}\endgroup + v^2 \begingroup\color{blue}\vec{e_2}\endgroup\right) = v^2 \\
+%     \begingroup\color{violet}\epsilon^i\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) = v^i
+% \end{align*}
+
+% So what these covectors are doing, is projecting out vector components.
+
+% \begin{center}
+% \begin{minipage}[t]{0.48\linewidth}
+% \centering
+% \input{figures/04-epsilon1-basis}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.48\linewidth}
+% \centering
+% \input{figures/04-epsilon2-basis}
+% \end{minipage}
+% \end{center}
+
+% Let's now generalize and apply a general covector $\alpha$ to a vector $\color{orange}\vec{v}$:
+
+% \begin{align*}
+%     \alpha\left(\begingroup\color{orange}\vec{v}\endgroup\right) = \alpha\left(v^1 \begingroup\color{blue}\vec{e_1}\endgroup + v^2 \begingroup\color{blue}\vec{e_2}\endgroup\right) = v^1\alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) + v^2 \left(\begingroup\color{blue}\vec{e_2}\endgroup\right)
+% \end{align*}
+
+% We can write the components $v_i = \begingroup\color{violet}\epsilon^i\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right)$ so that:
+
+% \begin{align*}
+%     \alpha\left(\begingroup\color{orange}\vec{v}\endgroup\right) = \begingroup\color{violet}\epsilon^1\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right)\alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) + \begingroup\color{violet}\epsilon^2\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) \alpha\left(\begingroup\color{blue}\vec{e_2}\endgroup\right)
+% \end{align*}
+
+% We define $\alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) = \alpha_1$ and $\alpha\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) = \alpha_2$ so that:
+
+% \begin{align*}
+%     \alpha\left(\begingroup\color{orange}\vec{v}\endgroup\right) &= \alpha_1\begingroup\color{violet}\epsilon^1\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) + \alpha_2\begingroup\color{violet}\epsilon^2\endgroup\left(\begingroup\color{orange}\vec{v}\endgroup\right) \\
+%     \alpha\left(\begingroup\color{orange}\vec{v}\endgroup\right) &= \left(\alpha_1\begingroup\color{violet}\epsilon^1\endgroup + \alpha_2\begingroup\color{violet}\epsilon^2\endgroup\right)\left(\begingroup\color{orange}\vec{v}\endgroup\right) \\
+%     \alpha &= \alpha_1\begingroup\color{violet}\epsilon^1\endgroup + \alpha_2\begingroup\color{violet}\epsilon^2\endgroup
+% \end{align*}
+
+% We've now written a covector $\alpha$ as linear combination of our epsilon covectors defined above. \textbf{What this means is that the $\epsilon$ covectors form a basis for the dual vector space $V^*$} and we call this $\epsilon$ the dual basis because they're a basis for the dual vector space $V^*$.\\
+
+% We may try to understand this visually and geometrically, since so far we derived this algebraically.
+
+% \begin{center}
+% \input{figures/04-alpha-covector}
+% \end{center}
+
+% We can get the components of $\alpha$ by applying the covector to the basis vectors: $\alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) = \alpha_1$ and $\alpha\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) = \alpha_2$.
+% In terms of the dual basis $\{\epsilon^1,\epsilon^2\}$ we can visualize the decomposition
+% \[
+%   \alpha = \alpha_1\,\epsilon^1 + \alpha_2\,\epsilon^2.
+% \]
+
+% \begin{center}
+% \input{figures/04-dual-basis-decomposition}
+% \end{center}
+
+% The process is, we start with our vector basis $\color{blue}\vec{e_1}, \vec{e_2}$, then using this $\begingroup\color{violet}\epsilon^i\endgroup\left(\begingroup\color{blue}\vec{e_j}\endgroup\right) = \delta^i{}_j$, we get the dual covector basis, and then using those we can express any covector as a combination of the dual basis. \\ 
+
+% Remember though, that these $\epsilon$ covector basis is not the only one we can use to express $\alpha$.
+% We can start with a different vector basis, $\color{red}\tilde{\vec{e_1}}, \tilde{\vec{e_2}}$ and then applying the rule $\begingroup\color{red}\tilde{\epsilon^i}\endgroup\left(\begingroup\color{red}\tilde{\vec{e_j}}\endgroup\right) = \delta^i{}_j$ we get another dual vector basis, that can be used to express the same $\alpha$ in a different covector basis.
+
+% Allright, so now, let's say we have a covector $\alpha = 2\begingroup\color{blue}\epsilon^1\endgroup + 1\begingroup\color{blue}\epsilon^2\endgroup$ represented in the old covector basis $\color{blue}\epsilon^i$:
+
+% \begin{equation}
+%     \color{blue}\left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]_{\epsilon^i}
+% \end{equation}
+
+% which means they have components:
+
+% \begin{align*}
+%     \alpha\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) = 2\\
+%     \alpha\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) = 1
+% \end{align*}
+
+% What would these components look like in the new covector basis $\color{red}\tilde{\epsilon^i}$ ?
+
+% For this we need to apply the covector $\alpha$ to the new basis vectors:
+
+% \begin{align*}
+%     \alpha\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) = \begingroup\color{magenta}\tilde{\alpha_1}\endgroup\\
+%     \alpha\left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) = \begingroup\color{magenta}\tilde{\alpha_2}\endgroup
+% \end{align*}
+
+% And taking this coordinate systems in example:
+
+% \begin{center}
+% \input{figures/04-basis-vectors-example}
+% \end{center}
+
+% We see that $\begingroup\color{red}\tilde{\vec{e_1}}\endgroup = \left(2\begingroup\color{blue}\vec{e_1}\endgroup + 1\begingroup\color{blue}\vec{e_2}\endgroup\right)$ and $\begingroup\color{red}\tilde{\vec{e_2}}\endgroup = \left(-1/2\begingroup\color{blue}\vec{e_1}\endgroup + 1/4\begingroup\color{blue}\vec{e_2}\endgroup\right)$ so:
+
+% \begin{align*}
+%     \begingroup\color{magenta}\tilde{\alpha_1}\endgroup &= 
+%     \alpha\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) = \alpha\left(2\begingroup\color{blue}\vec{e_1}\endgroup + 1\begingroup\color{blue}\vec{e_2}\endgroup\right) = 5 \\
+%     \begingroup\color{magenta}\tilde{\alpha_2}\endgroup &= 
+%     \alpha\left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) = \alpha\left(-1/2\begingroup\color{blue}\vec{e_1}\endgroup + 1/4\begingroup\color{blue}\vec{e_2}\endgroup\right) = -3/4
+% \end{align*}
+
+% \begin{align*}
+%     \color{blue}\left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]_{\epsilon^i} && \color{red}\left[ \begin{matrix}
+%         5 & -3/4
+%     \end{matrix}\right]_{\tilde{\epsilon^i}}
+% \end{align*}
+
+% Remember what were the $F$ and $B$ matrices? \textbf{If you make your calculation, you will see that for covector components, forward brings from old to new, and backward brings from new to old}:
+
+% \begin{align*}
+%     \begingroup\color{blue}\left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]_{\epsilon^i}\endgroup F &= 
+%     \begingroup\color{blue}\left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]_{\epsilon^i}\endgroup
+%     \begin{bmatrix}
+%     2 & -1/2\\
+%     1 & 1/4
+%     \end{bmatrix} = \color{red}\left[ \begin{matrix}
+%         5 & -3/4
+%     \end{matrix}\right]_{\tilde{\epsilon^i}} \\
+%     \begingroup\color{red}\left[ \begin{matrix}
+%         5 & -3/4
+%     \end{matrix}\right]_{\tilde{\epsilon^i}}\endgroup B &=
+%     \begingroup\color{red}\left[ \begin{matrix}
+%         5 & -3/4
+%     \end{matrix}\right]_{\tilde{\epsilon^i}}\endgroup
+%     \begin{bmatrix}
+%     1/4 & 1/2\\
+%     -1 & 2
+%     \end{bmatrix} = \begingroup\color{blue}\left[ \begin{matrix}
+%         2 & 1
+%     \end{matrix}\right]_{\epsilon^i}\endgroup
+% \end{align*}
+
+% This is actually the opposite of what we've found for vector components under a change of basis.
+% \textbf{This is why we can't just flip column vectors to row vectors to get covectors.} 
+% It works in an orthonormal basis, like the $\color{blue}\vec{e_i}$ and correspondent dual basis defined by $\color{blue}\epsilon^i$.
+% But it does not work in the new voctor basis $\color{red}\tilde{\vec{e_i}}$ and correspondent covector basis $\color{red}\tilde{\epsilon^i}$.\\
+
+% Like we did for vectors bafore, we've gone from old basis vectors to new basis vectors and we found that that requires the forward mateix $F$.
+
+% Now we want to do something similar for the covector basis, we want to go from an old covector basis $\color{blue}\epsilon^i$ to a new covector basis $\color{red}\tilde{\epsilon^i}$.
+
+% \begin{equation}
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup = Q_{11} \begingroup\color{blue}\epsilon^1\endgroup + Q_{12} \begingroup\color{blue}\epsilon^2\endgroup
+% \end{equation}
+% \begin{equation}
+%     \begingroup\color{red}\tilde{\epsilon^2}\endgroup = Q_{21} \begingroup\color{blue}\epsilon^1\endgroup + Q_{22} \begingroup\color{blue}\epsilon^2\endgroup
+% \end{equation}
+
+% To find the coefficients, we start by applying:
+
+% \begin{align*}
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) &= Q_{11} \begingroup\color{blue}\epsilon^1\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) + Q_{12} \begingroup\color{blue}\epsilon^2\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) = Q_{11} \\
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) &= Q_{11} \begingroup\color{blue}\epsilon^1\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) + Q_{12} \begingroup\color{blue}\epsilon^2\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) = Q_{12}
+% \end{align*}
+
+% Given this, we can re-write:
+
+% \begin{align*}
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup = \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) \begingroup\color{blue}\epsilon^1\endgroup + \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) \begingroup\color{blue}\epsilon^2\endgroup
+% \end{align*}
+
+% Now if we bring back our backward transformation, we know that:
+
+% \begin{align*}
+%     \begingroup\color{blue}\vec{e_1}\endgroup &= 1/4 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup -1 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\\
+%     \begingroup\color{blue}\vec{e_2}\endgroup &= 1/2 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + 2 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+% \end{align*}
+
+% We can type down:
+
+% \begin{align*}
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup &= \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(1/4 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup -1 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) \begingroup\color{blue}\epsilon^1\endgroup + \begingroup\color{red}\tilde{\epsilon^1}\endgroup\left(1/2 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + 2 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) \begingroup\color{blue}\epsilon^2\endgroup\\
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup &= \left(1/4 \begingroup\color{red}\tilde{\epsilon^1}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) -1 \begingroup\color{red}\tilde{\epsilon^1}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\right)\begingroup\color{blue}\epsilon^1\endgroup + \left(1/2 \begingroup\color{red}\tilde{\epsilon^1}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) +2 \begingroup\color{red}\tilde{\epsilon^1}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\right)\begingroup\color{blue}\epsilon^2\endgroup\\
+%     \begingroup\color{red}\tilde{\epsilon^1}\endgroup &= 1/4\begingroup\color{blue}\epsilon^1\endgroup + 1/2\begingroup\color{blue}\epsilon^2\endgroup \\\\
+%     \begingroup\color{red}\tilde{\epsilon^2}\endgroup &= \begingroup\color{red}\tilde{\epsilon^2}\endgroup\left(1/4 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup -1 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) \begingroup\color{blue}\epsilon^1\endgroup + \begingroup\color{red}\tilde{\epsilon^2}\endgroup\left(1/2 \begingroup\color{red}\tilde{\vec{e_1}}\endgroup + 2 \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) \begingroup\color{blue}\epsilon^2\endgroup\\
+%     \begingroup\color{red}\tilde{\epsilon^2}\endgroup &= \left(1/4 \begingroup\color{red}\tilde{\epsilon^2}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) -1 \begingroup\color{red}\tilde{\epsilon^2}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\right)\begingroup\color{blue}\epsilon^1\endgroup + \left(1/2 \begingroup\color{red}\tilde{\epsilon^2}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) +2 \begingroup\color{red}\tilde{\epsilon^2}\endgroup \left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\right)\begingroup\color{blue}\epsilon^2\endgroup\\
+%     \begingroup\color{red}\tilde{\epsilon^2}\endgroup &= -1\begingroup\color{blue}\epsilon^1\endgroup + 2\begingroup\color{blue}\epsilon^2\endgroup
+% \end{align*}
+
+% If you notice, this is quite familiar to the backward transformation, that means that to go from the old dual basis to the new dual basis, we use the $B$ matrix.
+% This is also valid for every dimension, we'll leave this proof out, but this is the result, showing both the already seen vector basis transformation, and this new dual covector basis one:
+
+% \begin{center}
+% \begin{minipage}[t]{0.48\linewidth}
+% \centering
+% \begin{subequations}
+% \begin{empheq}[box=\widefbox]{align}
+%     \begingroup\color{red}\tilde{\vec{e_j}}\endgroup = \sum_{j=1}^{n} F_{ij} \begingroup\color{blue}\vec{e_i}\endgroup \\
+%     \begingroup\color{blue}\vec{e_j}\endgroup = \sum_{j=1}^{n} B_{ij} \begingroup\color{red}\tilde{\vec{e_i}}\endgroup
+% \end{empheq}
+% \end{subequations}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.48\linewidth}
+% \centering
+% \begin{subequations}
+% \begin{empheq}[box=\widefbox]{align}
+%     \begingroup\color{red}\tilde{\epsilon^i}\endgroup = \sum_{j=1}^{n} B_{ij} \begingroup\color{blue}\epsilon^j\endgroup \\
+%     \begingroup\color{blue}\epsilon^i\endgroup = \sum_{j=1}^{n} F_{ij} \begingroup\color{red}\tilde{\epsilon^j}\endgroup
+% \end{empheq}
+% \end{subequations}
+% \end{minipage}
+% \end{center}
+
+% That's why we write covector indeces on top, because the transorm like vector components, opposite to the basis vectors (i.e. contra-variantly)\\
+
+% With this now, we can also show how covector components transform:
+
+% \begin{subequations}
+% \begin{empheq}[box=\widefbox]{align}
+%     \begingroup\color{magenta}\tilde{\alpha_j}\endgroup = \sum_{i=1}^{n} F_{ij} \begingroup\color{cyan}\alpha_i\endgroup \\
+%     \begingroup\color{cyan}\alpha_j\endgroup = \sum_{i=1}^{n} B_{ij} \begingroup\color{magenta}\tilde{\alpha_j}\endgroup
+% \end{empheq}
+% \end{subequations}
+
+% Covector components transform in the same way vector basis do.
+
+% To summarize all the transformation rules so far:
+
+% \[
+% \begin{array}{cc}
+% \fbox{$\displaystyle
+% \begin{aligned}
+% \begingroup\color{red}\tilde{\vec e}_j\endgroup &= \sum_{i=1}^n F_{ij}\,\begingroup\color{blue}\vec e_i\endgroup \\
+% \begingroup\color{blue}\vec e_j\endgroup &= \sum_{i=1}^n B_{ij}\,\begingroup\color{red}\tilde{\vec e}_i\endgroup
+% \end{aligned}
+% $}
+% &
+% \fbox{$\displaystyle
+% \begin{aligned}
+% \begingroup\color{red}\tilde{\epsilon}^{\,i}\endgroup &= \sum_{j=1}^n B_{ij}\,\begingroup\color{blue}\epsilon^{j}\endgroup \\
+% \begingroup\color{blue}\epsilon^{i}\endgroup &= \sum_{j=1}^n F_{ij}\,\begingroup\color{red}\tilde{\epsilon}^{\,j}\endgroup
+% \end{aligned}
+% $}
+% \\[1.5em]
+% \fbox{$\displaystyle
+% \begin{aligned}
+% \begingroup\color{magenta}\tilde{v}^{\,i}\endgroup &= \sum_{j=1}^n B_{ij}\,\begingroup\color{cyan}v^{j}\endgroup \\
+% \begingroup\color{cyan}v^{i}\endgroup &= \sum_{j=1}^n F_{ij}\,\begingroup\color{magenta}\tilde{v}^{\,j}\endgroup
+% \end{aligned}
+% $}
+% &
+% \fbox{$\displaystyle
+% \begin{aligned}
+% \begingroup\color{magenta}\tilde{\alpha}_j\endgroup &= \sum_{i=1}^n F_{ij}\,\begingroup\color{cyan}\alpha_i\endgroup \\
+% \begingroup\color{cyan}\alpha_j\endgroup &= \sum_{i=1}^n B_{ij}\,\begingroup\color{magenta}\tilde{\alpha}_i\endgroup
+% \end{aligned}
+% $}
+% \end{array}
+% \]
+
+% \begin{itemize}
+%     \item Vector components are contravariant (high index), transform opposite to the basis vector transformation
+%     \item Covector components are covariant (low index), transform like the basis vector transform
+%     \item  Dual vector basis are contravariant (high index), transform opposite to the basis vector transformation
+% \end{itemize}
+
+% \subsection*{Exercises}
+
+% \begin{exercise}
+% Consider a covector $\alpha$ with components $[\alpha_1, \alpha_2] = [3, -1]$ in the standard basis $\{\vec{e_1}, \vec{e_2}\}$.
+% \begin{enumerate}
+%     \item Evaluate $\alpha(\vec{v})$ where $\vec{v}$ has components $v^1 = 2, v^2 = 4$
+%     \item If we scale $\alpha$ by a factor of 2, what happens to the output $\alpha(\vec{v})$?
+%     \item If instead we scale $\vec{v}$ by a factor of 2, what happens to the output?
+%     \item Verify that $\alpha(2\vec{u} + 3\vec{w}) = 2\alpha(\vec{u}) + 3\alpha(\vec{w})$ (linearity)
+% \end{enumerate}
+% \end{exercise}
+
+% \begin{exercise}
+% Understanding the dual basis:
+% \begin{enumerate}
+%     \item Given basis vectors $\vec{e_1} = \begin{bmatrix}1\\0\end{bmatrix}$ and $\vec{e_2} = \begin{bmatrix}0\\1\end{bmatrix}$, verify that $\epsilon^1(\vec{e_1}) = 1$ and $\epsilon^1(\vec{e_2}) = 0$
+%     \item For a covector $\alpha = 2\epsilon^1 + 5\epsilon^2$, compute $\alpha(\vec{e_1})$ and $\alpha(\vec{e_2})$
+%     \item A vector $\vec{v} = 3\vec{e_1} + 4\vec{e_2}$. Compute $\epsilon^1(\vec{v})$ and $\epsilon^2(\vec{v})$
+%     \item What is the relationship between $\epsilon^i(\vec{v})$ and the vector components $v^i$?
+% \end{enumerate}
+% \end{exercise}
+
+% \begin{exercise}
+% Covector transformations:
+% Using the same transformation from the vectors section with matrices:
+% \[
+% F = \begin{bmatrix} 2 & -1/2 \\ 1 & 1/4 \end{bmatrix}, \quad
+% B = \begin{bmatrix} 1/4 & 1/2 \\ -1 & 2 \end{bmatrix}
+% \]
+% \begin{enumerate}
+%     \item A covector has components $[\alpha_1, \alpha_2] = [4, 2]$ in the old basis. Find its components in the new basis
+%     \item Compare this result with how vector components transform. Which matrix (F or B) is used?
+%     \item Verify that $\alpha(\vec{v})$ gives the same scalar value in both coordinate systems
+%     \item Explain in words why covector components are covariant (transform like basis vectors)
+% \end{enumerate}
+% \end{exercise}
+
+% \begin{exercise}
+% Visualizing covectors:
+% \begin{enumerate}
+%     \item Draw the level sets (lines where the function equals a constant) for the covector $\alpha = [1, 1]$
+%     \item A vector $\vec{v} = \begin{bmatrix}3\\2\end{bmatrix}$ pierces these level sets. How many lines does it cross?
+%     \item Verify this by computing $\alpha(\vec{v})$
+%     \item If we double the covector to $2\alpha = [2, 2]$, how does the spacing of level sets change?
+%     \item How does the answer to part (c) change when using $2\alpha$ instead of $\alpha$?
+% \end{enumerate}
+% \end{exercise}
+
+% \begin{exercise}
+% Contravariant vs. Covariant:
+% \begin{enumerate}
+%     \item Complete this table for the transformation rules:
+%     \begin{center}
+%     \begin{tabular}{|l|c|c|}
+%     \hline
+%     Quantity & Index Position & Transforms with \\
+%     \hline
+%     Basis vectors $\vec{e_i}$ & subscript & ? \\
+%     Vector components $v^i$ & superscript & ? \\
+%     Dual basis $\epsilon^i$ & superscript & ? \\
+%     Covector components $\alpha_i$ & subscript & ? \\
+%     \hline
+%     \end{tabular}
+%     \end{center}
+%     \item Why do we write vector components with upper indices and covector components with lower indices?
+%     \item Give an intuitive explanation for why vector components transform opposite to basis vectors
+% \end{enumerate}
+% \end{exercise}
