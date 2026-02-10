@@ -146,7 +146,7 @@ For any number of dimensions, we can write:
 
 And the linear maps coefficients:
 
-\begin{equation}
+\begin{equation} \label{eq:linear-map-transform}
     \textit{L}\left(\begingroup\color{blue}\vec{e_i}\endgroup\right) = \sum_{j=1}^{n}\textit{L}^j_i\begingroup\color{blue}\vec{e_j}\endgroup
 \end{equation}
 
@@ -157,3 +157,176 @@ And we can transform finally, the $v$ components into $w$ components:
 \end{equation}
 
 which is indeed the matrix multiplication formula applied to n-dimension space.
+
+We can now proceed checking how linear maps transform when moving from one basis to another.
+
+\begin{center}
+\input{figures/05-linear-map-transform}
+\end{center}
+
+Consider the diagram above and the linear map expressed by the matrix in the $\color{blue}\vec{e_i}$ basis:
+
+\begin{equation}
+    \begin{bmatrix}
+        1/2 & 0\\
+        0 & 2
+    \end{bmatrix}_{\color{blue}\vec{e_i}}
+\end{equation}
+
+As reminder, this means that:
+
+\begin{align*}
+    \textit{L}\left(\begingroup\color{blue}\vec{e_1}\endgroup\right) &= 1/2\begingroup\color{blue}\vec{e_1}\endgroup \\
+    \textit{L}\left(\begingroup\color{blue}\vec{e_2}\endgroup\right) &= 2\begingroup\color{blue}\vec{e_2}\endgroup
+\end{align*}
+
+Vector $\color{orange}\vec{v}$ has components $1, 1$ in the basis $\color{blue}\vec{e_i}$.
+So what would be the components of the vector $\textit{L}\left(\begingroup\color{orange}\vec{v}\endgroup\right)$ ?
+
+\begin{equation}
+    \textit{L}\left(
+        \begin{bmatrix}
+            1\\
+            1
+        \end{bmatrix}_{\color{blue}\vec{e_i}}
+    \right) = 
+    \begin{bmatrix}
+        \begingroup\color{brown}1/2\endgroup\\
+        \begingroup\color{brown}2\endgroup
+    \end{bmatrix}_{\color{blue}\vec{e_i}}
+\end{equation}
+
+Remember that, if we apply the backward transformation to these vector components, we 
+obtain the vector components in the new basis $\color{red}\tilde{\vec{e_i}}$:
+
+\begin{equation}
+    \begin{bmatrix}
+        1/4 & 1/2\\
+        -1 & 2
+    \end{bmatrix}\begin{bmatrix}
+        \begingroup\color{orange}1\endgroup\\
+        \begingroup\color{orange}1\endgroup
+    \end{bmatrix}_{\color{blue}\vec{e_i}} = 
+    \begin{bmatrix}
+        \begingroup\color{orange}3/4\endgroup\\
+        \begingroup\color{orange}1\endgroup\\
+    \end{bmatrix}_{\color{red}\tilde{\vec{e_i}}}
+\end{equation}
+
+So, the next question might be, what are the components of the linear map output vector
+in the new basis?
+
+\begin{equation}
+    \textit{L}\left(
+        \begin{bmatrix}
+            \begingroup\color{orange}3/4\endgroup\\
+            \begingroup\color{orange}1\endgroup\\
+        \end{bmatrix}_{\color{red}\tilde{\vec{e_i}}}
+    \right) = 
+    \begin{bmatrix}
+        \begingroup\color{brown}?\endgroup\\
+        \begingroup\color{brown}?\endgroup
+    \end{bmatrix}_{\color{red}\tilde{\vec{e_i}}}
+\end{equation}
+
+We cannot use the matrix representation we used before, because that's tied to the 
+old basis vectors, so what we need to do is finding a new matrix that represents
+the linear map in the new basis, which means we need to find these coefficients:
+
+\begin{align*}
+    \textit{L}\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right) &= \tilde{L}^1_1\begingroup\color{red}\tilde{\vec{e_1}}\endgroup + \tilde{L}^2_1\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\\
+    \textit{L}\left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right) &= \tilde{L}^1_2\begingroup\color{red}\tilde{\vec{e_1}}\endgroup + \tilde{L}^2_2\begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{align*}
+
+\begin{equation}
+    \sum_{q=1}^{n}\tilde{L}^q_i\begingroup\color{red}\tilde{\vec{e_q}}\endgroup = L\left(\begingroup\color{red}\tilde{\vec{e_i}}\endgroup\right)
+\end{equation}
+
+We can use the forward transform to re-write the new basis vectors in terms of the old ones:
+
+\begin{align*}
+    \sum_{q=1}^{n}\tilde{L}^q_i\begingroup\color{red}\tilde{\vec{e_q}}\endgroup &= L\left(\sum_{j=1}^{n} F^j_i \begingroup\color{blue}\vec{e_j}\endgroup\right)\\
+    &= \sum_{j=1}^{n} F^j_i L\left(\begingroup\color{blue}\vec{e_j}\endgroup\right)
+\end{align*}
+
+Now we can use the formula that expresses the linear map output as linear combinaton of the old basis vectors (\ref{eq:linear-map-transform}) and re-arranging:
+
+\begin{align*}
+    \sum_{q=1}^{n}\tilde{L}^q_i\begingroup\color{red}\tilde{\vec{e_q}}\endgroup &= \sum_{j=1}^{n} F^j_i \sum_{k=1}^{n}\textit{L}^k_j\begingroup\color{blue}\vec{e_k}\endgroup\\
+    &= \sum_{j=1}^{n}\sum_{k=1}^{n} F^j_i \textit{L}^k_j\begingroup\color{blue}\vec{e_k}\endgroup
+\end{align*}
+
+We can proceed re-writing the old basis vector in terms of the new one, using the backward transformation \ref{eq:backward}:
+
+\begin{align*}
+    \sum_{q=1}^{n}\tilde{L}^q_i\begingroup\color{red}\tilde{\vec{e_q}}\endgroup 
+    &= \sum_{j=1}^{n}\sum_{k=1}^{n} F^j_i \textit{L}^k_j \sum_{l=1}^{n} B^l_k\begingroup\color{red}\tilde{\vec{e_l}}\endgroup\\
+    &= \sum_{l=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n} B^l_k \textit{L}^k_j F^j_i \begingroup\color{red}\tilde{\vec{e_l}}\endgroup
+\end{align*}
+
+Since the letter we use for the summation does not really matter, we can just rename all the q to l and we get:
+
+\begin{align*}
+    \sum_{l=1}^{n}\tilde{L}^l_i\begingroup\color{red}\tilde{\vec{e_l}}\endgroup 
+    &= \sum_{l=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n} B^l_k \textit{L}^k_j F^j_i \begingroup\color{red}\tilde{\vec{e_l}}\endgroup
+\end{align*}
+
+Finally, we see that the $\tilde{L}$ coefficients are obtained by multiplying the backward transform on the left, and forward transform on the right, of the old coefficients:
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \tilde{L}^l_i = \sum_{j=1}^{n}\sum_{k=1}^{n}B^l_k L^k_j F^j_i
+\end{empheq}
+\end{subequations}
+
+You can think about this, the $\widetilde{L}$ transformation takes us from the input vector components to the output vector components in the new basis.
+Instead of "travelling" along this "arrow" (bottom of diagram below), we move from the new vector componens to the new vector components using the forward transformation.
+Then, to transform the components of the input vector to the components of the output vector, we apply the $\textit{L}$ transformation.
+And finally, to get from the old vector components to the new ones, we apply the backward transformation $B$
+
+\begin{center}
+\input{figures/05-linear-map-transformation-flow.tex}
+\end{center}
+
+Now you've noticed how heavy the derivation and notation, especially related to the 
+summation involved, was above.
+We will, from now on, adopt the Einstein summation convention, which states that, everytime indeces appear both at the bottom and at the top, a
+summation is implicitly expected.
+
+That means that in our case, of the linear map transformation:
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \tilde{L}^l_i = B^l_k L^k_j F^j_i
+\end{empheq}
+\end{subequations}
+
+Because the repeating indeces, appearing at the top and bottom, are k and j, they're implicitly summed from 1 to n.
+Using this trick now, we can try deriving the backward transformation, from the $\widetilde{L}$ to the direct linear map $\textit{L}$.
+
+Let's take this equation, and what we want, is isolating the $L^k_j$ on the right side.
+To do that, we need to take out those $B$ and $F$ maps on the right side.
+How do we do this? We can consider that multiplying $F$ and $B$ together gives the identity matrix, so we can 
+multiply by $F$ and $B$ on both sides of the equation:
+
+\begin{align*}
+    \tilde{L}^l_i &= B^l_k L^k_j F^j_i\\
+    \begingroup\color{red}F^s_l\endgroup \tilde{L}^l_i \begingroup\color{blue}B^i_t\endgroup &=
+    \begingroup\color{red}F^s_l\endgroup B^l_k L^k_j F^j_i \begingroup\color{blue}B^i_t\endgroup\\
+    \begingroup\color{red}F^s_l\endgroup \tilde{L}^l_i \begingroup\color{blue}B^i_t\endgroup &=
+    \begingroup\color{red}\delta^{s}_k\endgroup L^k_j \begingroup\color{blue}\delta^{j}_t \endgroup\\
+    \begingroup\color{red}F^s_l\endgroup \tilde{L}^l_i \begingroup\color{blue}B^i_t\endgroup &=
+    \begingroup\color{red}\delta^{s}_k\endgroup L^k_t\\
+    \begingroup\color{red}F^s_l\endgroup \tilde{L}^l_i \begingroup\color{blue}B^i_t\endgroup &=
+    L^s_t
+\end{align*}
+
+So we obtain:
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \begingroup\color{red}F^s_l\endgroup \tilde{L}^l_i \begingroup\color{blue}B^i_t\endgroup &=
+    L^s_t
+\end{empheq}
+\end{subequations}
+
