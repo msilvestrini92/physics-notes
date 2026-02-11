@@ -2,8 +2,9 @@
 
 We start this chapter by asking a supposedly simple question, how do you get the length of a vector?
 So let's bring back our usual diagram with a sample vector living in our 2D space with a couple of basis vectors defined.
-
+\begin{center}
 \input{figures/06-vector-length-example.tex}
+\end{center}
 
 \begin{align*}
     \begingroup\color{orange}\vec{v}\endgroup &= 1\begingroup\color{blue}\vec{e_1}\endgroup + 2\begingroup\color{blue}\vec{e_2}\endgroup\\
@@ -185,7 +186,7 @@ Since we chose such basis vectors, basically $\color{violet}\vec{w}$ is a scaled
 $\color{orange}\vec{v}$ is a scaled $\color{red}\tilde{\vec{e_2}}$ so we can basically write something like:
 
 \begin{align*}
-    \left(\begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{violet}\vec{w}\endgroup\right) &= \left(a \begingroup\color{red}\tilde{\vec{e_1}}\endgroup \right) \cdot \left(a \begingroup\color{red}\tilde{\vec{e_2}}\endgroup \right)\\
+    \left(\begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{violet}\vec{w}\endgroup\right) &= \left(a \begingroup\color{red}\tilde{\vec{e_1}}\endgroup \right) \cdot \left(b \begingroup\color{red}\tilde{\vec{e_2}}\endgroup \right)\\
     &= ab \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\\
     &= ab \cos(\theta)
 \end{align*}
