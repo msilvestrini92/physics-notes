@@ -304,10 +304,60 @@ That means that in our case, of the linear map transformation:
 Because the repeating indeces, appearing at the top and bottom, are k and j, they're implicitly summed from 1 to n.
 Using this trick now, we can try deriving the backward transformation, from the $\widetilde{L}$ to the direct linear map $\textit{L}$.
 
+\subsection*{Understanding Index Position in Einstein Notation}
+
+Something you I was wondering is, when coming from conventional matrix multiplication, 
+you clearly know that order or multiplication matters.
+When we derived the above equation, you notice that at the end of the day, we re-arrange
+coefficients to make it look ordered, but that really does not matter there, as all the components are scalar
+quantities, as such, they obey the standard commutative property.
+
+How to we relate these concepts then? It's all a matter of index position and contraction.\\
+In tensor notation, the position of indices (upper vs. lower) carries crucial information about matrix multiplication:\\
+
+\textbf{Convention for Linear Maps:}
+For a linear map $L^i_j$:
+\begin{itemize}
+    \item \textbf{Lower index} $j$ = column index (input)
+    \item \textbf{Upper index} $i$ = row index (output)
+\end{itemize}
+
+This comes directly from matrix-vector multiplication:
+\begin{equation}
+    w^i = L^i_j v^j
+\end{equation}
+
+The matrix "consumes" the $j$ index (contraction) and "produces" the $i$ index.\\
+How do we read the transformation rule then?\\
+For $\tilde{L}^l_i = B^l_k L^k_j F^j_i$, we trace the index flow:
+\begin{center}
+\begin{tabular}{rcl}
+    $F^j_i$: & input $i$ (lower) & $\to$ output $j$ (upper)\\
+    $L^k_j$: & input $j$ (lower) & $\to$ output $k$ (upper)\\
+    $B^l_k$: & input $k$ (lower) & $\to$ output $l$ (upper)
+\end{tabular}
+\end{center}
+
+The flow is $i \xrightarrow{F} j \xrightarrow{L} k \xrightarrow{B} l$, which tells us the matrix order is $\tilde{L} = B \cdot L \cdot F$.
+
+\textbf{Key Point:} 
+Repeated indices (one upper, one lower) indicate contractions (summations). The order of terms in Einstein
+notation ($B^l_k L^k_j F^j_i$ vs $L^k_j F^j_i B^l_k$) doesn't matter—it's the index connections that determine the matrix
+multiplication order.\\ 
+
 Let's take this equation, and what we want, is isolating the $L^k_j$ on the right side.
 To do that, we need to take out those $B$ and $F$ maps on the right side.
 How do we do this? We can consider that multiplying $F$ and $B$ together gives the identity matrix, so we can 
-multiply by $F$ and $B$ on both sides of the equation:
+multiply by $F$ and $B$ on both sides of the equation.\\
+But how do we choose the indeces? We need to follow a specific logic and rule: to contract with existing index, you need the opposit position (upper$\leftrightarrow$lower)
+\begin{itemize}
+    \item We start with $\tilde{L}^l_i = B^l_k L^k_j F^j_i$;
+    \item We want to obtain $\textit{L}$ with two new indeces, let's say s and t: $\textit{L}^s_t$;
+    \item We want to remove (i.e. contract) $B$ and $F$, which have free indeces l and i;
+    \item Let's start with $B^l_k$, we have l to contract on the upper, so we choose to multiply by $F^s_l$;
+    \item Now for $F^j_i$, we want i to contract on the lower, so we choose to multiply by $B^i_t$;
+    \item At the end, these new coefficients give: $F^j_i B^i_t = \delta^j_t$ which is the identity matrix.
+\end{itemize}
 
 \begin{align*}
     \tilde{L}^l_i &= B^l_k L^k_j F^j_i\\
@@ -330,3 +380,111 @@ So we obtain:
 \end{empheq}
 \end{subequations}
 
+Now, summarizing this, we basically have found that linear maps are (1,1)-tensors, because
+they transform using both forward and backward transformations, so they're both contravariant and covariant once each.
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+    \item \textbf{Basic Matrix Action}
+
+    Given the linear map $L$ with matrix representation in basis $\{\vec{e_1}, \vec{e_2}\}$:
+    \begin{equation*}
+        L = \begin{bmatrix}
+            2 & -1\\
+            3 & 4
+        \end{bmatrix}
+    \end{equation*}
+    \begin{enumerate}
+        \item What is $L(\vec{e_1})$ in terms of $\vec{e_1}$ and $\vec{e_2}$?
+        \item What is $L(\vec{e_2})$ in terms of $\vec{e_1}$ and $\vec{e_2}$?
+        \item Compute $L(\vec{v})$ where $\vec{v} = 3\vec{e_1} - 2\vec{e_2}$.
+    \end{enumerate}
+
+    \item \textbf{Verifying Linearity}
+
+    Which of the following maps are linear? For those that are not, explain why.
+    \begin{enumerate}
+        \item $T(\vec{v}) = 3\vec{v}$
+        \item $T(x, y) = (x + 1, y)$
+        \item $T(x, y) = (x + y, 2y)$
+        \item $T(x, y) = (x^2, y)$
+    \end{enumerate}
+
+    \item \textbf{Constructing the Matrix}
+
+    A linear map $L: \mathbb{R}^2 \to \mathbb{R}^2$ satisfies:
+    \begin{align*}
+        L(\vec{e_1}) &= 2\vec{e_1} + 3\vec{e_2}\\
+        L(\vec{e_2}) &= -\vec{e_1} + 5\vec{e_2}
+    \end{align*}
+    Write down the matrix representation of $L$ and compute $L(4\vec{e_1} + 7\vec{e_2})$.
+
+    \item \textbf{Einstein Notation Practice}
+
+    Write out the following expressions explicitly without Einstein notation (showing all sums):
+    \begin{enumerate}
+        \item $v^i w_i$ (assuming 3 dimensions)
+        \item $A^i_j B^j_k$ (for $2 \times 2$ matrices)
+        \item $\delta^i_j v^j$
+    \end{enumerate}
+
+    \item \textbf{Index Manipulation}
+
+    Starting from $w^i = L^i_j v^j$, multiply both sides by a covector $\alpha_i$ and simplify. What type of mathematical object is the final result?
+
+    \item \textbf{Change of Basis - Forward and Backward}
+
+    Consider two bases in $\mathbb{R}^2$: the standard basis $\{\vec{e_1}, \vec{e_2}\}$ and a new basis $\{\tilde{\vec{e_1}}, \tilde{\vec{e_2}}\}$ where:
+    \begin{align*}
+        \tilde{\vec{e_1}} &= 2\vec{e_1} + \vec{e_2}\\
+        \tilde{\vec{e_2}} &= \vec{e_1} + 3\vec{e_2}
+    \end{align*}
+    \begin{enumerate}
+        \item Write down the forward transformation matrix $F$.
+        \item Compute the backward transformation matrix $B$ by finding $F^{-1}$.
+        \item Verify that $FB = I$.
+    \end{enumerate}
+
+    \item \textbf{Linear Map Transformation}
+
+    Using the bases from Exercise 6, consider a linear map with matrix representation:
+    \begin{equation*}
+        L = \begin{bmatrix}
+            3 & 0\\
+            0 & 1
+        \end{bmatrix}_{\vec{e_i}}
+    \end{equation*}
+    in the original basis. Find the matrix representation $\tilde{L}$ in the new basis using the formula $\tilde{L}^l_i = B^l_k L^k_j F^j_i$.
+
+    \item \textbf{Index Flow Analysis}
+
+    For the expression $T^a_b = C^a_c D^c_d E^d_b$:
+    \begin{enumerate}
+        \item Identify all free indices and all dummy (summed) indices.
+        \item Trace the index flow from input to output.
+        \item Write the equivalent matrix multiplication.
+    \end{enumerate}
+
+    \item \textbf{Inverse Transformation}
+
+    Given $\tilde{L}^l_i = B^l_k L^k_j F^j_i$, derive the expression for $L^k_j$ in terms of $\tilde{L}^l_i$ by:
+    \begin{enumerate}
+        \item Multiplying by appropriate forward/backward transforms
+        \item Using the identity $F^s_l B^l_k = \delta^s_k$ and $B^i_t F^j_i = \delta^j_t$
+        \item Simplifying using the Kronecker delta properties
+    \end{enumerate}
+
+    \item \textbf{Composition of Linear Maps}
+
+    If ${L_1}^i_j$ and ${L_2}^j_k$ are two linear maps, their composition is $(L_1 \circ L_2)^i_k = {L_1}^i_j {L_2}^j_k$.
+    \begin{enumerate}
+        \item Explain why the index structure makes sense for composition.
+        \item Show that if both $L_1$ and $L_2$ transform according to $\tilde{L} = BLF$, then their composition transforms correctly as well.
+        \item Is the order of composition important? Verify by computing ${L_1}^i_j {L_2}^j_k$ vs ${L_2}^i_j {L_1}^j_k$ for:
+        \begin{equation*}
+            L_1 = \begin{bmatrix} 1 & 2\\ 0 & 1 \end{bmatrix}, \quad
+            L_2 = \begin{bmatrix} 2 & 0\\ 1 & 3 \end{bmatrix}
+        \end{equation*}
+    \end{enumerate}
+\end{enumerate}
