@@ -1,0 +1,30 @@
+
+\begin{tikzpicture}[scale=1.5]
+
+  % Vector w
+  \coordinate (W) at (1,1.73);
+
+  % Vector v
+  \coordinate (V) at (2,0);
+
+  % New basis (red)
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (0.7,0);
+  \coordinate (B) at (0.33,0.57);
+
+
+  \draw[->,very thick,violet] (O) -- (W) node[above right] {$\vec{w}$};
+  \draw[->,very thick,red] (O) -- (A) node[above right] {$\tilde{\vec{e}}_1$};
+  \draw[->,very thick,red] (O) -- (B) node[left] {$\tilde{\vec{e}}_2$};
+  \draw[->,very thick,orange] (O) -- (V) node[above right] {$\vec{v}$};
+
+  % Angle theta
+  \draw[red] (A) pic[
+      draw=red,
+      ->,
+      "$\theta$",
+      angle radius=0.6cm,
+      angle eccentricity=1.3
+  ] {angle = A--O--B};
+
+\end{tikzpicture}

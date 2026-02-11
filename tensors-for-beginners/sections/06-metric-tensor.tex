@@ -1,1 +1,199 @@
 \section{Metric Tensor}
+
+We start this chapter by asking a supposedly simple question, how do you get the length of a vector?
+So let's bring back our usual diagram with a sample vector living in our 2D space with a couple of basis vectors defined.
+
+\input{figures/06-vector-length-example.tex}
+
+\begin{align*}
+    \begingroup\color{orange}\vec{v}\endgroup &= 1\begingroup\color{blue}\vec{e_1}\endgroup + 2\begingroup\color{blue}\vec{e_2}\endgroup\\
+    &= 5/4\begingroup\color{red}\tilde{\vec{e_1}}\endgroup + 3\begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+\end{align*}
+
+Obviously, we can use Pythagora's theorem in the $\color{blue}\vec{e_i}$ basis, and compute 
+the length of the vector as:
+
+\begin{align*}
+    \|\begingroup\color{orange}{\vec{v}}\endgroup\|^2 &= (1)^2 + (2)^2 = 5\\
+    \|\begingroup\color{orange}{\vec{v}}\endgroup\| &= \sqrt{5} \approx 2.236
+\end{align*}
+
+Well let's try doing the same in the new basis $\color{red}\tilde{\vec{e_i}}$, why not?
+
+\begin{align*}
+    \|\begingroup\color{orange}{\vec{v}}\endgroup\|^2 &= (5/4)^2 + (3)^2 = 169/16\\
+    \|\begingroup\color{orange}{\vec{v}}\endgroup\| &= \sqrt{169/16} \approx 3.24
+\end{align*}
+
+Mmm, well that does not seems right, doesn't it?
+\textbf{Reason is that Pythagora's theorem only works in orthonormal basis like $\color{blue}\vec{e_i}$, and it does
+not yield the correct result when used in a non-orthonormal one like $\color{red}\tilde{\vec{e_i}}$}
+
+
+So what's the correct formula to use to get the length of a vector, independently of the basis used?
+This is the \textbf{dot product formula}, which in the two different coordinate systems (i.e. basis vectors):
+
+\begin{align*}
+    \|\begingroup\color{orange}\vec{v}\endgroup\|^2 &= \begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{orange}\vec{v}\endgroup\\
+    &= \left(\begingroup\color{cyan}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)
+    \cdot \left(\begingroup\color{cyan}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \bigl(\begingroup\color{cyan}v^1\endgroup\bigr)^2\left(\begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_1}\endgroup\right)
+    + 2 \begingroup\color{cyan}v^1v^2\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup\right)
+    + \bigl(\begingroup\color{cyan}v^2\endgroup\bigr)^2\left(\begingroup\color{blue}\vec{e_2}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup\right) \\ \\
+    &= \bigl(\begingroup\color{magenta}\tilde{v^1}\endgroup\bigr)^2\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right)
+    + 2 \begingroup\color{magenta}\tilde{v^1v^2}\endgroup\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)
+    + \bigl(\begingroup\color{magenta}\tilde{v^2}\endgroup\bigr)^2\left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)
+\end{align*}
+
+If we try applying this, in the orthonormal basis $\color{blue}\vec{e_i}$, it will simplify to the Pythagora's Theorem, whereas applying this
+to the new basis $\color{red}\tilde{\vec{e_i}}$, you will see that, the coefficients obtained are not simply 1s and 0s, but are 
+different numbers, that eventually allow the result to be consistent, and the length to be exactly the same computed in the old basis.\\
+
+If you try it yourself, using the forward transform and getting the new basis in terms of the old, and computing the dot products, you will find that:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_1}}\endgroup &= 5\\
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup &= -3/4\\
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup &= 5/16
+\end{align*}
+
+Now, the formula for the length using the dot product above, can be rewritten in matrix terms as:
+
+\begin{align*}
+    \|\begingroup\color{orange}\vec{v}\endgroup\|^2 &= \begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{orange}\vec{v}\endgroup\\
+    &= \bigl(\begingroup\color{cyan}v^1\endgroup\bigr)^2
+    + \bigl(\begingroup\color{cyan}v^2\endgroup\bigr)^2\\ 
+    &= 5 \bigl(\begingroup\color{magenta}\tilde{v^1}\endgroup\bigr)^2
+    + 2(-3/4) \begingroup\color{magenta}\tilde{v^1}\endgroup\begingroup\color{magenta}\tilde{v^2}\endgroup
+    + (5/16) \bigl(\begingroup\color{magenta}\tilde{v^2}\endgroup\bigr)^2\\ \\
+    &= \begin{bmatrix}
+        \begingroup\color{cyan}v^1\endgroup & \begingroup\color{cyan}v^2\endgroup
+    \end{bmatrix} 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix} 
+    \begin{bmatrix}
+        \begingroup\color{cyan}v^1\endgroup\\
+        \begingroup\color{cyan}v^2\endgroup 
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        \begingroup\color{magenta}\tilde{v^1}\endgroup & \begingroup\color{magenta}\tilde{v^2}\endgroup
+    \end{bmatrix} 
+    \begin{bmatrix}
+        5 & -3/4\\
+        -3/4 & 5/16
+    \end{bmatrix} 
+    \begin{bmatrix}
+        \begingroup\color{magenta}\tilde{v^1}\endgroup\\
+        \begingroup\color{magenta}\tilde{v^2}\endgroup 
+    \end{bmatrix}
+\end{align*}
+
+So as you see, the key to getting the correct length, in any coordinate system, is that matrix in between you see there.
+\textbf{And that is what we call the metric tensor}
+
+\begin{align*}
+    g_{\color{blue}\vec{e_i}} = \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix} &&
+    g_{\color{red}\tilde{\vec{e_i}}} = \begin{bmatrix}
+        5 & -3/4\\
+        -3/4 & 5/16
+    \end{bmatrix}
+\end{align*}
+
+This is a tensor, as it's invariant, but its components are different in different coordinate systems.
+And if you notice, at the end of the day, the components of the metric tensor in a specific basis, are the dot products between the basis vectors.
+
+\begin{align*}
+    g_{\color{blue}\vec{e_i}} = \begin{bmatrix}
+        \begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_1}\endgroup & \begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup\\
+        \begingroup\color{blue}\vec{e_2}\endgroup\cdot\begingroup\color{blue}\vec{e_1}\endgroup & \begingroup\color{blue}\vec{e_2}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup
+    \end{bmatrix} &&
+    g_{\color{red}\tilde{\vec{e_i}}} = \begin{bmatrix}
+        \begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_1}}\endgroup & \begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\\
+        \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_1}}\endgroup & \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup
+    \end{bmatrix}
+\end{align*}
+
+So to sum up, and using the Einstein summation convention:
+
+\begin{align*}
+    \|\begingroup\color{orange}\vec{v}\endgroup\|^2 &= \begingroup\color{cyan}v^i v^j \endgroup \left(\begingroup\color{blue}\vec{e_i}\cdot\vec{e_j}\endgroup\right) = \begingroup\color{cyan}v^i v^j \endgroup \begingroup\color{blue}g_{ij}\endgroup\\
+    &= \begingroup\color{magenta}\tilde{v^i}\tilde{v^j} \endgroup \left(\begingroup\color{red}\tilde{\vec{e_i}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_j}}\endgroup\right) = \begingroup\color{magenta}\tilde{v^i} \tilde{v^j} \endgroup \begingroup\color{red}\tilde{g_{ij}}\endgroup
+\end{align*}
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \begingroup\color{blue}g_{ij}\endgroup &= \left(\begingroup\color{blue}\vec{e_i}\endgroup\cdot\begingroup\color{blue}\vec{e_j}\endgroup\right)\\
+    \begingroup\color{red}\tilde{g_{ij}}\endgroup &= \left(\begingroup\color{red}\tilde{\vec{e_i}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_j}}\endgroup\right)
+\end{empheq}
+\end{subequations}
+
+The metric tensor is actually able to not only get us the length of vectors, but also measure angles.
+Let's see how that works, imagine a new basis wrt to an old one, with just one basis vector rotated by an angle $\theta$:
+
+\begin{center}
+\input{figures/06-basic-rotation.tex}
+\end{center}
+
+Here, the forward transformation from old to new can be easily found:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup &= \begingroup\color{blue}\vec{e_1}\endgroup\\
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup &= \cos(\theta)\begingroup\color{blue}\vec{e_1}\endgroup + \sin(\theta)\begingroup\color{blue}\vec{e_2}\endgroup
+\end{align*}
+
+Let's compute the basis dot products in the new basis then:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_1}}\endgroup &= \begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_1}\endgroup = 1\\
+    \begingroup\color{red}\tilde{\vec{e_1}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_2}}\endgroup &= \begingroup\color{blue}\vec{e_1}\endgroup \cdot \left(\cos(\theta)\begingroup\color{blue}\vec{e_1}\endgroup + \sin(\theta)\begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \cos(\theta)\left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_1}\endgroup\right) + \sin(\theta) \left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_2}\endgroup\right)
+    = \cos(\theta)\\
+    \begingroup\color{red}\tilde{\vec{e_2}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_2}}\endgroup 
+    &= \left(\cos(\theta)\begingroup\color{blue}\vec{e_1}\endgroup + \sin(\theta)\begingroup\color{blue}\vec{e_2}\endgroup\right) \cdot \left(\cos(\theta)\begingroup\color{blue}\vec{e_1}\endgroup + \sin(\theta)\begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \cos(\theta)^2 \left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_1}\endgroup\right) + \sin(\theta)^2 \left(\begingroup\color{blue}\vec{e_2}\endgroup \cdot \begingroup\color{blue}\vec{e_2}\endgroup\right) + \left(2\cos(\theta)\sin(\theta)\right)
+    \left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \cos(\theta)^2 + \sin(\theta)^2 = 1
+\end{align*}
+
+So the metric tensors in both basis are:
+
+\begin{align*}
+    g_{\color{blue}\vec{e_i}} = \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix} &&
+    g_{\color{red}\tilde{\vec{e_i}}} = \begin{bmatrix}
+        1 & \cos(\theta)\\
+        \cos(\theta) & 1
+    \end{bmatrix}
+\end{align*}
+
+Allright, now we can imagine having two vectors $\color{violet}\vec{w}$ and $\color{orange}\vec{v}$, for which 
+we want to find the angle $\theta$ in between. We can define a new basis vector couple, where the basis vectors are pointing in the same direction as the two
+vectors, except for their length be unitary and then we can compute the dot product between two two vectors:
+
+\begin{center}
+\input{figures/06-dot-product-theta.tex}
+\end{center}
+
+Since we chose such basis vectors, basically $\color{violet}\vec{w}$ is a scaled $\color{red}\tilde{\vec{e_1}}$ and 
+$\color{orange}\vec{v}$ is a scaled $\color{red}\tilde{\vec{e_2}}$ so we can basically write something like:
+
+\begin{align*}
+    \left(\begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{violet}\vec{w}\endgroup\right) &= \left(a \begingroup\color{red}\tilde{\vec{e_1}}\endgroup \right) \cdot \left(a \begingroup\color{red}\tilde{\vec{e_2}}\endgroup \right)\\
+    &= ab \left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)\\
+    &= ab \cos(\theta)
+\end{align*}
+
+Now, since $a$ is just the length of $\color{orange}\vec{v}$ and $b$ the length of $\color{violet}\vec{w}$:
+
+\begin{equation}
+   \frac{\left(\begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{violet}\vec{w}\endgroup\right)}
+   {\|\begingroup\color{orange}\vec{v}\endgroup\| \|\begingroup\color{violet}\vec{w}\endgroup\|}= \cos(\theta)
+\end{equation}
+
