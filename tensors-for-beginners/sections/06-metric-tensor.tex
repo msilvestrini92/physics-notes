@@ -198,3 +198,146 @@ Now, since $a$ is just the length of $\color{orange}\vec{v}$ and $b$ the length 
    {\|\begingroup\color{orange}\vec{v}\endgroup\| \|\begingroup\color{violet}\vec{w}\endgroup\|}= \cos(\theta)
 \end{equation}
 
+Further, we can also show that any dot product between two vectors can be computed with the help of the 
+metric tensor:
+
+\begin{align*}
+    \left(\begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{violet}\vec{w}\endgroup\right) &= 
+    \left(\begingroup\color{orange}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{orange}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)
+    \cdot \left(\begingroup\color{violet}w^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{violet}w^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \begingroup\color{orange}v^1\endgroup \begingroup\color{violet}w^1\endgroup \left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_1}\endgroup\right) +
+    \begingroup\color{orange}v^2\endgroup \begingroup\color{violet}w^2\endgroup \left(\begingroup\color{blue}\vec{e_2}\endgroup \cdot \begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &+ \begingroup\color{orange}v^1\endgroup \begingroup\color{violet}w^2\endgroup \left(\begingroup\color{blue}\vec{e_1}\endgroup \cdot \begingroup\color{blue}\vec{e_2}\endgroup\right) +
+    \begingroup\color{orange}v^2\endgroup \begingroup\color{violet}w^1\endgroup \left(\begingroup\color{blue}\vec{e_2}\endgroup \cdot \begingroup\color{blue}\vec{e_1}\endgroup\right)\\
+    &= \begingroup\color{orange}v^1\endgroup \begingroup\color{violet}w^1\endgroup \begingroup\color{blue}g_{11}\endgroup +
+    \begingroup\color{orange}v^2\endgroup \begingroup\color{violet}w^2\endgroup \begingroup\color{blue}g_{22}\endgroup\\
+    &+ \begingroup\color{orange}v^1\endgroup \begingroup\color{violet}w^2\endgroup \begingroup\color{blue}g_{12}\endgroup +
+    \begingroup\color{orange}v^2\endgroup \begingroup\color{violet}w^1\endgroup \begingroup\color{blue}g_{21}\endgroup\\
+    &= \begingroup\color{orange}v^i\endgroup \begingroup\color{violet}w^j\endgroup \begingroup\color{blue}g_{ij}\endgroup
+\end{align*}
+
+And now we can ask ourselves, how do the components of the metric tensor transform when we change coordinate system?
+This is quite straight forward to achieve, once we know the forward and backward transformation of coordinates.
+
+\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+    \begingroup\color{red}\tilde{\vec{e_j}}\endgroup =  F^i_j \begingroup\color{blue}\vec{e_i}\endgroup \\
+    \begingroup\color{blue}\vec{e_j}\endgroup =  B^i_j \begingroup\color{red}\tilde{\vec{e_i}}\endgroup
+\end{empheq}
+\end{subequations}
+
+Writing down the metric tensor components in the new basis, we can substitute the basis vectors using the forward transformatiion, 
+and obtain:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{g_{ij}}\endgroup &= \begingroup\color{red}\tilde{\vec{e_i}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_j}}\endgroup \\
+    &= \left(F^k_i \begingroup\color{blue}\vec{e_k}\endgroup\right) \cdot \left(F^l_j \begingroup\color{blue}\vec{e_l}\endgroup\right)\\
+    &= F^k_i F^l_j \left(\begingroup\color{blue}\vec{e_k}\endgroup \cdot \begingroup\color{blue}\vec{e_l}\endgroup\right)\\
+    &= F^k_i F^l_j \begingroup\color{blue}g_{kl}\endgroup
+\end{align*}
+
+Likewise, for the inverse process, you will find:
+
+\begin{equation}
+    \begingroup\color{blue}g_{kl}\endgroup = B^i_k B^j_l \begingroup\color{red}\tilde{g_{ij}}\endgroup
+\end{equation}
+
+This shows that the metric tensor is actually a (0,2)-tensor, which means it transforms using two covariant rules.
+
+Just to put things in perspective now, we touched briefly at the beginning of these notes, that a tensor is an object
+that is invariant under a change of coordinates, and has components that change in a special, prefictable way under
+a change of coordinate.
+Now we can make a bit of sense of this finally, because this special, predictable way of transformation of tensors' components, 
+is just applying a series of forward and backward transforms:
+
+\begin{equation}
+    \begingroup\color{red}\tilde{T^{abc}_{xyz}}\endgroup = \left(B^a_i B^b_j B^c_k \cdots\right)\begingroup\color{blue} T^{ijk}_{rst}\endgroup \left(F^r_x F^s_y F^t_z \cdots\right)
+\end{equation}
+
+\begin{equation}
+    \begingroup\color{blue} T^{ijk}_{rst}\endgroup = \left(F^i_a F^j_b F^k_c \cdots\right)\begingroup\color{red}\tilde{T^{abc}_{xyz}}\endgroup \left(B^x_r B^y_s B^z_t \cdots\right)
+\end{equation}
+
+So anything that follows these rules, is a tensor.
+Depending on the number of indeces upstairs (m) - contravariant - and downstris (n) - covariant - we define a tensor in terms of its type, 
+being it a (m,n)-tensor.
+
+\subsection{Bilinear Forms}
+
+We're going forward with this sections of bilinear forms here, because it applies perfectly after having talked about the metric tensor, 
+just because the metric tensor is actually a bilinear form.
+Remember that the metric tensor is a function that takes two vectors as input and outputs a scalar:
+
+\begin{align*}
+    g: V \times V \to \mathbb{R}\\
+    g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right) \mapsto  \begingroup\color{orange}v^i\endgroup \begingroup\color{violet}w^j\endgroup \begingroup\color{blue}g_{ij}\endgroup
+\end{align*}
+
+Let's start by trying to see which rules does the metric tensor formula follows in terms of scaling for example.
+You can easily see that, scaling inputs can be done in either of the two vectors given as input to the metric tensor:
+
+\begin{align*}
+    \begingroup\color{red}a \endgroup g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = g \left(\begingroup\color{red}a \endgroup\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{red}a \endgroup\begingroup\color{violet}\vec{w}\endgroup\right)
+\end{align*}
+
+This is way different than applying the scaling input to both, it's either one of the other, so:
+
+\begin{equation}
+    \begingroup\color{red}a \endgroup g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    \neq g  \left(\begingroup\color{red}a \endgroup\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{red}a \endgroup\begingroup\color{violet}\vec{w}\endgroup\right)
+\end{equation}
+
+And how does addition work? So:
+
+\begin{align*}
+    g \left(\begingroup\color{orange}\vec{v}\endgroup + \begingroup\color{red}\vec{u}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    + g \left(\begingroup\color{red}\vec{u}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)\\
+    g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup + \begingroup\color{cyan}\vec{t}\endgroup\right)
+    = g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    + g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{cyan}\vec{t}\endgroup\right)
+\end{align*}
+
+But, at the same time, you cannot do this:
+
+\begin{equation}
+    g \left(\begingroup\color{orange}\vec{v}\endgroup + \begingroup\color{red}\vec{u}\endgroup, \begingroup\color{violet}\vec{w}\endgroup + \begingroup\color{cyan}\vec{t}\endgroup\right)
+    \neq g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right) + g \left(\begingroup\color{red}\vec{u}\endgroup, \begingroup\color{cyan}\vec{t}\endgroup\right)
+\end{equation}
+
+So these are the properties of scaling and addition for the the metric tensor.
+And these are actually what define a bilinear form:
+
+\begin{itemize}
+    \item $\mathcal{B}: V \times V \to \mathbb{R}$
+    \item $\begingroup\color{red}a \endgroup \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = \mathcal{B} \left(\begingroup\color{red}a \endgroup\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{red}a \endgroup\begingroup\color{violet}\vec{w}\endgroup\right)$
+    \item $\mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup + \begingroup\color{red}\vec{u}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    = \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    + \mathcal{B} \left(\begingroup\color{red}\vec{u}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)$
+    \item $\mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup + \begingroup\color{cyan}\vec{t}\endgroup\right)
+    = \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)
+    + \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{cyan}\vec{t}\endgroup\right)$
+\end{itemize}
+
+As the metric tensor, bilinear forms are (0,2)-tensors, they transform using two covariant rules when we change
+coordinate system.
+Why is it called bilinear form?\\
+
+Let's start by the term Form, a Form is a function that takes vectors as input and outputs a number.
+Covectors are also generally called linear forms, or 1-forms since they take 1 input.
+Bilinear forms are indeed also called 2-forms.
+What does bilinear mean? It means that it's a form where each individual input is linear while the other input is kept constant.
+
+Now, we need to specify that the metric tensor is a specific type of bilinear form, because the metric tensor
+has two additional properties that not all the bilinear forms have.\\
+
+\begin{itemize}
+    \item Metric tenso components are symmetric, so order of the input vectors given does not matter;
+    \item Metric tensor measures length and angles, so when we put the same vector as input twice, we get a number always greater or equal to 0.
+\end{itemize}
+
+
