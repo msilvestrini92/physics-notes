@@ -165,5 +165,69 @@ This shows that indeed, this vector-covector pair is a linear map, that takes a 
 We can say that these are a basis for $V \mapsto V$:
 
 \begin{equation}
-    {\color{blue} \vec{e_1} \epsilon^1,  \vec{e_1} \epsilon^2,  \vec{e_2} \epsilon^1, \vec{e_2} \epsilon^2}
+    {\color{blue} \vec{e_i}\epsilon^j = \vec{e_1} \epsilon^1,  \vec{e_1} \epsilon^2,  \vec{e_2} \epsilon^1, \vec{e_2} \epsilon^2}
 \end{equation}
+
+We chose this basis but we could have chosen a different one of course, this is just convenient in terms of calculation.\\
+Also note that the notation used is not really standard, as usually you actually see the tensor product 
+written correctly as:
+
+\begin{equation}
+    \begingroup\color{blue} \vec{e_i}\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup
+\end{equation}
+
+And the linear map can be written like:
+\begin{equation}
+    \textit{L} = \textit{L}^i_j \begingroup\color{blue} \vec{e_i} \epsilon^j\endgroup = \textit{L}^i_j \left(\begingroup\color{blue} \vec{e_i}\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup\right)
+\end{equation}
+
+
+
+\subsection{Bilinear forms as covector-covector pairs}
+
+We're going to have a look at a similar perspective we used for linear maps, but applied to Bilinear forms now, metric tensor included.
+Bilinear forms can be indeed thought as linear combination of covector-covector pairs.
+
+\begin{equation}
+    \mathcal{B} = \mathcal{B}_{ij} \begingroup\color{blue} \epsilon^i \epsilon^j\endgroup = \mathcal{B}_{ij} \left(\begingroup\color{blue} \epsilon^i\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup\right)
+\end{equation}
+
+Why covector-covector pairs and not something else? Well the logic is that, a bilinear forms take two vector inputs, right?\\
+Since covectors are basically linear maps that take each a vector input and outputs a scalar, a pair of covectors
+would take two vectors as input.\\
+
+Trying that out with the transformation rules, we'll see that this makes sense and we're going to end up
+with the correct transformation we previously found for bilinear forms:
+
+\begin{align*}
+    \mathcal{B} &= \begingroup\color{cyan} B_{kl}\endgroup \begingroup\color{blue}\epsilon^k \epsilon^l\endgroup \\
+    &= \begingroup\color{cyan} B_{kl}\endgroup \left(F^k_i \begingroup\color{red} \tilde{\epsilon^i}\endgroup\right) \left(F^l_j \begingroup\color{red} \tilde{\epsilon^j}\endgroup\right)\\
+    &= \left( F^k_l F^l_j \begingroup\color{cyan} B_{kl}\endgroup \right) \begingroup\color{red} \tilde{\epsilon^i}\tilde{\epsilon^j}\endgroup\\
+    &= \begingroup\color{magenta} \tilde{\mathcal{B}_{ij}} \endgroup \begingroup\color{red} \tilde{\epsilon^i}\tilde{\epsilon^j}\endgroup
+\end{align*}
+
+So the components transform as:
+
+\begin{equation}
+    \begingroup\color{magenta} \tilde{\mathcal{B}_{ij}} \endgroup =  F^k_l F^l_j \begingroup\color{cyan} B_{kl}\endgroup
+\end{equation}
+
+A similar process for the reverse transformation yields:
+
+\begin{equation}
+    \begingroup\color{cyan} B_{ij}\endgroup = B^k_i B^l_j \begingroup\color{magenta} \tilde{\mathcal{B}_{kl}} \endgroup 
+\end{equation}
+
+Next, we can also check that we get the correct component multiplication formula when we get this form applied to two vectors as input:
+
+\begin{align*}
+    \mathcal{B} &= B_{ij} \begingroup\color{blue} \epsilon^i \epsilon^j \endgroup\\
+    \begingroup\color{orange}\vec{v}\endgroup &= \begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup\\
+    \begingroup\color{violet}\vec{w}\endgroup &= \begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\\ \\
+    s &= \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right) = B_{ij} \begingroup\color{blue}\epsilon^i \epsilon^j \endgroup \left(\begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup, \begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\right)\\
+    &= B_{ij} \begingroup\color{blue}\epsilon^i \endgroup \left(\begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup\right) \begingroup\color{blue}\epsilon^j \endgroup \left(\begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\right)\\
+    &= B_{ij} \begingroup\color{orange} v^k\endgroup \begingroup\color{violet} w^l\endgroup \delta^i_k \delta^j_l\\
+    &= B_{ij} \begingroup\color{orange} v^i\endgroup \begingroup\color{violet} w^j\endgroup
+\end{align*}
+
+And this, if you remember, is the correct component multiplication formula that gives us the correct final single number as output.
