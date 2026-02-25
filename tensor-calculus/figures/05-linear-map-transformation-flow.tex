@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+    node distance=2.5cm,
+    equation/.style={font=\large},
+    arrow/.style={->, thick, >=stealth}
+]
+
+% Top left node
+\node[equation] (topleft) {
+    $L \left(\begin{bsmallmatrix} 1 \\ 1 \end{bsmallmatrix}_{\vec{e}_i}\right)$
+};
+
+% Top right node (just the result, positioned to the right)
+\node[equation, right=3cm of topleft] (topright) {
+    $\begin{bsmallmatrix} 1/2 \\ 2 \end{bsmallmatrix}_{\vec{e}_i}$
+};
+
+% Bottom right node
+\node[equation, below=1.8cm of topright] (bottomright) {
+    $\begin{bsmallmatrix} ? \\ ? \end{bsmallmatrix}_{\widetilde{\vec{e}}_i}$
+};
+
+% Bottom left node
+\node[equation, left=3cm of bottomright] (bottomleft) {
+    $L \left(\begin{bsmallmatrix} 3/4 \\ 1 \end{bsmallmatrix}_{\widetilde{\vec{e}}_i}\right)$
+};
+
+% Arrows connecting the cycle
+% Top: L transformation (curved arrow from left to right over the equation)
+\draw[arrow, bend left=30]
+    ([yshift=0.2cm]topleft.north) to node[above] {$L$} ([yshift=0.2cm]topright.north);
+
+% Right: change of basis (down arrow)
+\draw[arrow]
+    (topright) -- node[right] {$B$} (bottomright);
+
+% Bottom: L~ transformation (curved arrow from right to left under the equation)
+\draw[arrow, bend right=30]
+    ([yshift=-0.2cm]bottomleft.south) to node[below] {$\widetilde{L}$} ([yshift=-0.2cm]bottomright.south);
+
+% Left: F transformation (up arrow)
+\draw[arrow]
+    (bottomleft) -- node[left] {$F$} (topleft);
+
+\end{tikzpicture}

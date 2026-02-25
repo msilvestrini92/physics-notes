@@ -1,0 +1,233 @@
+\section{Tensor Product}
+
+We've never actually defined so far, what a tensor is in mathematical terms, so we're going to do this now in the most correct
+and abstract way: \textbf{A tensor is a collection of vectors and covectors combined together using the tensor product}.\\
+
+This definition requires an explanation and understanding of what this tensor product is, as this is the first time 
+we encounter the term.\\
+
+We've seen what vectors and covectors are, how they transform when changing coordinate systems.
+We've then see what a linear map is, and how that transform as well, and finally what a bilinear map is and again, how the components
+transform.
+What we're going to do now is level up the notions we've learned, and actually make the transformation rules comes out in a more 
+elegant and easier way, knowing just the fundamental transform rules that basis vectors follow (forward and backward transformation), the rest
+(linear maps, bilinear maps and eventually multi-linear maps) will come naturally from there, once we describe what the tensor product is.\\
+
+If we think about tensors, you already know that the type is given by the contravariant and covariant components of it, and you know that
+vectors are contravariant tensors (1,0) and covectors are covariant tensors (0,1) so you may already understand where we're going here: we'd like to 
+be able to build any type of tensors using these basic building blocks (vectors and covectors) combined together in some form.
+
+\subsection{Linear maps as vector-covector pairs}
+
+The first tensor we're going to try to build is a linear map.
+We know that a linear map is a (1,1)-tensor, that takes a vector space to another: $\textit{L} : V \mapsto V$ for example to keep it simple.
+
+Now, linear maps are represented in coordinates as a matrix, so we may try thinking how we can obtain a matrix from vectors and covectors.
+Well you know that by following the row-to-column matrix multiplication rule, you can write down a matrix as a column vector multiplied by a row vector.\\
+
+You can imagine a simple example matrix 
+
+\begin{equation}
+    \begin{bmatrix}
+        4 & 400\\
+        8 & 800
+    \end{bmatrix}
+\end{equation}
+
+as a representation of a linear map in a certain basis. And you can ask yourself, which are the column and row vectors I can use to build such a matrix?
+If you try yourself, you will find out that this is possible by multiplying:
+
+\begin{equation}
+    \begin{bmatrix}
+        4\\
+        8
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 100
+    \end{bmatrix} = \begin{bmatrix}
+        4 & 400\\
+        8 & 800
+    \end{bmatrix}
+\end{equation}
+
+So there are matrices (linear maps) that can be broken up into a column vector and a row vector in this way: these are usually called pure linear maps.
+Whereas there are others, that cannot be obtained by such a combination, these are called inpure.
+Pure matrices are actually quite boring, because such linear maps applied to vectors, keep the output in the same direction.\\
+
+Impure matrices instead, are the more interesting ones, because we can send input vectors into any direction, and we're not as limited as we're with pure ones.
+So we have a sort of a problem here, it seems that we're able to only produce pure matrices from colum/row vector products, and they're the boring ones.\\
+How can we construct inpure matrices from colum/row vector products then? \\
+
+We can try defining four special vector-covector pairs, using the basis vectors and basis covectors (dual basis):
+
+\begin{align*}
+    \color{blue}{\vec{e_1}, \vec{e_2}} && \color{blue}{\epsilon^1, \epsilon^2}
+\end{align*}
+
+\begin{align*}
+    \color{blue} \vec{e_1} \epsilon^1 &= 
+    \begin{bmatrix}
+        1\\
+        0
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 0
+    \end{bmatrix}\\
+    \color{blue} \vec{e_1} \epsilon^2 &= 
+    \begin{bmatrix}
+        1\\
+        0
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix}\\
+    \color{blue} \vec{e_2} \epsilon^1 &= 
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        0 & 0\\
+        1 & 0
+    \end{bmatrix}\\
+    \color{blue} \vec{e_2} \epsilon^2 &= 
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        0 & 0\\
+        0 & 1
+    \end{bmatrix}
+\end{align*}
+
+With these basis vector-covector pairs above, we can basically write any linear maps (using indeed this basis) as a linear
+combination:
+
+\begin{equation}
+    \textit{L} : \begin{bmatrix}
+        a & b\\
+        c & d
+    \end{bmatrix} = 
+    a
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 0
+    \end{bmatrix} + b
+    \begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix} + c
+    \begin{bmatrix}
+        0 & 0\\
+        1 & 0
+    \end{bmatrix} + d
+    \begin{bmatrix}
+        0 & 0\\
+        0 & 1
+    \end{bmatrix}
+\end{equation}
+
+So these four vector-covector pairs form a basis for any linear maps from the vector space $V$ to itself.
+In Einstein notation, we can write:
+
+\begin{equation}
+    \textit{L} = \textit{L}^i_j \color{blue} \vec{e_i} \epsilon^j
+\end{equation}
+
+If we try to apply this linear map to a generic vector to obtain another one in the same space:
+
+\begin{align*}
+    \begingroup\color{violet}w\endgroup = \textit{L}\left(\begingroup\color{orange}\vec{v}\endgroup\right) &= 
+    \textit{L}^i_j \color{blue} \vec{e_i} \epsilon^j \left(\begingroup\color{orange}v^k\endgroup \begingroup\color{blue}\vec{e_k}\endgroup\right)\\
+    &= \textit{L}^i_j \begingroup\color{orange}v^k\endgroup \begingroup\color{blue}\vec{e_i}\endgroup \begingroup\color{blue}\epsilon^j\endgroup \left(\begingroup\color{blue}\vec{e_k}\endgroup\right)\\
+    &= \textit{L}^i_j \begingroup\color{orange}v^k\endgroup \begingroup\color{blue}\vec{e_i}\endgroup \begingroup\color{blue}\epsilon^j\endgroup \delta^j_k\\
+    &= \textit{L}^i_j \begingroup\color{orange}v^j\endgroup\begingroup\color{blue}\vec{e_i}\endgroup
+\end{align*}
+
+As you can see, that's out output vector written as linear combination of the basis vectors.
+This shows that indeed, this vector-covector pair is a linear map, that takes a vector as input, and gets a vector as output.\\
+
+We can say that these are a basis for $V \mapsto V$:
+
+\begin{equation}
+    {\color{blue} \vec{e_i}\epsilon^j = \vec{e_1} \epsilon^1,  \vec{e_1} \epsilon^2,  \vec{e_2} \epsilon^1, \vec{e_2} \epsilon^2}
+\end{equation}
+
+We chose this basis but we could have chosen a different one of course, this is just convenient in terms of calculation.\\
+Also note that the notation used is not really standard, as usually you actually see the tensor product 
+written correctly as:
+
+\begin{equation}
+    \begingroup\color{blue} \vec{e_i}\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup
+\end{equation}
+
+And the linear map can be written like:
+\begin{equation}
+    \textit{L} = \textit{L}^i_j \begingroup\color{blue} \vec{e_i} \epsilon^j\endgroup = \textit{L}^i_j \left(\begingroup\color{blue} \vec{e_i}\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup\right)
+\end{equation}
+
+
+
+\subsection{Bilinear forms as covector-covector pairs}
+
+We're going to have a look at a similar perspective we used for linear maps, but applied to Bilinear forms now, metric tensor included.
+Bilinear forms can be indeed thought as linear combination of covector-covector pairs.
+
+\begin{equation}
+    \mathcal{B} = \mathcal{B}_{ij} \begingroup\color{blue} \epsilon^i \epsilon^j\endgroup = \mathcal{B}_{ij} \left(\begingroup\color{blue} \epsilon^i\endgroup \otimes \begingroup\color{blue}\epsilon^j \endgroup\right)
+\end{equation}
+
+Why covector-covector pairs and not something else? Well the logic is that, a bilinear forms take two vector inputs, right?\\
+Since covectors are basically linear maps that take each a vector input and outputs a scalar, a pair of covectors
+would take two vectors as input.\\
+
+Trying that out with the transformation rules, we'll see that this makes sense and we're going to end up
+with the correct transformation we previously found for bilinear forms:
+
+\begin{align*}
+    \mathcal{B} &= \begingroup\color{cyan} B_{kl}\endgroup \begingroup\color{blue}\epsilon^k \epsilon^l\endgroup \\
+    &= \begingroup\color{cyan} B_{kl}\endgroup \left(F^k_i \begingroup\color{red} \tilde{\epsilon^i}\endgroup\right) \left(F^l_j \begingroup\color{red} \tilde{\epsilon^j}\endgroup\right)\\
+    &= \left( F^k_l F^l_j \begingroup\color{cyan} B_{kl}\endgroup \right) \begingroup\color{red} \tilde{\epsilon^i}\tilde{\epsilon^j}\endgroup\\
+    &= \begingroup\color{magenta} \tilde{\mathcal{B}_{ij}} \endgroup \begingroup\color{red} \tilde{\epsilon^i}\tilde{\epsilon^j}\endgroup
+\end{align*}
+
+So the components transform as:
+
+\begin{equation}
+    \begingroup\color{magenta} \tilde{\mathcal{B}_{ij}} \endgroup =  F^k_l F^l_j \begingroup\color{cyan} B_{kl}\endgroup
+\end{equation}
+
+A similar process for the reverse transformation yields:
+
+\begin{equation}
+    \begingroup\color{cyan} B_{ij}\endgroup = B^k_i B^l_j \begingroup\color{magenta} \tilde{\mathcal{B}_{kl}} \endgroup 
+\end{equation}
+
+Next, we can also check that we get the correct component multiplication formula when we get this form applied to two vectors as input:
+
+\begin{align*}
+    \mathcal{B} &= B_{ij} \begingroup\color{blue} \epsilon^i \epsilon^j \endgroup\\
+    \begingroup\color{orange}\vec{v}\endgroup &= \begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup\\
+    \begingroup\color{violet}\vec{w}\endgroup &= \begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\\ \\
+    s &= \mathcal{B} \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right) = B_{ij} \begingroup\color{blue}\epsilon^i \epsilon^j \endgroup \left(\begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup, \begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\right)\\
+    &= B_{ij} \begingroup\color{blue}\epsilon^i \endgroup \left(\begingroup\color{orange} v^k\endgroup \begingroup\color{blue} \vec{e_k}\endgroup\right) \begingroup\color{blue}\epsilon^j \endgroup \left(\begingroup\color{violet} w^l\endgroup \begingroup\color{blue} \vec{e_l}\endgroup\right)\\
+    &= B_{ij} \begingroup\color{orange} v^k\endgroup \begingroup\color{violet} w^l\endgroup \delta^i_k \delta^j_l\\
+    &= B_{ij} \begingroup\color{orange} v^i\endgroup \begingroup\color{violet} w^j\endgroup
+\end{align*}
+
+And this, if you remember, is the correct component multiplication formula that gives us the correct final single number as output.
