@@ -1,0 +1,364 @@
+\section{Multi-variable Calculus Review}
+
+For this lecture notes on Tensor Calculus, there are some concepts and notes that we need to quickly review on multi-variable calculus, which
+need to be clear and understood before proceeding.\\
+Here we'll give a brief review of the following topics:
+
+\begin{itemize}
+    \item Single-variable Derivatives and chain rule;
+    \item Single-variable Integrals and differentials (change of variable);
+    \item Multi-variable Partial derivatives and chain rule;
+    \item Gradient of a function;
+    \item Directional Derivatives
+    \item Multi-variable Integrals and differentials;
+    \item Arch length, velocity vector tangent to a curve.
+\end{itemize}
+\subsection{Single-Variable Derivatives and Chain Rule}
+
+The derivative of a function $f(x)$ with respect to $x$ measures the instantaneous rate of change:
+\[
+\dv{f}{x} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+\]
+
+\textbf{Basic derivative rules:}
+\begin{align*}
+\dv{x}(x^n) &= nx^{n-1} \\
+\dv{x}(e^x) &= e^x \\
+\dv{x}(\sin x) &= \cos x \\
+\dv{x}(\cos x) &= -\sin x \\
+\dv{x}(\ln x) &= \frac{1}{x}
+\end{align*}
+
+\textbf{Sum and product rules:}
+\begin{align*}
+\dv{x}(f + g) &= \dv{f}{x} + \dv{g}{x} \\
+\dv{x}(fg) &= f\dv{g}{x} + g\dv{f}{x}
+\end{align*}
+
+\textbf{Chain rule:} For a composition of functions $f(g(x))$:
+\[
+\dv{x}f(g(x)) = \dv{f}{g} \cdot \dv{g}{x}
+\]
+
+More explicitly, if $y = f(u)$ and $u = g(x)$, then:
+\[
+\dv{y}{x} = \dv{y}{u} \cdot \dv{u}{x}
+\]
+
+\textbf{Example:} Let $y = \sin(x^2)$. Setting $u = x^2$, we have $y = \sin(u)$:
+\[
+\dv{y}{x} = \cos(u) \cdot 2x = 2x\cos(x^2)
+\]
+
+\subsection{Single-Variable Integrals and Change of Variable}
+
+The definite integral of $f(x)$ from $a$ to $b$ represents the signed area under the curve:
+\[
+\int_a^b f(x) \, dx
+\]
+
+\textbf{Fundamental Theorem of Calculus:} If $F(x)$ is an antiderivative of $f(x)$ (i.e., $\dv{F}{x} = f$), then:
+\[
+\int_a^b f(x) \, dx = F(b) - F(a)
+\]
+
+\textbf{Basic integrals:}
+\begin{align*}
+\int x^n \, dx &= \frac{x^{n+1}}{n+1} + C \quad (n \neq -1) \\
+\int \frac{1}{x} \, dx &= \ln|x| + C \\
+\int e^x \, dx &= e^x + C \\
+\int \sin x \, dx &= -\cos x + C \\
+\int \cos x \, dx &= \sin x + C
+\end{align*}
+
+\textbf{Change of Variable (Substitution):} To integrate $f(g(x))g'(x)$, substitute $u = g(x)$, so that $du = g'(x) \, dx$:
+\[
+\int f(g(x)) g'(x) \, dx = \int f(u) \, du
+\]
+
+For definite integrals, the limits change accordingly: if $u = g(x)$, then $x = a \to u = g(a)$ and $x = b \to u = g(b)$.
+
+\textbf{Example:} Evaluate $\int x \cos(x^2) \, dx$. Let $u = x^2$, then $du = 2x \, dx$, so $x \, dx = \frac{1}{2} du$:
+\[
+\int x \cos(x^2) \, dx = \int \cos(u) \cdot \frac{1}{2} \, du = \frac{1}{2}\sin(u) + C = \frac{1}{2}\sin(x^2) + C
+\]
+
+\subsection{Multi-Variable Partial Derivatives and Chain Rule}
+
+For a function $f(x, y)$ of multiple variables, the \textbf{partial derivative} with respect to one variable treats all other variables as constants.
+
+\textbf{Notation:}
+\[
+\pdv{f}{x}, \quad \pdv{f}{y}, \quad f_x, \quad f_y
+\]
+
+\textbf{Definition:}
+\[
+\pdv{f}{x} = \lim_{h \to 0} \frac{f(x+h, y) - f(x, y)}{h}
+\]
+
+\textbf{Example:} For $f(x, y) = x^2y + \sin(xy)$:
+\begin{align*}
+\pdv{f}{x} &= 2xy + y\cos(xy) \\
+\pdv{f}{y} &= x^2 + x\cos(xy)
+\end{align*}
+
+\textbf{Multivariable Chain Rule:} Consider $z = f(x, y)$ where $x = x(t)$ and $y = y(t)$ are functions of $t$. Then:
+\[
+\dv{z}{t} = \pdv{f}{x}\dv{x}{t} + \pdv{f}{y}\dv{y}{t}
+\]
+
+More generally, if $z = f(x, y)$ and $x = x(u, v)$, $y = y(u, v)$, then:
+\[
+\pdv{z}{u} = \pdv{f}{x}\pdv{x}{u} + \pdv{f}{y}\pdv{y}{u}
+\]
+
+\textbf{Example:} Let $z = x^2 + y^2$ with $x = r\cos\theta$ and $y = r\sin\theta$. Then:
+\begin{align*}
+\pdv{z}{r} &= \pdv{z}{x}\pdv{x}{r} + \pdv{z}{y}\pdv{y}{r} \\
+&= (2x)(\cos\theta) + (2y)(\sin\theta) \\
+&= 2r\cos^2\theta + 2r\sin^2\theta = 2r
+\end{align*}
+
+\textbf{Einstein Summation Convention:} Using indexed notation where $x^i$ represents the $i$-th coordinate, the chain rule can be written compactly as:
+\[
+\pdv{f}{u^j} = \pdv{f}{x^i}\pdv{x^i}{u^j}
+\]
+where summation over the repeated index $i$ is implied (no explicit $\sum$ symbol needed). This convention will be used extensively in tensor calculus.
+
+\subsection{Gradient of a Function}
+
+The \textbf{gradient} of a scalar function $f(x, y, z)$ is a vector field that points in the direction of greatest rate of increase of the function.
+
+\textbf{Definition:} For a function $f: \mathbb{R}^n \to \mathbb{R}$, the gradient is:
+\[
+\grad f = \nabla f = \begin{pmatrix} \pdv{f}{x_1} \\ \pdv{f}{x_2} \\ \vdots \\ \pdv{f}{x_n} \end{pmatrix}
+\]
+
+In three dimensions:
+\[
+\grad f = \pdv{f}{x}\hat{i} + \pdv{f}{y}\hat{j} + \pdv{f}{z}\hat{k}
+\]
+
+\textbf{Geometric interpretation:}
+\begin{itemize}
+    \item $\grad f$ points in the direction of steepest ascent of $f$
+    \item $|\grad f|$ gives the rate of change in that direction
+    \item $\grad f$ is perpendicular to level curves (2D) or level surfaces (3D) of $f$
+\end{itemize}
+
+\textbf{Example:} For $f(x, y) = x^2 + y^2$:
+\[
+\grad f = 2x\hat{i} + 2y\hat{j} = 2(x\hat{i} + y\hat{j})
+\]
+At point $(1, 1)$: $\grad f = 2\hat{i} + 2\hat{j}$, pointing radially outward.
+
+\textbf{Applications:}
+\begin{itemize}
+    \item \textit{Optimization}: Finding maxima/minima (critical points where $\grad f = 0$)
+    \item \textit{Physics}: Conservative forces $\vec{F} = -\grad U$ (gravitational, electric fields)
+    \item \textit{Machine learning}: Gradient descent for minimizing loss functions
+    \item \textit{Fluid dynamics}: Pressure gradients drive fluid flow
+\end{itemize}
+
+\subsection{Directional Derivatives}
+
+While partial derivatives measure the rate of change along coordinate axes, the \textbf{directional derivative} measures how fast a function changes in an arbitrary direction.
+
+\textbf{Definition:} The directional derivative of $f$ at point $\vec{a}$ in the direction of unit vector $\vec{u}$ is:
+\[
+D_{\vec{u}}f(\vec{a}) = \lim_{h \to 0} \frac{f(\vec{a} + h\vec{u}) - f(\vec{a})}{h}
+\]
+
+This gives the instantaneous rate of change of $f$ as we move from $\vec{a}$ in direction $\vec{u}$.
+
+\textbf{Key requirement:} $\vec{u}$ must be a \textit{unit vector} (i.e., $|\vec{u}| = 1$) for the directional derivative to represent the true rate of change per unit distance.
+
+\textbf{Formula using gradient:} The directional derivative can be computed using the dot product:
+\[
+D_{\vec{u}}f = \grad f \cdot \vec{u} = |\grad f||\vec{u}|\cos\theta = |\grad f|\cos\theta
+\]
+where $\theta$ is the angle between $\grad f$ and $\vec{u}$.
+
+\textbf{Important properties:}
+\begin{itemize}
+    \item \textbf{Maximum rate:} $D_{\vec{u}}f$ is maximized when $\vec{u}$ points in the direction of $\grad f$ (i.e., $\theta = 0$):
+    \[
+    \max_{\vec{u}} D_{\vec{u}}f = |\grad f|
+    \]
+    \item \textbf{Minimum rate:} $D_{\vec{u}}f$ is minimized when $\vec{u}$ points opposite to $\grad f$ (i.e., $\theta = \pi$):
+    \[
+    \min_{\vec{u}} D_{\vec{u}}f = -|\grad f|
+    \]
+    \item \textbf{Zero rate:} $D_{\vec{u}}f = 0$ when $\vec{u}$ is perpendicular to $\grad f$ (i.e., $\theta = \pi/2$), meaning along level curves/surfaces
+\end{itemize}
+
+\textbf{Example 1:} Find the directional derivative of $f(x, y) = x^2 + xy$ at $(1, 2)$ in the direction toward $(4, 6)$.
+
+First, compute the gradient:
+\[
+\grad f = (2x + y)\hat{i} + x\hat{j} \quad \Rightarrow \quad \grad f(1,2) = 4\hat{i} + \hat{j}
+\]
+
+The direction vector from $(1, 2)$ to $(4, 6)$ is $\vec{v} = 3\hat{i} + 4\hat{j}$. Normalize it:
+\[
+\vec{u} = \frac{\vec{v}}{|\vec{v}|} = \frac{3\hat{i} + 4\hat{j}}{\sqrt{9 + 16}} = \frac{3}{5}\hat{i} + \frac{4}{5}\hat{j}
+\]
+
+The directional derivative is:
+\[
+D_{\vec{u}}f = \grad f \cdot \vec{u} = (4\hat{i} + \hat{j}) \cdot \left(\frac{3}{5}\hat{i} + \frac{4}{5}\hat{j}\right) = \frac{12}{5} + \frac{4}{5} = \frac{16}{5}
+\]
+
+\textbf{Example 2:} For $f(x, y) = x^2 + y^2$ at $(3, 4)$, find the direction of maximum increase and the maximum rate.
+
+\[
+\grad f = 2x\hat{i} + 2y\hat{j} \quad \Rightarrow \quad \grad f(3,4) = 6\hat{i} + 8\hat{j}
+\]
+
+The direction of maximum increase is along $\grad f$. The unit vector is:
+\[
+\vec{u}_{\text{max}} = \frac{6\hat{i} + 8\hat{j}}{\sqrt{36 + 64}} = \frac{6\hat{i} + 8\hat{j}}{10} = \frac{3}{5}\hat{i} + \frac{4}{5}\hat{j}
+\]
+
+The maximum rate of increase is:
+\[
+|\grad f(3,4)| = \sqrt{36 + 64} = 10
+\]
+
+\subsection{Multi-Variable Integrals and Differentials}
+
+\textbf{Double and triple integrals} extend the concept of integration to functions of multiple variables, computing volumes under surfaces or higher-dimensional analogues.
+
+\textbf{Double integral:} For a function $f(x, y)$ over region $R$:
+\[
+\iint_R f(x, y) \, dA = \int_a^b \int_{g_1(x)}^{g_2(x)} f(x, y) \, dy \, dx
+\]
+where $dA = dx \, dy$ is the area element.
+
+\textbf{Triple integral:} For a function $f(x, y, z)$ over region $V$:
+\[
+\iiint_V f(x, y, z) \, dV
+\]
+where $dV = dx \, dy \, dz$ is the volume element.
+
+\textbf{Change of Variables (Jacobian):} When transforming coordinates $(x, y) \to (u, v)$, the area element transforms according to:
+\[
+dx \, dy = |J| \, du \, dv
+\]
+where $J$ is the \textbf{Jacobian determinant}:
+\[
+J = \pdv{(x, y)}{(u, v)} = \begin{vmatrix}
+\pdv{x}{u} & \pdv{x}{v} \\[0.5em]
+\pdv{y}{u} & \pdv{y}{v}
+\end{vmatrix} = \pdv{x}{u}\pdv{y}{v} - \pdv{x}{v}\pdv{y}{u}
+\]
+
+For three dimensions $(x, y, z) \to (u, v, w)$:
+\[
+J = \begin{vmatrix}
+\pdv{x}{u} & \pdv{x}{v} & \pdv{x}{w} \\[0.5em]
+\pdv{y}{u} & \pdv{y}{v} & \pdv{y}{w} \\[0.5em]
+\pdv{z}{u} & \pdv{z}{v} & \pdv{z}{w}
+\end{vmatrix}
+\]
+
+\textbf{Example - Polar coordinates:} For $x = r\cos\theta$, $y = r\sin\theta$:
+\[
+J = \begin{vmatrix}
+\pdv{x}{r} & \pdv{x}{\theta} \\[0.5em]
+\pdv{y}{r} & \pdv{y}{\theta}
+\end{vmatrix} = \begin{vmatrix}
+\cos\theta & -r\sin\theta \\
+\sin\theta & r\cos\theta
+\end{vmatrix} = r\cos^2\theta + r\sin^2\theta = r
+\]
+
+Therefore: $dx \, dy = r \, dr \, d\theta$
+
+This explains why integrals in polar coordinates have the extra factor of $r$:
+\[
+\iint_R f(x, y) \, dx \, dy = \iint_{R'} f(r\cos\theta, r\sin\theta) \, r \, dr \, d\theta
+\]
+
+\textbf{Differential forms:} A differential $df$ of a function $f(x, y)$ is:
+\[
+df = \pdv{f}{x}dx + \pdv{f}{y}dy
+\]
+
+This represents the infinitesimal change in $f$ due to infinitesimal changes $dx$ and $dy$ in the coordinates. More generally:
+\[
+df = \grad f \cdot d\vec{r}
+\]
+where $d\vec{r} = dx\hat{i} + dy\hat{j} + dz\hat{k}$ is the displacement vector.
+
+\textbf{Einstein notation:} Using indexed coordinates $x^i$, the differential can be written compactly as:
+\[
+df = \pdv{f}{x^i}dx^i
+\]
+where summation over repeated index $i$ is implied. This notation emphasizes that the differential is a linear combination of coordinate differentials weighted by partial derivatives.
+
+\subsection{Arc Length and Velocity Vector Tangent to a Curve}
+
+A \textbf{parametric curve} in space is described by a position vector $\vec{r}(t)$ that depends on parameter $t$:
+\[
+\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}
+\]
+
+\textbf{Velocity vector:} The derivative of position with respect to the parameter gives the velocity:
+\[
+\vec{v}(t) = \dv{\vec{r}}{t} = \dv{x}{t}\hat{i} + \dv{y}{t}\hat{j} + \dv{z}{t}\hat{k} = \dot{x}\hat{i} + \dot{y}\hat{j} + \dot{z}\hat{k}
+\]
+
+The velocity vector $\vec{v}(t)$ is \textbf{tangent to the curve} at each point and points in the direction of motion.
+
+\textbf{Speed:} The magnitude of the velocity vector gives the speed:
+\[
+|\vec{v}(t)| = \sqrt{\left(\dv{x}{t}\right)^2 + \left(\dv{y}{t}\right)^2 + \left(\dv{z}{t}\right)^2}
+\]
+
+\textbf{Unit tangent vector:} Normalizing the velocity gives a unit vector tangent to the curve:
+\[
+\vec{T}(t) = \frac{\vec{v}(t)}{|\vec{v}(t)|}
+\]
+
+\textbf{Arc length:} The length of a curve from $t = a$ to $t = b$ is:
+\[
+s = \int_a^b |\vec{v}(t)| \, dt = \int_a^b \sqrt{\left(\dv{x}{t}\right)^2 + \left(\dv{y}{t}\right)^2 + \left(\dv{z}{t}\right)^2} \, dt
+\]
+
+In differential form:
+\[
+ds = |\vec{v}| \, dt = \sqrt{dx^2 + dy^2 + dz^2}
+\]
+
+\textbf{Arc length parameter:} We can reparametrize a curve using arc length $s$ as the parameter. Then:
+\[
+\dv{\vec{r}}{s} = \vec{T}
+\]
+is automatically a unit tangent vector (since $\left|\dv{\vec{r}}{s}\right| = 1$).
+
+\textbf{Example:} Consider the helix $\vec{r}(t) = \cos(t)\hat{i} + \sin(t)\hat{j} + t\hat{k}$ for $0 \leq t \leq 2\pi$.
+
+Velocity vector:
+\[
+\vec{v}(t) = -\sin(t)\hat{i} + \cos(t)\hat{j} + \hat{k}
+\]
+
+Speed:
+\[
+|\vec{v}(t)| = \sqrt{\sin^2(t) + \cos^2(t) + 1} = \sqrt{2}
+\]
+
+Arc length from $t = 0$ to $t = 2\pi$:
+\[
+s = \int_0^{2\pi} \sqrt{2} \, dt = 2\pi\sqrt{2}
+\]
+
+Unit tangent vector:
+\[
+\vec{T}(t) = \frac{1}{\sqrt{2}}\left(-\sin(t)\hat{i} + \cos(t)\hat{j} + \hat{k}\right)
+\]
+
+\textbf{Connection to tensor calculus:} In general curvilinear coordinates, the tangent vectors to coordinate curves form the basis vectors of the coordinate system. Understanding how tangent vectors transform is fundamental to tensor analysis.
+

@@ -33,25 +33,3 @@ Or for side-by-side figures:
 \end{minipage}
 \end{center}
 ```
-
-## Current Figures
-
-### Section 3: Vectors
-- `03-vector-basis-example.tex` - Example showing vector in two basis systems
-- `03-forward-transformation.tex` - Forward basis transformation diagram
-- `03-backward-transformation.tex` - Backward basis transformation diagram
-- `03-vector-scaling-old-basis.tex` - Vector in original scaled basis
-- `03-vector-scaling-new-basis.tex` - Vector in upscaled basis
-- `03-vector-rotation-old-basis.tex` - Vector in original basis
-- `03-vector-rotation-new-basis.tex` - Vector in rotated basis
-
-### Section 4: Covectors
-- `04-covector-lines.tex` - Covector visualization as level sets
-- `04-covector-beta.tex` - Beta covector visualization
-- `04-covector-gamma.tex` - Gamma covector visualization
-- `04-covector-sum.tex` - Sum of beta and gamma covectors
-- `04-epsilon1-basis.tex` - Epsilon^1 dual basis covector
-- `04-epsilon2-basis.tex` - Epsilon^2 dual basis covector
-- `04-alpha-covector.tex` - Generic alpha covector with basis vectors
-- `04-dual-basis-decomposition.tex` - Decomposition of alpha into dual basis
-- `04-basis-vectors-example.tex` - Basis vectors for coordinate transformation example
