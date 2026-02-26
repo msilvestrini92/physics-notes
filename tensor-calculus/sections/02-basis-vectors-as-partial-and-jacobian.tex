@@ -1,0 +1,220 @@
+\section{Basis vectors as partial derivatives and Jacobian}
+
+In two-dimensional Euclidean space, a point is described by Cartesian coordinates
+\[
+(x,y)
+\]
+
+The position vector is
+\[
+\mathbf{R} = x \begingroup\color{blue}\vec{e_x}\endgroup + y \begingroup\color{blue}\vec{e_y}\endgroup
+\]
+where the basis vectors are
+\[
+\begingroup\color{blue}\vec{e_x}\endgroup = \begin{pmatrix}1 \\ 0\end{pmatrix},
+\qquad
+\begingroup\color{blue}\vec{e_y}\endgroup = \begin{pmatrix}0 \\ 1\end{pmatrix}.
+\]
+
+These satisfy:
+\[
+\begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_x}\endgroup = 1, 
+\quad
+\begingroup\color{blue}\vec{e_y}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup = 1,
+\quad
+\begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup = 0.
+\]
+
+Thus, $\{\begingroup\color{blue}\vec{e_x}\endgroup, \begingroup\color{blue}\vec{e_y}\endgroup\}$ is an orthonormal basis.
+
+A key feature:
+
+\[
+\frac{\partial \begingroup\color{blue}\vec{e_x}\endgroup}{\partial x} = 
+\frac{\partial \begingroup\color{blue}\vec{e_x}\endgroup}{\partial y} =
+\frac{\partial \begingroup\color{blue}\vec{e_y}\endgroup}{\partial x} =
+\frac{\partial \begingroup\color{blue}\vec{e_y}\endgroup}{\partial y} = 0.
+\]
+
+The basis vectors are constant everywhere in space.\\
+
+We now define polar coordinates $(r,\theta)$ by the transformation
+
+\[
+x = r \cos\theta,
+\qquad
+y = r \sin\theta.
+\]
+
+The position vector becomes
+
+\[
+\mathbf{R} = r\cos\theta \,\begingroup\color{blue}\vec{e_x}\endgroup + r\sin\theta \,\begingroup\color{blue}\vec{e_y}\endgroup
+\]
+
+We define the radial unit vector as
+
+\[
+\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+= \cos\theta \,\begingroup\color{blue}\vec{e_x}\endgroup 
++ \sin\theta \,\begingroup\color{blue}\vec{e_y}\endgroup.
+\]
+
+This points directly away from the origin.\\
+And then define the angular unit vector as
+
+\[
+\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup
+= -\sin\theta \,\begingroup\color{blue}\vec{e_x}\endgroup
++ \cos\theta \,\begingroup\color{blue}\vec{e_y}\endgroup
+\]
+
+This points in the direction of increasing $\theta$.\\
+These vectors satisfy
+
+\[
+\begingroup\color{red}\tilde{\vec{e_r}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_r}}\endgroup = 1,
+\quad
+\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup = 1,
+\quad
+\begingroup\color{red}\tilde{\vec{e_r}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup = 0
+\]
+
+So they form an orthonormal basis at each point, but polar basis vectors depend on $\theta$\\
+
+Compute derivatives:
+
+\[
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial \theta}
+=
+-\sin\theta\,\begingroup\color{blue}\vec{e_x}\endgroup
++
+\cos\theta\,\begingroup\color{blue}\vec{e_y}\endgroup
+=
+\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup
+\]
+
+\[
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial \theta}
+=
+-\cos\theta\,\begingroup\color{blue}\vec{e_x}\endgroup
+-
+\sin\theta\,\begingroup\color{blue}\vec{e_y}\endgroup
+=
+-\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+\]
+
+Thus,
+
+\[
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial r} = 0,
+\qquad
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial r} = 0
+\]
+
+Key result:
+
+\[
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial \theta} = \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup,
+\qquad
+\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial \theta} = -\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+\]
+
+The basis vectors rotate as $\theta$ changes.\\
+
+Now if you think about this, to find out the directions of the basis vectors, what we do is
+following the directions of the coordinate lines and in the case of polar coordinates, for the $\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup$
+basis vector, since the coordinate lines are actually curved, we need to pick the straightest possible
+direction when moving along it, which results in being the vector tangent to the curve.\\
+
+\textbf{This reasoning gives us a hint for the next important reinterpretation of basis vectors, as represented by a 
+partial derivative of the position vector R}
+
+\begin{equation}
+    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \mathbf{R}}{\partial \begingroup\color{blue}x\endgroup}
+\end{equation}
+
+If you carefully think about it, it might look weird at first, but it will eventually make sense.
+Think about $\mathbf{R}$ as a function of the coordinates x and y for example, and then
+consider adding a small value $\Delta x$ to the x coordinate. The difference between these two position
+vectors results in a vector that is parallel to the x coordinate axis.
+So this resultant vector has the direction of the basis vector $\color{blue}\vec{e_x}$. \\
+This observation is interesting, but we need to solve tha fact that the magnitude of this vector
+is varying , depending on the value of the $\Delta x$ used. \\
+This can be solved by dividing the resultant vector by the quantity $\Delta x$.
+By doing so, we obtain a vector pointing in the x-basis vector direction and magnitude 1...now we 
+can proceed further by taking the limit as $\Delta x$ approaches to 0:
+
+\begin{equation}
+    \frac{\partial \mathbf{R}}{\partial x} = \lim_{\Delta x \to 0}\frac{\mathbf{R(x + \Delta x, y)} - \mathbf{R(x,y)}}{\Delta x}
+\end{equation}
+
+Since this derivative always has a length of one and points the x-axis, we can regard it as the basis vector:
+
+\begin{equation}
+    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \mathbf{R}}{\partial \begingroup\color{blue}x\endgroup}
+\end{equation}
+
+This reasoning can be easily applied to the other direction, but generalized further
+to any coordinate system.\\
+The neat thing about this construction is that you can do it for any position vector, and you 
+will still get your basis vectors. Fundamentally, this trick work because, in obtaining a slightly 
+off position vector, a small change in coordinate is added in one coordinate only while keeping other coordinates constant. 
+Then, we divide the resultant vector (obtained from the difference between the original position vector and the new slightly off one) 
+by that small change to normalize the vector.\\\\
+
+Now you should remember when we discussed, in the other notes for "Tensors for Beginners" about the 
+forward and backward transformations when we move from one basis vector coordinate system to another.\\
+Turns out that those transformation rules can be obtained easily once we introduced this above
+concept about basis vectors being partial derivatives of the position vector with respect to the 
+coordinate variables.\\
+And also, that these transformation matrices have a proper name: \textbf{the Jacobian matrices}\\
+
+Let's say we want to find the forward transformation matrix (the Jacobian) matric when moving 
+from cartesian to polar coordinates. This would be just a matter of applying the chain rule:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e_r}}\endgroup &= \frac{\partial R}{\partial r} = \frac{\partial R}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial r} = \frac{\partial x}{\partial r}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial r}\begingroup\color{blue}\vec{e_y}\endgroup\\
+    \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup &= \frac{\partial R}{\partial \theta} = \frac{\partial R}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial \theta} = \frac{\partial x}{\partial \theta}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial \theta}\begingroup\color{blue}\vec{e_y}\endgroup
+\end{align*}
+
+We know the transformation rules between cartesian and polar coordinates:
+
+\[
+x = r \cos\theta,
+\qquad
+y = r \sin\theta.
+\]
+
+so it's a matter of taking the derivatives to find that the Jacobian matrix, or forward matrix is:
+
+\begin{align*}
+    \frac{\partial R}{\partial r} &= \frac{\partial R}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial r} = cos\theta \frac{\partial R}{\partial x} + sin\theta \frac{\partial R}{\partial y}\\
+    \frac{\partial R}{\partial \theta} &= \frac{\partial R}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial \theta} = -r\sin\theta \frac{\partial R}{\partial x} + r\cos\theta \frac{\partial R}{\partial y}
+\end{align*}
+
+So:
+
+\begin{equation}
+    F =
+    \begin{bmatrix}
+        \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta}\\
+        \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta}
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        cos\theta & -r\sin\theta\\
+        \sin\theta & r\cos\theta
+    \end{bmatrix}
+\end{equation}
+
+And you can tackle, with the same derivation logic, the inverse Jacobian matrix, of backward transformation 
+matrix, to obviously find out that the multiplication of the two yields the identity matrix.\\
+
+Now, following a more tensorial approach, we can also re-write these transformation rules as:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} &= \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{cyan}c^j\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \\
+    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} &= \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} 
+\end{align*}
+
+
