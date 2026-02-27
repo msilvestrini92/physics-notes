@@ -1,0 +1,216 @@
+\section{Vectors as derivatives and their transformation fules}
+
+Allright we saw that basis vectors can be re-interpreted as partial derivative of the position
+vector along the coordinate axis.\\
+We can sort of extend this logic to the vectors themselves. We saw that figuring out vector 
+components in a particular basis is kind of easy to do for individual vectors, but now we're going do it 
+for vector fields (i.e. a vector for every point in space), \textbf{but for now, we're going to deal with a slightly 
+different type of vector field, and that's a vector field along a curve, so basically we're defining 
+a vector at every point along a curve.}\\
+
+The way we imagine vector fields along a curve is considering the set of tangent vectors to the curves.
+This gives us a vector field defined at every point on the curve.\\
+
+A curve can be tought as a function that takes some input parameter $\lambda$ and outputs the position vector 
+$\mathbf{R}$ that traces our curve in the space.\\
+If we want to have a vector tangent to this curve, we just need to consider taking the derivative of the position 
+vector with respect to its parameter:
+
+\begin{equation}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+\end{equation}
+
+Now you may think that finding out the components of this vector in a specific basis can be 
+difficult but it is really not, if we make use of the multivariable chain rule and expand it out in the
+coodinates we're working in.\\
+For example, in the cartesian coordinates $\color{cyan}c^i$ and using the Einstein summation convention notation:
+
+\begin{equation}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}
+\end{equation}
+
+At the end of the day, considering doing it in cartesian $\mathbb{R^2}$ for simplicity, these are equivalent (individual vector on the top, and vector field along a curve on the bottom):
+
+\begin{align*}
+    \begingroup\color{orange}\vec{v}\endgroup &= \begingroup\color{cyan}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\\
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} &= \frac{\dd \begingroup\color{cyan}x\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} + 
+    \frac{\dd \begingroup\color{cyan}y\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+\end{align*}
+
+The same can be applied to whatever coordinate system we're working in, so to give you an example, let's say we
+have the circular curve of radius 2, centered at the origin in $\mathbb{R^2}$, defined by:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{R}\endgroup (\begingroup\color{orange}\lambda\endgroup) = \left(\begingroup\color{cyan}x\endgroup(\begingroup\color{orange}\lambda\endgroup), \begingroup\color{cyan}y\endgroup(\begingroup\color{orange}\lambda\endgroup)\right) =
+    \left(2 \cos\lambda, 2 \sin\lambda\right)
+\end{equation}
+
+The vector field along the curve is made up of the tangent vectors along the curve, that 
+can be expanded as defined:
+
+\begin{align*}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} &= \frac{\dd \begingroup\color{cyan}x\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} + 
+    \frac{\dd \begingroup\color{cyan}y\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\\
+    &= -2 \sin\lambda \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} + 
+    2 \cos\lambda\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+\end{align*}
+
+The components can also be written, for the cartesian basis, as a vector column:
+
+\begin{equation}
+    \begin{bmatrix}
+        -2\sin\lambda\\
+        2 \cos\lambda
+    \end{bmatrix}_{\frac{\partial}{\partial \begingroup\color{cyan}c^i\endgroup}}
+\end{equation}
+
+We can do the same in polar coordinates $r, \theta$, where the same curve is defined as:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{R}\endgroup (\begingroup\color{orange}\lambda\endgroup)= \left(\begingroup\color{magenta}r\endgroup(\begingroup\color{orange}\lambda\endgroup), \begingroup\color{magenta}\theta\endgroup(\begingroup\color{orange}\lambda\endgroup)\right) =
+    \left(2 , \lambda\right)
+\end{equation}
+
+\begin{align*}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} &= \frac{\dd \begingroup\color{magenta}r\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} + 
+    \frac{\dd \begingroup\color{magenta}\theta\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\\
+    &= 0 \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} + 
+    1 \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+\end{align*}
+
+So:
+
+\begin{equation}
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}_{\frac{\partial}{\partial \begingroup\color{magenta}p^i\endgroup}}
+\end{equation}
+
+Now, as you can already imagine, like we saw that for individual vectors, the components are contravariant (i.e. they transform the opposite way of the basis vectors), 
+we're going to simply show that this is valid indeed in this vector fields case.\\
+
+We already saw in the previous section, the transformation rules of the basis vectors using the Jacobain and Inverse Jacobian:
+
+\begin{subequations}\label{eq:forward-backward}
+\begin{empheq}[box=\widefbox]{align}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} &= \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{cyan}c^j\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} & \text{Forward Transorm}\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} &= \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} & \text{Backward Transorm}
+\end{empheq}
+\end{subequations}
+
+Now we can just use these and replace the basis vectors with their new basis transformation rule: 
+
+\begin{equation}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} = 
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}\right) = 
+    \left(\frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}\right)
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}
+\end{equation}
+
+This is a linear combination of the new basis vector $\color{magenta}p^j$, and since we know that we can write:
+
+\begin{equation}
+    \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
+    \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup}
+\end{equation}
+
+This means that:
+
+\begin{equation}
+    \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}
+\end{equation}
+
+Which shows that the vector field components transform using the backward transformation (inverse Jacobian)\\
+
+We can actually test this out in the previous example right?
+So we have the components being, in both coordinate systems:
+
+\begin{align*}
+    \begin{bmatrix}
+        -2\sin\lambda\\
+        2 \cos\lambda
+    \end{bmatrix}_{\frac{\partial }{\partial \begingroup\color{cyan}c^i\endgroup}} &&
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}_{\frac{\partial }{\partial \begingroup\color{magenta}p^i\endgroup}}
+\end{align*}
+
+And we also know the Inverse Jacobian in the case of polar-to-cartesian coordinates, being:
+
+\begin{equation}
+    B = J^{-1} =
+    \begin{bmatrix}
+        x/r & y/r\\
+        -y/r^2 & x/r^2
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \cos\lambda & \sin\lambda\\
+        -1/2\sin\lambda & 1/2\cos\lambda
+    \end{bmatrix}
+\end{equation}
+
+Let's check that:
+
+\begin{align*}
+    B \begin{bmatrix}
+        -2\sin\lambda\\
+        2 \cos\lambda
+    \end{bmatrix}_{\frac{\partial }{\partial \begingroup\color{cyan}c^i\endgroup}} &= 
+     \begin{bmatrix}
+        \cos\lambda & \sin\lambda\\
+        -1/2\sin\lambda & 1/2\cos\lambda
+    \end{bmatrix} 
+    \begin{bmatrix}
+        -2\sin\lambda\\
+        2 \cos\lambda
+    \end{bmatrix}_{\frac{\partial }{\partial \begingroup\color{cyan}c^i\endgroup}}\\ 
+    &= \begin{bmatrix}
+        -\cos\lambda 2\sin\lambda + \sin\lambda 2\cos\lambda\\
+        -1/2 \sin\lambda (-2 \sin\lambda) + 1/2 \cos\lambda 2 \cos\lambda
+    \end{bmatrix}_{\frac{\partial}{\partial \begingroup\color{magenta}p^i\endgroup}}\\
+    & = \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}_{\frac{\partial}{\partial \begingroup\color{magenta}p^i\endgroup}}
+\end{align*}
+
+Same can be checked on the opposite direction applying the forward/jacobian transformation.\\
+
+One last thing to mention before terminating this section is in terms of notation: you notice that 
+the position vector appears in a lot of them, so what we're going to do from here onward, is get rid of the 
+position vector symbol.\\
+This might seem like a weird choice of notation, but from now on, for example, the $\mathbb{R}^2$ cartesian basis vectors will be 
+written as:
+
+\begin{align*}
+    \begingroup\color{blue}\vec{e_x}\endgroup = \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup}\\
+    \begingroup\color{blue}\vec{e_y}\endgroup = \frac{\partial}{\partial \begingroup\color{cyan}y\endgroup}
+\end{align*}
+
+\textbf{where basically we consider basis vectors these partial derivative operators.}\\
+If you think about this, it's not very weird at the end, as derivative operators are linear, as they can be scaled and added like vectors do, 
+so they have both a magnitude and a direction.
+They also obey the forward and backward transformation rules that we would expect vectors to obey.\\
+
+The main logical reason to get rid of the position vector symbol is that, the position vector definition requires an origin to be set, and 
+later on when we're going to deal with curved surfaces and manifolds, it's not easy to define an origin point.\\
+So, using a position vector without an origin does not make a lot of sense, but we're still going to be able to use
+vectors and vector fields as long as we have these derivative operators to work with.\\
+
+
+

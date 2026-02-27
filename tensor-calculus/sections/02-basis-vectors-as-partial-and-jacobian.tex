@@ -131,7 +131,7 @@ direction when moving along it, which results in being the vector tangent to the
 partial derivative of the position vector R}
 
 \begin{equation}
-    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \mathbf{R}}{\partial \begingroup\color{blue}x\endgroup}
+    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \vec{R}}{\partial \begingroup\color{blue}x\endgroup}
 \end{equation}
 
 If you carefully think about it, it might look weird at first, but it will eventually make sense.
@@ -146,13 +146,13 @@ By doing so, we obtain a vector pointing in the x-basis vector direction and mag
 can proceed further by taking the limit as $\Delta x$ approaches to 0:
 
 \begin{equation}
-    \frac{\partial \mathbf{R}}{\partial x} = \lim_{\Delta x \to 0}\frac{\mathbf{R(x + \Delta x, y)} - \mathbf{R(x,y)}}{\Delta x}
+    \frac{\partial \vec{R}}{\partial x} = \lim_{\Delta x \to 0}\frac{\vec{R} (x + \Delta x, y) - \vec{R}(x,y)}{\Delta x}
 \end{equation}
 
 Since this derivative always has a length of one and points the x-axis, we can regard it as the basis vector:
 
 \begin{equation}
-    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \mathbf{R}}{\partial \begingroup\color{blue}x\endgroup}
+    \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \vec{R}}{\partial \begingroup\color{blue}x\endgroup}
 \end{equation}
 
 This reasoning can be easily applied to the other direction, but generalized further
@@ -174,8 +174,8 @@ Let's say we want to find the forward transformation matrix (the Jacobian) matri
 from cartesian to polar coordinates. This would be just a matter of applying the chain rule:
 
 \begin{align*}
-    \begingroup\color{red}\tilde{\vec{e_r}}\endgroup &= \frac{\partial R}{\partial r} = \frac{\partial R}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial r} = \frac{\partial x}{\partial r}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial r}\begingroup\color{blue}\vec{e_y}\endgroup\\
-    \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup &= \frac{\partial R}{\partial \theta} = \frac{\partial R}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial \theta} = \frac{\partial x}{\partial \theta}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial \theta}\begingroup\color{blue}\vec{e_y}\endgroup
+    \begingroup\color{red}\tilde{\vec{e_r}}\endgroup &= \frac{\partial \vec{R}}{\partial r} = \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial r} = \frac{\partial x}{\partial r}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial r}\begingroup\color{blue}\vec{e_y}\endgroup\\
+    \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup &= \frac{\partial \vec{R}}{\partial \theta} = \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial \theta} = \frac{\partial x}{\partial \theta}\begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial y}{\partial \theta}\begingroup\color{blue}\vec{e_y}\endgroup
 \end{align*}
 
 We know the transformation rules between cartesian and polar coordinates:
@@ -189,8 +189,8 @@ y = r \sin\theta.
 so it's a matter of taking the derivatives to find that the Jacobian matrix, or forward matrix is:
 
 \begin{align*}
-    \frac{\partial R}{\partial r} &= \frac{\partial R}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial r} = cos\theta \frac{\partial R}{\partial x} + sin\theta \frac{\partial R}{\partial y}\\
-    \frac{\partial R}{\partial \theta} &= \frac{\partial R}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial R}{\partial y}\frac{\partial y}{\partial \theta} = -r\sin\theta \frac{\partial R}{\partial x} + r\cos\theta \frac{\partial R}{\partial y}
+    \frac{\partial \vec{R}}{\partial r} &= \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial r} = cos\theta \frac{\partial \vec{R}}{\partial x} + sin\theta \frac{\partial \vec{R}}{\partial y}\\
+    \frac{\partial \vec{R}}{\partial \theta} &= \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial \theta} = -r\sin\theta \frac{\partial \vec{R}}{\partial x} + r\cos\theta \frac{\partial \vec{R}}{\partial y}
 \end{align*}
 
 So:
@@ -213,8 +213,8 @@ matrix, to obviously find out that the multiplication of the two yields the iden
 Now, following a more tensorial approach, we can also re-write these transformation rules as:
 
 \begin{align*}
-    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} &= \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{cyan}c^j\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \\
-    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} &= \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} &= \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{cyan}c^j\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} &= \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} 
 \end{align*}
 
 
