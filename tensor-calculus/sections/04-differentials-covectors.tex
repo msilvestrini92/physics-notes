@@ -1,0 +1,64 @@
+\section{Differentials as covectors and their transformation rules}
+
+Let's start this chapter by reminind ourselves what differentials are and covectors are.
+We know that differentials in Integrals, like $dx$ are small changes in the variable of integration, in this case it's a small 
+change in the variable x.\\
+
+Covectors instead, are these functionals acting on vectors, and outputting scalars, which can be visualized as stacks of lines that
+indeed eat a vector and produce a scalar. The scalar can be tought as the number of times the vector pierces the stack of lines.\\
+
+\textbf{So like, how can these two concepts be linked together, and actually how the hell are they the same thing?}\\
+
+The key of understanding this, is the re-interpretation of the $d$ symbol of the differentials.
+The old way of thinking about it, is that this symbol takes the variable and gives a small change of this variable.\\
+The new interpretation is that $d$ is an operator that takes a scalar field $f$ and outputs a $df$ covector field.
+A scalar field is a field where a scalar $f$ is defined at every point in space, a covector field $df$ is a field 
+where a covector is defined at every point in space.\\
+
+So how does this $d$ operator work? A couple of pictures are worth a thousand words here:
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/scalar-field-covector-field-01.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/scalar-field-covector-field-02.png}
+\end{center}
+
+So like, the operator $d$ takes a function and outputs the function's level sets.
+Sometimes, they're called 0-forms (functions) and 1-forms (level sets).\\
+
+Let's give another example, showing the covector fields of the cartesian coordinates $dx$ and $dy$:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/cartesian-covector-field.png}
+\end{center}
+
+Now, if this operator is really a covector field, we know that covectors eat vectors to output scalars, right?
+How does this work considering what we've seen so far?
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/covector-field-on-vector.png}
+\end{center}
+
+And it's also quite straight forward to show that covector fields are linear.
+But whet's the geometrical meaning of $d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup)$
+
+\begin{center}
+\includegraphics[scale=0.4]{figures/level-set-map.png}
+\end{center}
+
+We can think of these level sets of a map as a covector field.\\
+When acting on a vector, $d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup)$ is proportional to the steepness of $\color{orange}f$ in the 
+direction of $\color{teal}\vec{v}$ and also proportional to the length of $\color{teal}\vec{v}$.\\
+
+So: \textbf{$d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup)$ tells us the rate of change of $\color{orange}f$
+when moving at velocity $\color{teal}\vec{v}$}\\
+
+But then, this reminds us of the definition of directional derivative, isn't it?
+At the end of the day, $d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup)$ is the \textbf{directional derivative} of the function in the vector direction.
+
+\begin{equation}
+    d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup) = D_{\begingroup\color{teal}\vec{v}\endgroup}\begingroup\color{orange}f\endgroup
+    = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{teal}\vec{v}\endgroup}
+\end{equation}
