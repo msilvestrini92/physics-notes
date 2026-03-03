@@ -131,7 +131,7 @@ This means that:
 
 \begin{equation}
     \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
-    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}
+    \frac{\dd \begingroup\color{cyan}c^j\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}
 \end{equation}
 
 Which shows that the vector field components transform using the backward transformation (inverse Jacobian)\\
@@ -212,5 +212,91 @@ later on when we're going to deal with curved surfaces and manifolds, it's not e
 So, using a position vector without an origin does not make a lot of sense, but we're still going to be able to use
 vectors and vector fields as long as we have these derivative operators to work with.\\
 
+The whole main idea is the following:\\
+\textbf{Basis transforms with the Jacobian;\\
+Components transform with the inverse Jacobian;\\
+Their product gives the identity;\\
+Therefore the geometric vector is coordinate-invariant.}
 
 
+\begin{subequations}\label{eq:forward-backward}
+\begin{empheq}[box=\widefbox]{align}
+    \frac{\dd }{\dd \begingroup\color{orange}\lambda\endgroup} &= 
+    \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial }{\partial \begingroup\color{magenta}p^i\endgroup} =
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
+    \frac{\partial }{\partial \begingroup\color{cyan}c^i\endgroup} & \text{Total derivative along a curve (chain rule)}\\
+    \frac{\partial }{\partial \begingroup\color{magenta}p^i\endgroup} &= \frac{\partial }{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{cyan}c^j\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} & \text{Coordinate basis transformation}\\
+    \frac{\partial }{\partial \begingroup\color{cyan}c^i\endgroup} &= \frac{\partial }{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} & \text{Inverse coordinate basis transformation}\\
+    \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} &= 
+    \frac{\dd \begingroup\color{cyan}c^j\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup} & \text{Contravariant component transformation}\\
+    \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} &= 
+    \frac{\dd \begingroup\color{magenta}p^j\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{cyan}c^i\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup} & \text{Inverse component transformation}
+\end{empheq}
+\end{subequations}
+
+\subsection{Hold on - Why are derivative operators vectors?}
+
+Let's here make some clarity about what we've discussed so far in the previous two sections.\\
+We brought up this new way of thinking about basis vectors, where we went from considering basis vectors as
+derivative of the position vector wrt the coordinate variables, to them being defined by the partial derivative operators themselves.\\
+Let's start by saying that this way of thinking will be appreciated more when we'll start thinking anout curved (differential) geometry, but 
+we chose to introduce it right now, even though we're still working in flat space, to already start using these ideas and notations beforehand.\\
+
+We just a bit ahead of ourselves here, to explain the main reason of already working with this, so you get an idea
+of what we're going to deal with, and then we'll get back to our flat space for now.\\
+
+We saw that if we consider the difference between two position vectors, a small distance h apart from each other in the direction of one coordinate axis, 
+divide this by this distance h, and consider the limit when h approaches 0, gives us as result the basis vector of magnitude 1 in the considered 
+axis direction. We we said that this position vector derivative along the axis-variable and the unit vector along this axis are equivalent.\\
+
+We also shown that, for tangent vectors along a curve, parametrized by the paramter $\lambda$, considering the position vector at a certain position $\lambda$ and another
+one a small step h away, we can compute the tangent vector to this curve at position $\lambda$, by taking the difference and consider the limit when h approaches 0.\\
+
+And we can expand the tangent vector out as a linear combination of the basis vectors using the chain rule.
+Now all of this, has been discussed working on the flap 2D plane.\\
+
+Let's try to move further and consider this in a curved space, for example the surface of the earth, to see how the situation is different.\\
+
+If we consider a point moving on the surface of the earth from one position to another, and we want to compute 
+its velocity, we need to find the tangent vector to the curve he moves along. So what do we do? We can take 
+the derivative of the position vector wrt to the parameter we use to define this curve.\\
+Okay, so how do we define the position vector? We need to define an origin, right? We can think of putting this origin at the center
+of the sphere (earth)....but this is a bit of a different situation than before when working in the flat space?\\
+
+Why? Well first because the origin does not live on the earth's 2D surface, and second because the velocity vector itself, 
+also does not live on the earth's 2D surface, since it extends to the outside space.\\
+They both are external to the surface we're studying, and indeed this is referred to "extrinsic geometry"
+
+Now, this may not seem a problem, if we consider the 3D surface of a globe, from an external perspective of a 3D space.\\
+But what if instead of this situation, we're forced to look at the surface of the earth on a map?\\
+
+How do we define position vectors here? There's not really a convenient outside place where we can put the origin here, 
+there's no external place for us to use. You might think that you can potentially use any place on the map
+to put the origin, choosing a random placefor it and drawing a straight line representing the position vector.\\
+
+There's a problem with this approach though, vectors are supposed to be straight, but the path from the origin to the tip
+of the vector is not really straight, because the surface in reality is not flat.\\
+
+\textbf{The method of studying curved surfaces where we're not allowed to leave the surface is called intrinsic geometry.}
+
+When we'll study General relativity, we're going to deal with a 4-dimensional curved spacetime geometry, the situation we're running 
+on is exactly this. Spacetime is curved so we cannot really run straight lines, hence we cannot draw position vectors.\\
+
+And we cannot pick an origin point outside of this 4-dim space, because that would mean picking a point outside universe, and that's completely
+meaningless.\\
+
+\textit{So the summary is that, we're forced to use intrinsic geometry in General Relativity, so how are we supposed to define things like
+velocity, acceleration etc if we're not allowed to use position vectors?}\\
+
+The solution is, to realize that, while we cannot draw straight lines on a curved surface, we can still 
+draw a curved path, and on a map, we can use grid lines, so we can still define derivatives wrt these curves.
+So we can use these derivative operators to talk about different directions on the surface.\\
+The partial derivative wrt to x for example, points to the x direction, the partial wrt to y points to the y direction and so on.\\
+
+If we have some path traveling around in our curved space, we can still consider the direction that the path 
+is pointing to, using the derivative wrt the curve parameter used, and we break this direction up in terms of our x, y components, using the 
+multi-variable chain rule as we saw.\\
+
+Formally, our new notation with basis vectors defined as partial derivative operators along the axis directions, form 
+a vector space called the "Tangent Vector Space" $T_p M$, which is the vector space of derivatives at some point $p$ on a surface $M$
