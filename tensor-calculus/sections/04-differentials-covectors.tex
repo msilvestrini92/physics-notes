@@ -62,3 +62,94 @@ At the end of the day, $d\begingroup\color{orange}f\endgroup(\begingroup\color{t
     d\begingroup\color{orange}f\endgroup(\begingroup\color{teal}\vec{v}\endgroup) = D_{\begingroup\color{teal}\vec{v}\endgroup}\begingroup\color{orange}f\endgroup
     = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{teal}\vec{v}\endgroup}
 \end{equation}
+
+\subsection{Differential forms components}
+Just as we can write vectors as linear combinations of special basis vectors, scaled by some components, we can 
+break covector fields, or differential forms, as linear combination of some special differential forms basis scaled by their components.\\
+
+\begin{equation}
+    d\begingroup\color{orange}f\endgroup = \begingroup\color{red} A \endgroup d\begingroup\color{cyan}x\endgroup + \begingroup\color{red} B \endgroup d\begingroup\color{cyan}y\endgroup
+\end{equation}
+
+Let's start by checking how differential forms act on our special basis vectors $\frac{\partial}{\partial x}, \frac{\partial}{\partial y}$:
+
+\begin{equation}
+    d\begingroup\color{orange}f\endgroup (\begingroup\color{blue}\vec{e_x}\endgroup) = 
+    d\begingroup\color{orange}f\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}x\endgroup}\right) = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}x\endgroup}
+\end{equation}
+
+That's the directional derivative of $f$ in the $x$ direction.\\ 
+Same for the other direction:
+
+\begin{equation}
+    d\begingroup\color{orange}f\endgroup (\begingroup\color{blue}\vec{e_y}\endgroup) = 
+    d\begingroup\color{orange}f\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}y\endgroup}\right) = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+\end{equation}
+
+Now we can look at the simple scalar field $\color{cyan}x$, and the scalar value at a point is just the value of $x$ at that point, positives on the right, negative on the left.\\
+The corresponding covector field is $d\color{cyan}x$, represented by vertical level sets directed to the right.\\
+So:
+
+\begin{align*}
+    d\begingroup\color{cyan}x\endgroup (\begingroup\color{blue}\vec{e_x}\endgroup) &= d\begingroup\color{cyan}x\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}x\endgroup}\right)\\
+    &= \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{cyan}x\endgroup} = 1\\
+    d\begingroup\color{cyan}x\endgroup (\begingroup\color{blue}\vec{e_y}\endgroup) &= d\begingroup\color{cyan}x\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}y\endgroup}\right)\\
+    &= \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{cyan}y\endgroup} = 0
+\end{align*}
+
+Same process can be applied to the scalar field $\color{cyan}y$, obtaining in summary:
+
+\begin{align*}
+    d\begingroup\color{cyan}x\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}x\endgroup}\right) = \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{cyan}x\endgroup} = 1 && 
+    d\begingroup\color{cyan}x\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}y\endgroup}\right) = \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{cyan}y\endgroup} = 0\\
+    d\begingroup\color{cyan}y\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}x\endgroup}\right) = \frac{\partial \begingroup\color{cyan}y\endgroup}{\partial \begingroup\color{cyan}x\endgroup} = 0 && 
+    d\begingroup\color{cyan}y\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}y\endgroup}\right) = \frac{\partial \begingroup\color{cyan}y\endgroup}{\partial \begingroup\color{cyan}y\endgroup} = 1
+\end{align*}
+
+Which can be re-written, considering $\begingroup\color{cyan}c^1\endgroup = \begingroup\color{blue}x\endgroup, \begingroup\color{cyan}c^2\endgroup = \begingroup\color{blue}y\endgroup$:
+
+\begin{equation}
+    d\begingroup\color{cyan}c^i\endgroup \left(\frac{\partial}{\partial \begingroup\color{cyan}c^j\endgroup}\right) = \frac{\partial \begingroup\color{cyan}c^i\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup} = \delta^i_j
+\end{equation}
+
+As when we discussed the special dual basis (co)vectors in the "Tensor for Beginners" notes, these special differential forms $d\color{cyan}x$, $d\color{cyan}y$ are the
+dual basis for differential forms.\\
+To find the coefficients, let's just consider a generic function $\begingroup\color{orange}f\endgroup (\begingroup\color{cyan}x, y\endgroup)$ and a curve parametrized by the parameter $\color{brown}\lambda$.\\
+The tangent vectors along the curve are given by $\frac{\partial}{\partial \color{brown}\lambda}$.\\
+Let's consider the rate of change of this function as we travel along the curve, which is given by the derivative $\frac{d \begingroup\color{orange}f\endgroup}{d \begingroup\color{brown}\lambda\endgroup}$\\
+
+Now remember this, the covector field $df$, acting on the vector $d/d\lambda$ is equal to $df/d\lambda$ so we can re-write:
+
+\begin{align*}
+    \frac{d\begingroup\color{orange}f\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &=
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} +
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\\
+    d\begingroup\color{orange}f\endgroup \left(\frac{d}{d \begingroup\color{brown}\lambda\endgroup}\right) &=
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}x\endgroup} d\begingroup\color{cyan}x\endgroup \left(\frac{d }{d \begingroup\color{brown}\lambda\endgroup}\right) +
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}y\endgroup} d\begingroup\color{cyan}y\endgroup \left(\frac{d }{d \begingroup\color{brown}\lambda\endgroup}\right)\\
+    d\begingroup\color{orange}f\endgroup \left(\frac{d}{d \begingroup\color{brown}\lambda\endgroup}\right) &=
+    \left(\frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}x\endgroup} d\begingroup\color{cyan}x\endgroup + \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}y\endgroup} d\begingroup\color{cyan}y\endgroup\right)
+    \left(\frac{d}{d \begingroup\color{brown}\lambda\endgroup}\right)
+\end{align*}
+
+So from the last equation, we can deduce that these two quantities are the same vector field:
+
+\begin{equation}
+    d\begingroup\color{orange}f\endgroup = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}x\endgroup} d\begingroup\color{cyan}x\endgroup + \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}y\endgroup} d\begingroup\color{cyan}y\endgroup
+\end{equation}
+
+And this is indeed what we were looking for, writing the covector field as linear combination of $d\color{cyan}x$, $d\color{cyan}y$, so $d\color{cyan}x$, $d\color{cyan}y$ form a basis for 
+the set of covector fields. They're the dual basis for differential forms.\\
+
+Let's see a more concrete example to understand this better.
+Consider this scalar field, we can write down the covector field in terms of the basis vectors in this way:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/covector-components-ex-01.png}
+\end{center}
+
+The same can be done in other coordinate systems, like polar ones:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/covector-components-polar-ex-01.png}
+\end{center}
