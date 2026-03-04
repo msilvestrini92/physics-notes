@@ -63,7 +63,7 @@ At the end of the day, $d\begingroup\color{orange}f\endgroup(\begingroup\color{t
     = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{teal}\vec{v}\endgroup}
 \end{equation}
 
-\subsection{Differential forms components}
+\subsection{Differential forms components and their transformation}
 Just as we can write vectors as linear combinations of special basis vectors, scaled by some components, we can 
 break covector fields, or differential forms, as linear combination of some special differential forms basis scaled by their components.\\
 
@@ -152,4 +152,68 @@ The same can be done in other coordinate systems, like polar ones:
 
 \begin{center}
 \includegraphics[scale=0.3]{figures/covector-components-polar-ex-01.png}
+\end{center}
+
+Now, how would both the covector basis field and the covector field components transform?
+Well we just showed that any covector field can be written as linear combination of basis covector field $d\begingroup\color{cyan}x\endgroup$ and $d\begingroup\color{cyan}y\endgroup$.\\
+
+But since this is valid for any covector field, we can expand our new polar covector field basis:
+
+\begin{align*}
+    d\begingroup\color{magenta}r\endgroup = \frac{\partial \begingroup\color{magenta}r\endgroup}{\partial \begingroup\color{cyan}x\endgroup} d\begingroup\color{cyan}x\endgroup + \frac{\partial \begingroup\color{magenta}r\endgroup}{\partial \begingroup\color{cyan}y\endgroup} d\begingroup\color{cyan}y\endgroup\\
+    d\begingroup\color{magenta}\theta\endgroup = \frac{\partial \begingroup\color{magenta}\theta\endgroup}{\partial \begingroup\color{cyan}x\endgroup} d\begingroup\color{cyan}x\endgroup + \frac{\partial \begingroup\color{magenta}\theta\endgroup}{\partial \begingroup\color{cyan}y\endgroup} d\begingroup\color{cyan}y\endgroup\\
+\end{align*}
+
+If you recall, those coefficients are just the entries of the Inverse Jacobian Matrix $B$ or $J^{-1}$.
+What this means is that, covector basis field transform contravariantly.\\
+In Einstein notation, and then in matrix notation, we can write:
+
+\begin{align*}
+    d\begingroup\color{magenta}p^i\endgroup &= \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup} d\begingroup\color{cyan}c^j\endgroup\\
+    \begin{bmatrix}
+        d\begingroup\color{magenta}r\endgroup\\
+        d\begingroup\color{magenta}\theta\endgroup
+    \end{bmatrix} &= 
+    \begin{bmatrix}
+        \frac{\partial \begingroup\color{magenta}r\endgroup}{\partial \begingroup\color{cyan}x\endgroup} & \frac{\partial \begingroup\color{magenta}r\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\\
+        \frac{\partial \begingroup\color{magenta}\theta\endgroup}{\partial \begingroup\color{cyan}x\endgroup} & \frac{\partial \begingroup\color{magenta}\theta\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+    \end{bmatrix} 
+    \begin{bmatrix}
+        d\begingroup\color{cyan}x\endgroup\\
+        d\begingroup\color{cyan}y\endgroup
+    \end{bmatrix}
+\end{align*}
+
+Remember that when writing in matrix notation, to make formulas work, we need to write contravariant components as column vectors.\\
+The other way around is also possible, so we'd have that to go from the new to the hold covector basis field, the Jacobian, or forward matrix is used:
+
+\begin{align*}
+    d\begingroup\color{cyan}c^i\endgroup &= \frac{\partial \begingroup\color{cyan}c^i\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup} d\begingroup\color{magenta}p^j\endgroup\\
+    \begin{bmatrix}
+        d\begingroup\color{cyan}x\endgroup\\
+        d\begingroup\color{cyan}y\endgroup
+    \end{bmatrix} &= 
+    \begin{bmatrix}
+        \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{magenta}r\endgroup} & \frac{\partial \begingroup\color{cyan}x\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\\
+        \frac{\partial \begingroup\color{cyan}y\endgroup}{\partial \begingroup\color{magenta}r\endgroup} & \frac{\partial \begingroup\color{cyan}y\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+    \end{bmatrix} 
+    \begin{bmatrix}
+        d\begingroup\color{magenta}r\endgroup\\
+        d\begingroup\color{magenta}\theta\endgroup
+    \end{bmatrix}
+\end{align*}
+
+Now what about the covector field components?\\
+Quite straight forward just using the usual chain rule:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup} &= \frac{\partial \begingroup\color{cyan}c^i\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}\\
+    \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup} &= \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup}
+\end{align*}
+
+So while the basis covector fields obey the contravariant transformation rule, the covector field components obey the covariant one.\\
+A full summary is depicted below:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/covector-field-xform-rules.png}
 \end{center}
