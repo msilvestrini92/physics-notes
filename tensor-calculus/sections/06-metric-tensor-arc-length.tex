@@ -1,0 +1,95 @@
+\section{The metric tensor and arch length}
+
+We already saw in the \textit{Tensor for beginners} notes, that the metric tensor is used to compute 
+the length of a vector, the dot product between two vectors and the angle in between, and we also saw that 
+it transforms using 2 covariant rules, hence is a (0,2)-tensor (bilinear form).
+
+\begin{align*}
+    g: V \times V \to \mathbb{R}\\
+    g \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right) \mapsto  \begingroup\color{orange}v^i\endgroup \begingroup\color{violet}w^j\endgroup \begingroup\color{blue}g_{ij}\endgroup
+\end{align*}
+
+\begin{align*}
+    \begingroup\color{red}\tilde{g_{ij}}\endgroup &= F^k_i F^l_j \begingroup\color{blue}g_{kl}\endgroup\\
+    \begingroup\color{blue}g_{kl}\endgroup &= B^i_k B^j_l \begingroup\color{red}\tilde{g_{ij}}\endgroup
+\end{align*}
+
+We'll here focus on using the metric tensor to compute lengths of curves in flat space.\\
+We recall that in order to get the length of a curve in multi-variable calculus, basically we approximate 
+the curve by a series of straight line segments, sum them up and take the limit as the $\Delta$ parameter used
+to parametrize the curve approaches to 0.\\
+At the end of the day, the key to get the curve length is getting the magnitude of the vector $\frac{dR}{d\lambda}$ if $\lambda$ is the parameter, and $R$ the 
+position vector used to describe a point on the curve. Which is nothing but the tangent velocity vector along the curve:
+
+\begin{align*}
+    \text{arc length} = \int \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}d\begingroup\color{brown}\lambda\endgroup 
+\end{align*}
+
+Now, to get this magnitude, we can just compute the dot product of this vector with itself, as we know, and do that in cartesian coordinates for example:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right) \cdot
+    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)\\
+    &= \left(\frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\right) +
+    2 \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right) +
+    \left(\frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right)
+\end{align*}
+
+This ugly long product chain will look similar in other coordinate systems, like polar:
+
+\begin{align*}
+    &= \left(\frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\right) +
+    2 \frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right) +
+    \left(\frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right)
+\end{align*}
+
+If you carefully look at this, you will find out that it's very similar to when we computed the magnitude of a vector in our
+\textit{Tensor for beginners} notes:
+
+\begin{align*}
+    \|\begingroup\color{orange}\vec{v}\endgroup\|^2 &= \begingroup\color{orange}\vec{v}\endgroup \cdot \begingroup\color{orange}\vec{v}\endgroup\\
+    &= \left(\begingroup\color{cyan}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)
+    \cdot \left(\begingroup\color{cyan}v^1\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}v^2\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\right)\\
+    &= \bigl(\begingroup\color{cyan}v^1\endgroup\bigr)^2\left(\begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_1}\endgroup\right)
+    + 2 \begingroup\color{cyan}v^1v^2\endgroup\left(\begingroup\color{blue}\vec{e_1}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup\right)
+    + \bigl(\begingroup\color{cyan}v^2\endgroup\bigr)^2\left(\begingroup\color{blue}\vec{e_2}\endgroup\cdot\begingroup\color{blue}\vec{e_2}\endgroup\right) \\ \\
+    &= \bigl(\begingroup\color{magenta}\tilde{v^1}\endgroup\bigr)^2\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\right)
+    + 2 \begingroup\color{magenta}\tilde{v^1v^2}\endgroup\left(\begingroup\color{red}\tilde{\vec{e_1}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)
+    + \bigl(\begingroup\color{magenta}\tilde{v^2}\endgroup\bigr)^2\left(\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\cdot\begingroup\color{red}\tilde{\vec{e_2}}\endgroup\right)
+\end{align*}
+
+The key is indeed getting those dot products like we did in those initial notes, and those are nothing more 
+than the components of the metric tensor in different coordinate systems.\\
+
+\begin{align*}
+    g_{\color{cyan}c^i} = \begin{bmatrix}
+        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\\
+        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+    \end{bmatrix} &&
+    g_{\color{magenta}p^i} = \begin{bmatrix}
+        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\\
+        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+    \end{bmatrix}
+\end{align*}
+
+Allright, now using the Einstein notation to save some writing:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
+    &= \frac{d \begingroup\color{cyan}c^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{cyan}c^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup}
+    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\right) = \frac{d \begingroup\color{cyan}c^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{cyan}c^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{blue}g_{ij}\endgroup\\
+    &= \frac{d \begingroup\color{magenta}p^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{magenta}p^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup}
+    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\right) = \frac{d \begingroup\color{magenta}p^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{magenta}p^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
+\end{align*}
+
+And its transformation rules:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{g_{ij}}\endgroup = \frac{\partial \begingroup\color{cyan}c^k\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \frac{\partial \begingroup\color{cyan}c^l\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup} \begingroup\color{blue}g_{kl}\endgroup \\
+    \begingroup\color{blue}g_{kl}\endgroup = \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^k\endgroup} \frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^l\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
+\end{align*}

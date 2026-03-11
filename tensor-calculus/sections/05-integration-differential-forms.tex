@@ -178,4 +178,51 @@ Looking at the scalar field and not the associated vector field (given by the gr
 the work.\\
 Then, yet another way of looking at things, instead of looking at the scalar field $\begingroup\color{olive}\Phi\endgroup$, we can look at the level sets of $\begingroup\color{olive}\Phi\endgroup$, 
 and when we draw a path through these level sets, if we can to compute the work along, we just look at where the path starts, where it ends, and see how much 
-the function has changed. Basically by counting how many level sets, the path piereces from start to end.
+the function has changed. Basically by counting how many level sets, the path piereces from start to end.\\\\
+
+We can move ahead with another of example, with a simple single variable integration.\\
+
+\begin{align*}
+   \int_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} \begingroup\color{red}(-6x + 4)dx\endgroup
+\end{align*}
+
+Integration is over the single variable $x$.
+If we represent this function and compute the integral as we are usually doing:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/single-var-int.png}
+\end{center}
+
+\begin{align*}
+    & \int_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} \begingroup\color{red}(-6x + 4)dx\endgroup \\
+    &= \left[\begingroup\color{red}-3x^2 + 4x\endgroup\right]_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} \\
+    &= \left[\begingroup\color{red}-3(2)^2 + 4(2)\endgroup\right] - \left[\begingroup\color{red}-3(0)^2 + 4(0)\endgroup\right] \\
+    &= -12 + 8 \\
+    &= -4
+\end{align*}\\
+
+We can think of re-interpreting this using our new covector field vision:
+
+\begin{align*}
+    & \int_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} \begingroup\color{red}(-6x + 4)dx\endgroup \\
+    &= \int_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} \frac{d \begingroup\color{brown}F\endgroup}{d\begingroup\color{red}x\endgroup}d\begingroup\color{red}x\endgroup\\
+    &= \int_{\begingroup\color{blue}0\endgroup}^{\begingroup\color{blue}2\endgroup} d \begingroup\color{brown}F\endgroup\\ \\
+    & \frac{d \begingroup\color{brown}F\endgroup}{d\begingroup\color{red}x\endgroup} = -6 \begingroup\color{red}x\endgroup + 4\\
+    & \begingroup\color{brown}F\endgroup(\begingroup\color{red}x\endgroup) = -3\begingroup\color{red}x^2\endgroup + 4\begingroup\color{red}x\endgroup + C
+\end{align*}
+
+Visualising it, it would look like this function here, but we can also visualize it as scalar field:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/single-var-int-scalar.png}
+\end{center}
+
+The associated covector field $d\begingroup\color{brown}F\endgroup$ would look like this:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/single-var-int-cov-field.png}
+\end{center}
+
+If you now plot the path from $x=0$ to $x=2$, you can clearly see yourself that, adding a +1 when 
+the path pierces the covector field along its direction, and a -1 when on the opposite direction, the path
+crosses the covector field exactly $+1 -1 -1 -1 -1 -1 = -4$ times, which is exactly the same value we got before using standard calculus.
