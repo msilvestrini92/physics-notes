@@ -1,4 +1,4 @@
-\section{The metric tensor and arch length}
+\section{The metric tensor and arch length - flat and curved spaces}
 
 We already saw in the \textit{Tensor for beginners} notes, that the metric tensor is used to compute 
 the length of a vector, the dot product between two vectors and the angle in between, and we also saw that 
@@ -15,6 +15,8 @@ it transforms using 2 covariant rules, hence is a (0,2)-tensor (bilinear form).
 \end{align*}
 
 We'll here focus on using the metric tensor to compute lengths of curves in flat space.\\
+
+\subsection{Arch length in flat spaces}
 We recall that in order to get the length of a curve in multi-variable calculus, basically we approximate 
 the curve by a series of straight line segments, sum them up and take the limit as the $\Delta$ parameter used
 to parametrize the curve approaches to 0.\\
@@ -22,29 +24,29 @@ At the end of the day, the key to get the curve length is getting the magnitude 
 position vector used to describe a point on the curve. Which is nothing but the tangent velocity vector along the curve:
 
 \begin{align*}
-    \text{arc length} = \int \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}d\begingroup\color{brown}\lambda\endgroup 
+    \text{arc length} = \int \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}d\begingroup\color{brown}\lambda\endgroup 
 \end{align*}
 
 Now, to get this magnitude, we can just compute the dot product of this vector with itself, as we know, and do that in cartesian coordinates for example:
 
 \begin{align*}
-    \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
-    \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
-    &= \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
-    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right) \cdot
-    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
-    \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)\\
-    &= \left(\frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\right) +
-    2 \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right) +
-    \left(\frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right)
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right) \cdot
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)\\
+    &= \left(\frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\right) +
+    2 \frac{d \begingroup\color{cyan}x\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right) +
+    \left(\frac{d \begingroup\color{cyan}y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}\right)
 \end{align*}
 
 This ugly long product chain will look similar in other coordinate systems, like polar:
 
 \begin{align*}
-    &= \left(\frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\right) +
-    2 \frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right) +
-    \left(\frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right)
+    &= \left(\frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\right) +
+    2 \frac{d \begingroup\color{magenta}r\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right) +
+    \left(\frac{d \begingroup\color{magenta}\theta\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2  \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}\right)
 \end{align*}
 
 If you carefully look at this, you will find out that it's very similar to when we computed the magnitude of a vector in our
@@ -67,24 +69,24 @@ than the components of the metric tensor in different coordinate systems.\\
 
 \begin{align*}
     g_{\color{cyan}c^i} = \begin{bmatrix}
-        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\\
-        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup}\\
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}y\endgroup}
     \end{bmatrix} &&
     g_{\color{magenta}p^i} = \begin{bmatrix}
-        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\\
-        \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} & \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup}\\
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
     \end{bmatrix}
 \end{align*}
 
 Allright, now using the Einstein notation to save some writing:
 
 \begin{align*}
-    \norm{\frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
-    \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}R\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\\
     &= \frac{d \begingroup\color{cyan}c^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{cyan}c^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup}
-    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\right) = \frac{d \begingroup\color{cyan}c^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{cyan}c^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{blue}g_{ij}\endgroup\\
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}c^j\endgroup}\right) = \frac{d \begingroup\color{cyan}c^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{cyan}c^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{blue}g_{ij}\endgroup\\
     &= \frac{d \begingroup\color{magenta}p^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{magenta}p^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup}
-    \left(\frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}R\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\right) = \frac{d \begingroup\color{magenta}p^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{magenta}p^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}\right) = \frac{d \begingroup\color{magenta}p^i\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\frac{d \begingroup\color{magenta}p^j\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
 \end{align*}
 
 And its transformation rules:
@@ -93,3 +95,276 @@ And its transformation rules:
     \begingroup\color{red}\tilde{g_{ij}}\endgroup = \frac{\partial \begingroup\color{cyan}c^k\endgroup}{\partial \begingroup\color{magenta}p^i\endgroup} \frac{\partial \begingroup\color{cyan}c^l\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup} \begingroup\color{blue}g_{kl}\endgroup \\
     \begingroup\color{blue}g_{kl}\endgroup = \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^k\endgroup} \frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^l\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
 \end{align*}
+
+\subsection{Arch length in curved spaces}
+Now we'll move on computing arc lengths for curved space, and in particular we're going to focus on the surface of sphere for our maine example.\\
+
+The first question we can ask ourselves is, how do we describe a 2D surface mathematically? Well, the most common and straight forward way is to start with a flat 2D 
+plane, with $\color{red}u$ and $\color{teal}v$ coordinates, and then put this into some sort of function $\color{brown}f$ which will stretch and transform the plane so
+that it becomes a 2D surface living in the 3D space basically:\\
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/surface-01.png}
+\end{center}
+
+The variables $\color{red}u$ and $\color{teal}v$ become parameters of this vector function $\color{brown}f$ (i.e. its \textbf{domain} D contained in $\mathbb{R}^2$).
+The range of the surfaces is contained in the three dimensional space $\mathbb{R}^3$, thus, a surface x is a mapping of D into $\mathbb{R}^3$.\\
+This can be denoted by:
+
+\begin{equation}
+    \begingroup\color{brown}f\endgroup : D \to \mathbb{R}^3
+\end{equation}
+
+and also represented in 3D coordinate system:
+
+\begin{align*}
+    \left(\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup\right) \rightarrow 
+    \left(\begingroup\color{cyan}X\endgroup(\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup),
+    \begingroup\color{cyan}Y\endgroup(\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup),
+    \begingroup\color{cyan}Z\endgroup(\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup)\right)
+\end{align*}
+
+For a sphere surface, its parametrization/transformation function can be written as:
+
+\begin{align*}
+    \begingroup\color{cyan}X\endgroup &= \cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Y\endgroup &= \sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Z\endgroup &= \cos(\begingroup\color{red}u\endgroup)
+\end{align*}
+
+Allright, and how do we represent a curve on a surface? Well we can apply the same logic, and make the curve, described by $\gamma$ with parameter $t$
+on the $\begingroup\color{red}u\endgroup\begingroup\color{teal}v\endgroup$-plane go through the same transformation function $\color{brown}f$, to get the curve
+in the 3D space:
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/surface-02.png}
+\end{center}
+
+A more mathematically correct definition might be, that given a parametrization for a surface and a curve $\gamma$, 
+the curve is on the surface, if a parametrization of $\gamma$ with a parameter $t$ can be obtained from equations of the 
+surface when $u$ and $v$ become functions of $t$:
+
+\begin{equation}
+    \gamma(t) = \begingroup\color{brown}f\endgroup(\begingroup\color{red}u\endgroup(t),\begingroup\color{teal}v\endgroup(t))
+\end{equation}
+
+Let's see a simple example of a curve given by:
+
+\begin{equation}
+    \begingroup\color{orange}\lambda\endgroup \rightarrow (\begingroup\color{red}u\endgroup = \begingroup\color{orange}\lambda\endgroup, \begingroup\color{teal}v\endgroup = \begingroup\color{orange}\lambda\endgroup)
+\end{equation}
+
+which is just a simple diagonal line: 
+
+\begin{center}
+\input{figures/02-simple-curve.tex}
+\end{center}
+
+Its parametrization on the spherical surface can be obtained by applying the transformation functions we saw:
+
+\begin{align*}
+    \begingroup\color{cyan}X\endgroup &= \cos(\begingroup\color{orange}\lambda\endgroup)\sin(\begingroup\color{orange}\lambda\endgroup)\\
+    \begingroup\color{cyan}Y\endgroup &= \sin(\begingroup\color{orange}\lambda\endgroup)\sin(\begingroup\color{orange}\lambda\endgroup)\\
+    \begingroup\color{cyan}Z\endgroup &= \cos(\begingroup\color{orange}\lambda\endgroup)
+\end{align*}
+
+If we now want to compute the length of such curve, we need to compute the magnitude of the tangent vector $\frac{dR}{d\lambda}$ where $R$ is just
+the position vector of a point on the curve, in the 3D space X,Y,Z.\\
+
+If we try to do that, we obtain:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{orange}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right) \cdot
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{orange}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} + 
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)\\
+    &= \left(\frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}\right)
+    + \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\right)
+    + \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)\\
+    &+ \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)
+    + \left(\frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\right)
+    + \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)\\
+    &+ \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}\right)
+    + \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\right)
+    + \left(\frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)
+\end{align*}
+
+Due to the orthonormality of the cartesian 3D basis vectors, you would end up with the simple Pythagora's theorem in 3D in this specific case:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
+    &= \left(\frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 
+    + \left(\frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2
+    + \left(\frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2
+\end{align*}
+
+So we can now proceed computing these derivatives of $X, Y, Z$ wrt $\lambda$ and get:
+
+\begin{align*}
+    \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &= 
+    \cos(2\begingroup\color{orange}\lambda\endgroup)\\
+    \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &= 
+    \sin(2\begingroup\color{orange}\lambda\endgroup)\\
+    \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &= 
+    -\sin(\begingroup\color{orange}\lambda\endgroup)
+\end{align*}
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
+    &= \left(\frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 
+    + \left(\frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2
+    + \left(\frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2\\
+    &= \left(\cos(2\begingroup\color{orange}\lambda\endgroup)^2\right)
+    + \left(\sin(2\begingroup\color{orange}\lambda\endgroup)^2\right)
+    + \left(-\sin(\begingroup\color{orange}\lambda\endgroup)^2\right)\\
+    &= 1 + \sin(\begingroup\color{orange}\lambda\endgroup)^2
+\end{align*}
+
+So finally, our arc length is:
+
+\begin{align*}
+    \text{arc length} &= \int_{0}^{1} \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}\\
+    &= \int_{0}^{1} \sqrt{1 + \sin(\begingroup\color{orange}\lambda\endgroup)^2} d\begingroup\color{orange}\lambda\endgroup \approx 1.12389
+\end{align*}
+
+It's interesting to notice that this is not equal to the length of the same curve in the flat uv-plane, which would just be $\sqrt{2}$.\\
+That big ugly formula we used in the first place, can be rewritten as a series of row array (1 x 3) - matrix (3 x 3) - column array (3 x 1) multiplications.
+
+The 3 x 3 matrix composed by the dot products of the basis vectors, is nothing but the metric tensor in the 3D cartesian coordinate system, which we know 
+actually being indeed the 3 x 3 Identity matrix at the end of the day, due to the orthonormality of the basis.\\
+
+Something we need to realize, is that to compute this arc length in the curved surface (sphere in this case) we used the $XYZ$ coordinate system, so even though
+we were analyzing the 2D surface, we then worked in the 3D space around the surface, in order to understand it.
+This approach of studying surfaces is called \textbf{extrinsic} geometry, because it involves analyzing curved 2D spaces, using the sorrounding
+3D space that the surface lives in.\\
+The other way of analyzing surfaces is without looking at the sorrounding space, where we would only be looking at the uv-plane, and this point of view is called
+\textbf{intrinsic} geometry.\\
+
+Using the instrinsic approach, instead of studying the tangent vectors in the $XYZ$ space, we would be studying it in terms of the 
+$\color{red}u$ and $\color{teal}v$ 2D coordinates:
+
+\begin{equation}
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} 
+    = \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \frac{d\begingroup\color{red}u\endgroup}{d\begingroup\color{orange}\lambda\endgroup}
+    + \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} \frac{d\begingroup\color{teal}v\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\right)
+\end{equation}
+
+Calculating the magnitude using this tangent vector would give us, in a more compact Einstein notation, considering $\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup = \begingroup\color{red}u^1\endgroup, \begingroup\color{red}u^2\endgroup$:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right) \cdot 
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
+    &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \begingroup\color{red}g_{ij}\endgroup
+\end{align*}
+
+where $\color{red}g_{ij}$ is the metric tensor of the 2D uv-plane, i.e. the dot products of the basis vectors.\\
+
+Allright, and how do we get the tangent space basis for the uv-plane? So we can compute the metric tensor...well you remember that:
+
+\begin{align*}
+    \begingroup\color{cyan}X\endgroup &= \cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Y\endgroup &= \sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Z\endgroup &= \cos(\begingroup\color{red}u\endgroup)
+\end{align*}
+
+We can expand the tangent basis vectors using the chain rule:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} &=
+    \frac{\partial \begingroup\color{cyan}X\endgroup}{\partial \begingroup\color{red}u\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    + \frac{\partial \begingroup\color{cyan}Y\endgroup}{\partial \begingroup\color{red}u\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+    + \frac{\partial \begingroup\color{cyan}Z\endgroup}{\partial \begingroup\color{red}u\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} &=
+    \frac{\partial \begingroup\color{cyan}X\endgroup}{\partial \begingroup\color{teal}v\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    + \frac{\partial \begingroup\color{cyan}Y\endgroup}{\partial \begingroup\color{teal}v\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+    + \frac{\partial \begingroup\color{cyan}Z\endgroup}{\partial \begingroup\color{teal}v\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}
+\end{align*}
+
+Calculating those partial derivatives we get the tangent basis vectors $\begingroup\color{red}\vec{e_u}\endgroup, \begingroup\color{teal}\vec{e_v}\endgroup$ in the uv-plane, as linear combination of the 3D basis vectors $X, Y ,Z$:
+
+\begin{align*}
+    \begingroup\color{red}\vec{e_u}\endgroup &= \cos(\begingroup\color{teal}v\endgroup) \cos(\begingroup\color{red}u\endgroup)\begingroup\color{blue}\vec{e_x}\endgroup 
+    + \sin(\begingroup\color{teal}v\endgroup) \cos(\begingroup\color{red}u\endgroup)\begingroup\color{blue}\vec{e_y}\endgroup
+    - \sin(\begingroup\color{red}u\endgroup)\begingroup\color{blue}\vec{e_z}\endgroup\\
+    \begingroup\color{teal}\vec{e_v}\endgroup &= -\sin(\begingroup\color{teal}v\endgroup) \sin(\begingroup\color{red}u\endgroup)\begingroup\color{blue}\vec{e_x}\endgroup 
+    + \cos(\begingroup\color{teal}v\endgroup) \sin(\begingroup\color{red}u\endgroup)\begingroup\color{blue}\vec{e_y}\endgroup
+\end{align*}
+
+And now we're able to compute the metric tensor using the basis vector dot products, and 
+performing the calculations you will end up with:
+
+\begin{equation}
+    \begin{bmatrix}
+        \begingroup\color{red}\vec{e_u}\endgroup \cdot \begingroup\color{red}\vec{e_u}\endgroup & \begingroup\color{red}\vec{e_u}\endgroup \cdot \begingroup\color{teal}\vec{e_v}\endgroup\\
+        \begingroup\color{teal}\vec{e_v}\endgroup \cdot \begingroup\color{red}\vec{e_u}\endgroup & \begingroup\color{teal}\vec{e_v}\endgroup \cdot \begingroup\color{teal}\vec{e_v}\endgroup
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & \sin(\begingroup\color{red}u\endgroup)^2
+    \end{bmatrix}
+\end{equation}
+
+And finally, we can compute the arc length as per the equation above:
+
+\begin{align*}
+    \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
+    \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right) \cdot 
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
+    &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \begingroup\color{red}g_{ij}\endgroup\\
+    &= \begin{bmatrix}
+        \frac{d \begingroup\color{red}u\endgroup}{d \begingroup\color{orange}\lambda\endgroup} & \frac{d \begingroup\color{teal}v\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
+    \end{bmatrix} \begin{bmatrix}
+        1 & 0\\
+        0 & \sin(\begingroup\color{red}u\endgroup)^2
+    \end{bmatrix} \begin{bmatrix}
+        \frac{d \begingroup\color{red}u\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\\
+        \frac{d \begingroup\color{teal}v\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
+    \end{bmatrix} \\
+    &= \left(\frac{d \begingroup\color{red}u\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)^2
+    + \sin(\begingroup\color{red}u\endgroup)^2 \left(\frac{d \begingroup\color{teal}v\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)^2
+\end{align*}
+
+If the arc length we're interested about is given, as we said before, by simple:
+
+\begin{equation}
+    \begingroup\color{orange}\lambda\endgroup \rightarrow (\begingroup\color{red}u\endgroup = \begingroup\color{orange}\lambda\endgroup, \begingroup\color{teal}v\endgroup = \begingroup\color{orange}\lambda\endgroup)
+\end{equation}
+
+Then we have that $\frac{d \begingroup\color{red}u\endgroup}{d \begingroup\color{orange}\lambda\endgroup} = 1$ and $\frac{d \begingroup\color{teal}v\endgroup}{d \begingroup\color{orange}\lambda\endgroup} = 1$, so
+we end up with exactly the same result we got when using the extrinsic approach:
+
+\begin{align*}
+    \text{arc length} &= \int_{0}^{1} \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}\\
+    &= \int_{0}^{1} \sqrt{1 + \sin(\begingroup\color{orange}\lambda\endgroup)^2} d\begingroup\color{orange}\lambda\endgroup \approx 1.12389
+\end{align*}
+
+\textbf{Main take away from this is that, in curved space, you can't trust your eyeballs, you can only trust the metric tensor}
+
+You may wonder one thing, based on the above it seems that in order to get the intrinsic metric tensor matrix, you need to reference
+the "outside space" anyway. That's actually somewhat true, but there are options to get the intrinsic one from several places:
+\begin{itemize}
+    \item Using indeed the extrinsic basis
+    \item Invent one out of imagination
+    \item Obtain it from another equation, like the Einstein Field Equations
+\end{itemize}
+
+Once you have the intrinsic matric, we then can do ALL calculations involving distances and angles, completely intrinsically.
+But you need that first, and sometimes this involves getting help from the outside space at the start.\\
+
+The last thing that may still bother you, is the fact that, based on our previous discussions, even in intrinsic geometry we 
+refer to the position vector $\color{violet}\vec{R}$, which references the space outside our curved surface.\\
+If we want to stay completely intrinsic in the surface, we can just remove the position vector from the equations completely, and 
+treat the derivative operators themselves as the vectors
