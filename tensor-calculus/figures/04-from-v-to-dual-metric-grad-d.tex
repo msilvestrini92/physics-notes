@@ -1,0 +1,42 @@
+\begin{tikzpicture}[
+    box/.style={draw, thick, minimum width=4cm, minimum height=6cm},
+    every node/.style={font=\Large}
+]
+
+% Left box (V)
+\node[box] (V) at (0,0) {};
+\node at (V.north) [below=1cm] {$V$};
+
+% Circled Grad f in left box
+\node at (V.south) [above=1.2cm] 
+{
+    \tikz{
+        \node[draw, circle, thick, inner sep=6pt] 
+        {$\grad{\begingroup\color{orange}{f}}\endgroup$};
+    }
+};
+
+% Arrow with g
+\draw[thick, ->] (2.8,1) -- (6.2,1)
+    node[midway, above=2pt] {$g$};
+
+% Arrow with g-inverse
+\draw[thick, <-] (2.8,-1) -- (6.2,-1)
+    node[midway, below=2pt] {$\mathfrak{g}$};
+
+
+% Right box (V*)
+\node[box] (Vstar) at (9,0) {};
+\node at (Vstar.north) [below=1cm] {$V^{*}$};
+
+% Oval with df
+\node at (Vstar.south) [above=1.2cm]
+{
+    \tikz{
+        \node[draw, ellipse, thick, minimum width=3.5cm, 
+              minimum height=1.5cm, inner sep=6pt] 
+        {$d\begingroup\color{orange}{f}\endgroup \cdot \underline{\hspace{1cm}}$};
+    }
+};
+
+\end{tikzpicture}
