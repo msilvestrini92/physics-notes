@@ -76,7 +76,7 @@ But notice here, that we can perform the same approach we did when lowering/rais
 the vector as it appears on both sides, and write down in covector components, the $d\begingroup\color{orange}{f}\endgroup \cdot {{} - {}}$, so
 using the covector basis $dc^j$
 
-\begin{equation}
+\begin{equation} \label{eq:d-components}
     d{\begingroup\color{orange}f\endgroup} = \grad{\begingroup\color{orange}f\endgroup} \cdot {{} - {}} =
     \left(\grad{\begingroup\color{orange}f\endgroup}\right)^i  
     \begingroup\color{cyan}g_{ij}\endgroup d\begingroup\color{cyan}c^j\endgroup
@@ -128,3 +128,163 @@ having to calculate the gradient in different basis.\\
 
 No strange things happen in cartesian basis, as the metric tensor is the simple identity matrix, hence the inverse is also the identity matrix, so the gradient itself 
 is simply $d\begingroup\color{orange}f\endgroup = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \begingroup\color{blue}\vec{e_i}\endgroup$
+
+The same does not happen in polar or spherical coordinates though, and as you may already know, the gradient components are requiring a scaling factor, 
+which is indeed given by the components of the inverse metric tensor in the specific basis.
+
+In polar coordinates for example, we know that the metric tensor and its inverse are:
+
+\begin{align*}
+    \begingroup\color{magenta}\tilde{g_{ij}}\endgroup = \begin{bmatrix}
+    1 & 0\\
+    0 & \begingroup\color{magenta}r\endgroup^2
+    \end{bmatrix} &&
+    \begingroup\color{red}\mathfrak{\tilde{g^{ij}}}\endgroup = \begin{bmatrix}
+    1 & 0\\
+    0 & 1/\begingroup\color{magenta}r\endgroup^2
+    \end{bmatrix}
+\end{align*}
+
+So, the components of the gradient in this system are:
+
+\begin{align*}
+    \grad{\begingroup\color{orange}f\endgroup} &=  
+    \begingroup\color{red}\mathfrak{\tilde{g^{ij}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}
+    \frac{\partial}{\partial \begingroup\color{red}p^k\endgroup}\\
+    &= \begingroup\color{red}\mathfrak{\tilde{g^{rr}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}r\endgroup}
+    \frac{\partial}{\partial \begingroup\color{red}r\endgroup} +
+    \begingroup\color{red}\mathfrak{\tilde{g^{\theta\theta}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+    \frac{\partial}{\partial \begingroup\color{red}\theta\endgroup}\\
+    &=  \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}r\endgroup} +
+    \frac{1}{\begingroup\color{magenta}r\endgroup^2} \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+\end{align*}
+
+To give a bit more formal proof, it's good to recall the tensor product of two covectors, which is a sort of double covector, 
+getting as input two vectors and outputting a scalar, in this way:
+
+\begin{align*}
+    \left(\begingroup\color{blue}\epsilon^1\endgroup \otimes \begingroup\color{blue}\epsilon^2\endgroup\right)
+    \left(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup\right)\\
+    = \begingroup\color{blue}\epsilon^1\endgroup (\begingroup\color{orange}\vec{v}\endgroup)
+    \begingroup\color{blue}\epsilon^2\endgroup (\begingroup\color{violet}\vec{w}\endgroup)
+\end{align*}
+
+And remember that we can write them in matrix format as:
+
+\begin{align*}
+    \begingroup\color{blue}\epsilon^1\endgroup \otimes \begingroup\color{blue}\epsilon^1\endgroup = \begin{bmatrix}
+        1 & 0\\
+        0 & 0
+    \end{bmatrix}\\
+    \begingroup\color{blue}\epsilon^1\endgroup \otimes \begingroup\color{blue}\epsilon^2\endgroup = \begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix}\\
+    \begingroup\color{blue}\epsilon^2\endgroup \otimes \begingroup\color{blue}\epsilon^1\endgroup = \begin{bmatrix}
+        0 & 0\\
+        1 & 0
+    \end{bmatrix}\\
+    \begingroup\color{blue}\epsilon^2\endgroup \otimes \begingroup\color{blue}\epsilon^2\endgroup = \begin{bmatrix}
+        0 & 0\\
+        0 & 1
+    \end{bmatrix}
+\end{align*}
+
+So the above tensor product acting on vectors, in matrix/array notation will be:
+
+\begin{equation}
+    \begin{bmatrix}
+        \begingroup\color{orange}v^1\endgroup & \begingroup\color{orange}v^2\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{violet}w^1\endgroup \\
+        \begingroup\color{violet}w^2\endgroup
+    \end{bmatrix} = \begingroup\color{orange}v^1\endgroup \begingroup\color{violet}w^2\endgroup
+\end{equation}
+
+If we remember the metric tensor acting on two vectors, this can be written in Einstein notation and then matrix/array notation as:
+
+\begin{align*}
+    g(\begingroup\color{orange}\vec{v}\endgroup, \begingroup\color{violet}\vec{w}\endgroup) &= 
+    \begingroup\color{orange}v^i\endgroup\begingroup\color{violet}w^j\endgroup
+    \begingroup\color{blue}g_{ij}\endgroup\\
+    &= \begin{bmatrix}
+        \begingroup\color{orange}v^1\endgroup & \begingroup\color{orange}v^2\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{cyan}g_{11}\endgroup & \begingroup\color{cyan}g_{12}\endgroup\\
+        \begingroup\color{cyan}g_{21}\endgroup & \begingroup\color{cyan}g_{22}\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{violet}w^1\endgroup \\
+        \begingroup\color{violet}w^2\endgroup
+    \end{bmatrix}
+\end{align*}
+
+So in a sense, we can write down our metric tensor as a linear combination of:
+
+\begin{align*}
+    \begin{bmatrix}
+        \begingroup\color{cyan}g_{11}\endgroup & \begingroup\color{cyan}g_{12}\endgroup\\
+        \begingroup\color{cyan}g_{21}\endgroup & \begingroup\color{cyan}g_{22}\endgroup
+    \end{bmatrix} &= 
+    \begingroup\color{cyan}g_{11}\endgroup 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 0
+    \end{bmatrix} +
+    \begingroup\color{cyan}g_{12}\endgroup 
+    \begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix} + 
+    \begingroup\color{cyan}g_{21}\endgroup 
+    \begin{bmatrix}
+        0 & 0\\
+        1 & 0
+    \end{bmatrix} + 
+    \begingroup\color{cyan}g_{22}\endgroup 
+    \begin{bmatrix}
+        0 & 0\\
+        0 & 1
+    \end{bmatrix} \\&= 
+    \begingroup\color{cyan}g_{ij}\endgroup 
+    (\begingroup\color{blue}\epsilon^i\endgroup \otimes \begingroup\color{blue}\epsilon^j\endgroup)
+\end{align*}
+
+We can try to re-proof the below formula in these terms:
+
+\begin{equation}
+    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} = \begingroup\color{orange}v^i\endgroup \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^i\endgroup
+\end{equation}
+
+\begin{align*}
+    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} &= g(\begingroup\color{orange}\vec{v}\endgroup, {{} - {}})\\
+    &= \left(\begingroup\color{cyan}g_{ij}\endgroup 
+    (\begingroup\color{blue}\epsilon^i\endgroup \otimes \begingroup\color{blue}\epsilon^j\endgroup)\right)
+    (\begingroup\color{orange}v^k\endgroup \begingroup\color{blue}e_k\endgroup)\\
+    &= \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^i\endgroup(\begingroup\color{orange}v^k\endgroup \begingroup\color{blue}e_k\endgroup) \begingroup\color{blue}\epsilon^j\endgroup\\
+    &= \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{orange}v^k\endgroup \begingroup\color{blue}\epsilon^i\endgroup(\begingroup\color{blue}e_k\endgroup) \begingroup\color{blue}\epsilon^j\endgroup\\
+    &= \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{orange}v^k\endgroup \delta^i_k \begingroup\color{blue}\epsilon^j\endgroup\\
+    &= \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{orange}v^i\endgroup\begingroup\color{blue}\epsilon^j\endgroup
+\end{align*}
+
+Here in Tensor Calculus, we can replace the basis vectors/covectors with basis vector/covector fields, hence we can write:
+
+\begin{equation}
+    g = \begingroup\color{cyan}g_{ij}\endgroup 
+    (d\begingroup\color{blue}c^i\endgroup \otimes d\begingroup\color{blue}c^j\endgroup)
+\end{equation}
+
+Where these are the basis covector fields in cartesian coordinates ($\begingroup\color{blue}c^1\endgroup = \begingroup\color{blue}x\endgroup$, $\begingroup\color{blue}c^2\endgroup = \begingroup\color{blue}y\endgroup$), and 
+obeying:
+
+\begin{equation}
+    d\begingroup\color{blue}c^j\endgroup (\frac{\partial}{\partial \begingroup\color{blue}c^i\endgroup}) = \delta^j_i
+\end{equation}
+
+And then we can easily proof equation \ref{eq:d-components}
