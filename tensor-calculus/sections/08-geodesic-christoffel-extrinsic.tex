@@ -110,6 +110,91 @@ So we can now substitute in the previous expression of the acceleration vector:
     + \frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d}{d\begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup}\right)
     + \frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} 
     + \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d}{d\begingroup\color{orange}\lambda\endgroup} \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup}\right)\\
-    &=
+    &= \frac{d^2 \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} 
+    + \frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d\begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2}
+    + \frac{d\begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup \partial\begingroup\color{teal}v\endgroup}\right)
+    + \frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} 
+    + \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d\begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup \partial\begingroup\color{red}u\endgroup}
+    + \frac{d\begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial\begingroup\color{teal}v\endgroup^2}\right)\\
+    &= \frac{d^2 \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} 
+    + \left(\frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right)^2 \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2}
+    + \frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup \partial\begingroup\color{teal}v\endgroup}
+    + \frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} 
+    + \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup \partial\begingroup\color{red}u\endgroup}
+    + \left(\frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right)^2 \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial\begingroup\color{teal}v\endgroup}
 \end{align*}
 
+To get a bit more compact notation, we can define $\color{red}u^1 = u$ and $\begingroup\color{red}u^2\endgroup = \begingroup\color{teal}v\endgroup$ and using Einstein summation convention:
+
+\begin{align*}
+    \frac{d^2\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup^2} &=
+    \frac{d^2 \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} 
+    + \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup}
+\end{align*}
+
+Now, the first terms (only summed over index i) are just coefficients (second order derivatives) multiplied by the tangent vectors $\frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$, so are
+a linear combination of the tangent vectors, hence we're sure they're purely lying on the tangent plane to the surface.\\
+The same is not valid for the other terms (summed both over i and j), as they measure how the tangent vectors themselves change, so it can have both a tangent component, but also a normal component to the tangent plane on the surface.\\
+
+Let's then study these terms, and we're going to do to by expaning these in some basis. At the end of the day these are 3D vectors and can be expanded, for example, on the X, Y, Z coordinates we've seen, but we prefer
+to expand these in the tangent plane using the tangent plane basis vectors themselves $\frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$.
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/tangent-plane.png}
+\end{center}
+
+So we can write these as linear combination with some coefficients we define as $\Gamma$ for the tangent components, and $L$ for the normal one.
+
+\begin{align*}
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} &=
+    \begingroup\color{blue}\Gamma^{1}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} 
+    + \begingroup\color{blue}\Gamma^{2}_{ij}\endgroup \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup}
+    + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\\
+    &= \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\\
+\end{align*}
+
+The $\Gamma$ coefficients are called \textbf{Christoffel symbols} and gives us the tangential components of that second order derivative, whereas the $L$ coefficients are the coefficients of the \textbf{second fundamental form}, 
+which gives us the normal components of that.\\
+
+We can derive the Christoffel symbols by considering that the normal vector is by definition normal to the tangent basis vectors, so it means that their dot product is 0, we can use this fact
+and perform the dot product on both sides:
+
+\begin{align*}
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup} &= 
+    \left(\begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\right) \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup}\\
+    &= \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup}\\
+    &= \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \begingroup\color{red}g_{kl}\endgroup
+\end{align*}
+
+To isolate the Christoffel symbols, we need to get rid of the metric tensor on the right side, and we can do so by recalling the defintion 
+of the inverse metric tensor, so:
+
+\begin{align*}
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup} \begingroup\color{purple}\mathfrak{g}^{lm}\endgroup &= 
+    \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \begingroup\color{red}g_{kl}\endgroup\begingroup\color{purple}\mathfrak{g}^{lm}\endgroup\\
+    &= \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \delta^{m}_k\\
+    &= \begingroup\color{blue}\Gamma^{m}_{ij}\endgroup
+\end{align*}
+
+So we have:
+
+\begin{equation}
+    \begingroup\color{blue}\Gamma^{m}_{ij}\endgroup = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup} \begingroup\color{purple}\mathfrak{g}^{lm}\endgroup
+\end{equation}
+
+In a similar way we can derive the coefficients of the second fundamental forms, this time with the dot product with the normal vector itself:
+
+\begin{align*}
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup &= 
+    \left(\begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\right) \cdot \begingroup\color{red}\hat{n}\endgroup\\
+    &= \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup \cdot \begingroup\color{red}\hat{n}\endgroup\\
+    &= \begingroup\color{teal}L_{ij}\endgroup
+\end{align*}
+
+So we have, also considering a more concrete expression for the normal vector to the tangent plane of the surface:
+
+\begin{equation}
+    \begingroup\color{teal}L_{ij}\endgroup = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\begingroup\color{red}\vec{e_i}\endgroup \cross \begingroup\color{red}\vec{e_j}\endgroup}{\|\begingroup\color{red}\vec{e_i}\endgroup \cross \begingroup\color{red}\vec{e_j}\endgroup \|}
+\end{equation}
+
+We can finally plug these additional terms into the equation of the second order derivative of the position vector, to end up with:
