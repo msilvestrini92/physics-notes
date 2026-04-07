@@ -198,3 +198,210 @@ So we have, also considering a more concrete expression for the normal vector to
 \end{equation}
 
 We can finally plug these additional terms into the equation of the second order derivative of the position vector, to end up with:
+
+\begin{align*}
+    \frac{d^2\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup^2} &=
+    \frac{d^2 \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} 
+    + \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup}\\
+    &= \frac{d^2 \begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} 
+    + \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\right)
+\end{align*}
+
+If you notice, in this equation, all the terms are either given using the tangent vectors, or the normal vector, so we can group the terms together:
+
+\begin{align*}
+    \frac{d^2\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup^2} &=
+    \left(\frac{d^2 \begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right) \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup}
+    + \begingroup\color{teal}L_{ij}\endgroup \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \begingroup\color{red}\hat{n}\endgroup
+\end{align*}
+
+Our main objective was to find geodesic curves, which are curves where the acceleration vector is only normal to the surface. What this means is that the tangential term of the above
+equation, in order to satisfy the geodesic requirement, has to be 0:
+
+\begin{equation}\label{eq:geodesic}
+    \boxed{\frac{d^2 \begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 }
+\end{equation}
+
+\subsection{Geodesic Examples on Plane and Sphere}
+
+This section gives examples on the actual computation of geodesics, and the plan to do so is:
+
+\begin{itemize}
+    \item Compute Christoffel symbols
+    \begin{equation}
+    \boxed{\begingroup\color{blue}\Gamma^{k}_{ij}\endgroup = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^l\endgroup} \begingroup\color{purple}\mathfrak{g}^{lk}\endgroup }
+    \end{equation}
+    which gives us information on how the basis vectors change from point to point on the surface.
+    \item Solve Geodesic equations
+    \begin{equation}
+    \boxed{\frac{d^2 \begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 }
+    \end{equation}
+    Plugging the Christoffel symbols and solve for the path, will is a set of u-coordinates in function of the path parameter $\lambda$  
+\end{itemize}
+
+\subsubsection{Geodesics on a plane}
+Let's start with computing geodesics on a plane surface. This is more a sanity check to actually verify that the geodesic equation is a simple 
+straight line lying on the plane itself, as we already know.\\
+
+The equation of a 2D plane is given by:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{R}\endgroup (\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup) = \vec{p} + \begingroup\color{red}u\endgroup\begingroup\color{blue}\vec{a}\endgroup + \begingroup\color{teal}v\endgroup\begingroup\color{cyan}\vec{b}\endgroup
+\end{equation}
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/2d-plane.png}
+\end{center}
+
+To compute the Christoffel symbols, we need to compute the first and second order derivative of the position vector
+with respect to the plane's coordinates $\color{red}u$ and $\color{teal}v$, which are easily calculated as:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} = \begingroup\color{blue}\vec{a}\endgroup, \quad \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} = \begingroup\color{cyan}\vec{b}\endgroup\\
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2} = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup^2} = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup \begingroup\color{teal}v\endgroup} = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup \begingroup\color{red}u\endgroup} = \vec{0}
+\end{align*}
+
+Since the Christoffel symbols depend on those second order derivative, and they're all zero, that means that on the 2D plane:
+
+\begin{equation}
+    \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup = 0
+\end{equation}
+
+If you think about it, it actually makes sense since Christoffel symbols track how the basis vectors change from point to point, and on a 2D surface, 
+the basis vectors are just constant in every point in space, hence Christoffel symbols are correctly zero.\\
+
+This makes it easier to compute the geodesic equations, as this only depends on the second-order derivative of the coordinates wrt the parameter:
+
+\begin{align*}
+    \frac{d^2 \begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \cancel{\begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup}} = 0 
+\end{align*}
+
+In other words, geodesics on the plane, are curve for which acceleration is zero.\\
+
+\begin{align*}
+    \frac{d^2 \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} &= 0\\
+    \frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} &= 0
+\end{align*}
+
+The solution to these differential equations would just be linear equations for both $\color{red}u$ and $\color{teal}v$:
+
+\begin{align*}
+    \begingroup\color{red}u\endgroup = \begingroup\color{red}k_u\endgroup\begingroup\color{brown}\lambda\endgroup + \begingroup\color{red}u_0\endgroup\\
+    \begingroup\color{teal}v\endgroup = \begingroup\color{teal}k_v\endgroup\begingroup\color{brown}\lambda\endgroup + \begingroup\color{teal}v_0\endgroup
+\end{align*}
+
+where the numbers $\color{red}k_u$, $\color{red}u_0$, $\color{teal}k_v$, $\color{teal}v_0$ are just constants.\\
+Plugging these into the 2D plane equation:
+
+\begin{align*}
+    \begingroup\color{violet}\vec{R}\endgroup (\begingroup\color{red}u\endgroup, \begingroup\color{teal}v\endgroup) &= \vec{p} + \begingroup\color{red}u\endgroup\begingroup\color{blue}\vec{a}\endgroup + \begingroup\color{teal}v\endgroup\begingroup\color{cyan}\vec{b}\endgroup\\
+    &= \vec{p} + \left(\begingroup\color{red}k_u\endgroup\begingroup\color{brown}\lambda\endgroup + \begingroup\color{red}u_0\endgroup\right)\begingroup\color{blue}\vec{a}\endgroup + \left(\begingroup\color{teal}k_v\endgroup\begingroup\color{brown}\lambda\endgroup + \begingroup\color{teal}v_0\endgroup\right)\begingroup\color{cyan}\vec{b}\endgroup\\
+    &= \left(\vec{p} + \begingroup\color{red}u_0\endgroup\begingroup\color{blue}\vec{a}\endgroup + \begingroup\color{teal}v_0\endgroup\begingroup\color{cyan}\vec{b}\endgroup\right) + 
+    \begingroup\color{brown}\lambda\endgroup \left(\begingroup\color{red}k_u\endgroup\begingroup\color{blue}\vec{a}\endgroup + \begingroup\color{teal}k_v\endgroup\begingroup\color{cyan}\vec{b}\endgroup\right)\\
+    &= \vec{q} + \begingroup\color{brown}\lambda\endgroup(\vec{r})
+\end{align*}
+
+All of this, is just a single position vector of a point on the plane ($\vec{q}$), plus a vector ($\vec{r}$) living in the plane, scaled by $\color{brown}\lambda$ 
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/geodesic-plane.png}
+\end{center}
+
+Where the constants simply specify the initial position ($\color{red}u_0$ and $\color{teal}v_0$) and initial velocity ($\color{red}k_0$ and $\color{teal}k_0$).\\
+So, given an initial position and velocity, there's a unique geodesic on the 2D surface, which is just the straight line heading in the direction 
+of the velocity vector.\\
+
+\subsubsection{Geodesics on a sphere}
+
+Now we consider a 2D surface of a sphere, of radius 1.\\
+Let's recall the XYZ equations defining the surface, condering the radius=1:
+
+\begin{align*}
+    \begingroup\color{cyan}X\endgroup &= \cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Y\endgroup &= \sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{cyan}Z\endgroup &= \cos(\begingroup\color{red}u\endgroup)
+\end{align*}
+
+We already calculated the first order derivative, i.e. the tangent basis vectors before, using the chain rule, as:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} &= \cos(\begingroup\color{teal}v\endgroup) \cos(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} 
+    + \sin(\begingroup\color{teal}v\endgroup) \cos(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+    - \sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} &= -\sin(\begingroup\color{teal}v\endgroup) \sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    + \cos(\begingroup\color{teal}v\endgroup) \sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+\end{align*}
+
+And then the metric tensor:
+
+\begin{equation}
+    \begingroup\color{blue}g_{ij}\endgroup = 
+    \begin{bmatrix}
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup}\\
+        \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} & \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup}
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & \sin(\begingroup\color{red}u\endgroup)^2
+    \end{bmatrix}
+\end{equation}
+
+Proceeding further, to compute the Christoffel symbols we'll need the second-order derivatives, so we can get:
+
+\begin{align*}
+    \frac{\partial}{\partial \begingroup\color{red}u\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup}\right) &=
+    -\cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    -\sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+    -\cos(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\\
+    \frac{\partial}{\partial \begingroup\color{teal}v\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup}\right) &=
+    -\cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    -\sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\\
+    \frac{\partial}{\partial \begingroup\color{red}u\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup}\right) &=
+    \frac{\partial}{\partial \begingroup\color{teal}v\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup}\right) =
+    -\sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}
+    + \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}
+\end{align*}
+
+We can also get easily the inverse metric tensor, as the metric tensor is diagonal, so its inverse is formed by the reciprocal of the components:
+
+\begin{equation}
+    \begingroup\color{blue}\mathfrak{g^{ij}}\endgroup = 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 1/\sin(\begingroup\color{red}u\endgroup)^2
+    \end{bmatrix}
+\end{equation}
+
+So finally we're ready to compute the Christoffel symbols: it has 3 indexes, i, j and k, and each of those 
+goes from 1 to 2, so that means there are 2 x 2 x 2 symbols to compute, for a total of 8.\\
+Notice also that, in the formula there's also the l index on the right hand side, so there's a summation over l going on as well.\\
+
+Let's start by considering the k=1 and k=2 equations, and explicitly write the summation over l:
+
+\begin{align*}
+    \begingroup\color{blue}\Gamma^{1}_{ij}\endgroup &= \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} \begingroup\color{purple}\mathfrak{g}^{11}\endgroup
+    + \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup} \begingroup\color{purple}\mathfrak{g}^{21}\endgroup\\
+    \begingroup\color{blue}\Gamma^{2}_{ij}\endgroup &= \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} \begingroup\color{purple}\mathfrak{g}^{12}\endgroup
+    + \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup} \begingroup\color{purple}\mathfrak{g}^{22}\endgroup
+\end{align*}
+
+In this way, we clearly see the components of the inverse metric tensor in the equations, and we know that the off-diagonal components are equal to zero, hence, already plugging in the values:
+
+\begin{align*}
+    \begingroup\color{blue}\Gamma^{1}_{ij}\endgroup &= \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} \begingroup\color{purple}\mathfrak{g}^{11}\endgroup = 
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup}\\
+    \begingroup\color{blue}\Gamma^{2}_{ij}\endgroup &=
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup} \begingroup\color{purple}\mathfrak{g}^{22}\endgroup = 
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup} \frac{1}{\sin(\begingroup\color{red}u\endgroup)^2}
+\end{align*}
+
+And now we need to compute all the dot products.\\
+Normally, the dot product of two 3D vectors, we'd end up with 9 total terms, but since here we're dealing with the cartsian XYZ coordinate system, all the off-diagonal dot products go to zero, and the
+diagonal terms are simply equal to 1, so at the end, in the cartesian system, the dot product is a simple sum of 3 multiplications:
+
+\begin{align*}
+    \text{ONLY IN CARTETIAN BASIS}\\
+    \begingroup\color{cyan}\vec{a}\endgroup \cdot \begingroup\color{red}\vec{b}\endgroup = \begingroup\color{cyan}a^X\endgroup\begingroup\color{red}b^X\endgroup
+    + \begingroup\color{cyan}a^Y\endgroup\begingroup\color{red}b^Y\endgroup
+    + \begingroup\color{cyan}a^Z\endgroup\begingroup\color{red}b^Z\endgroup
+\end{align*}
