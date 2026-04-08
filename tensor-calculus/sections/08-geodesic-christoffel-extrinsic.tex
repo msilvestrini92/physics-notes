@@ -405,3 +405,126 @@ diagonal terms are simply equal to 1, so at the end, in the cartesian system, th
     + \begingroup\color{cyan}a^Y\endgroup\begingroup\color{red}b^Y\endgroup
     + \begingroup\color{cyan}a^Z\endgroup\begingroup\color{red}b^Z\endgroup
 \end{align*}
+
+We start with the dot products:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
+    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2} &= 
+    \begin{bmatrix}
+        \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        -\sin(\begingroup\color{red}u\endgroup)
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        -\cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+        -\sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+        -\cos(\begingroup\color{red}u\endgroup)
+    \end{bmatrix} = -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup) + \cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup) = 0
+\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
+    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup^2} &= 
+    \begin{bmatrix}
+        \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        -\sin(\begingroup\color{red}u\endgroup)
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        -\cos(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+        -\sin(\begingroup\color{teal}v\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+        0
+    \end{bmatrix} = -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup)
+\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
+    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup\partial \begingroup\color{teal}v\endgroup} &= 
+    \begin{bmatrix}
+        \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        -\sin(\begingroup\color{red}u\endgroup)
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        -\sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
+        0
+    \end{bmatrix} = 0
+\\
+\dots\\
+\dots
+\end{align*}
+
+You can go ahead with all the calculations and you eventually find that the non-zero Christoffel symbols are:
+
+\begin{align*}
+    \begingroup\color{blue}\Gamma^{1}_{22}\endgroup &= -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{blue}\Gamma^{2}_{12}\endgroup &= \begingroup\color{blue}\Gamma^{2}_{21}\endgroup = \frac{\cos(\begingroup\color{red}u\endgroup)}{\sin(\begingroup\color{red}u\endgroup)}
+\end{align*}
+
+Note that since the order of differentiation does not matter, you have that $\color{blue}\Gamma^{k}_{ij} = \color{blue}\Gamma^{k}_{ji}$\\
+
+Now, plugging these into the geodesic equations, the only non-zero ones are:
+
+\begin{align*}
+    &\frac{d^2 \begingroup\color{red}u^1\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \begingroup\color{blue}\Gamma^{1}_{22}\endgroup \frac{d \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 \\
+    &\frac{d^2 \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + \begingroup\color{blue}\Gamma^{2}_{12}\endgroup \frac{d \begingroup\color{red}u^1\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup} + \begingroup\color{blue}\Gamma^{2}_{21}\endgroup \frac{d \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^1\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = \frac{d^2 \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + 2\begingroup\color{blue}\Gamma^{2}_{12}\endgroup \frac{d \begingroup\color{red}u^1\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{red}u^2\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 \\
+\end{align*}
+
+We can plug in the Christoffel symbols, rewrite the coordinates back to $\color{red}u$ and $\color{teal}v$, and replace the $cos/sin = cot = 1/tan$:
+
+\begin{align*}
+    &\frac{d^2 \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup) \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 \\
+    &\frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + 2 \cot(\begingroup\color{red}u\endgroup)\frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} = 0 \\
+\end{align*}
+
+Now there are non-linear couple of differential equations, not easy to solve in the general case.\\
+To simplify the example, we can try some special cases like a circle of latitude on the sphere:
+
+\begin{align*}
+    \begingroup\color{red}u\endgroup = \begingroup\color{red}\theta_0\endgroup\\
+    \begingroup\color{teal}v\endgroup = \begingroup\color{teal}k\endgroup\begingroup\color{brown}\lambda\endgroup
+\end{align*}
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/sphere-lat.png}
+\end{center}
+
+In this way we have simple first derivative, and 0 second order derivatives:
+
+\begin{align*}
+    \frac{d \begingroup\color{red}u\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &= 0\\
+    \frac{d \begingroup\color{teal}v\endgroup}{d \begingroup\color{brown}\lambda\endgroup} &= \begingroup\color{teal}k\endgroup\\
+    \\
+    \frac{d^2 \begingroup\color{red}u\endgroup}{d \begingroup\color{brown}\lambda\endgroup^2} &= 0\\
+    \frac{d^2 \begingroup\color{teal}v\endgroup}{d \begingroup\color{brown}\lambda\endgroup^2} &= 0
+\end{align*}
+
+Bringing these into the geodesic equations, we obtain:
+
+\begin{align*}
+    &\cos(\begingroup\color{red}\theta_0\endgroup)\sin(\begingroup\color{red}\theta_0\endgroup)\begingroup\color{teal}k\endgroup^2 = 0\\
+    &0 = 0
+\end{align*}
+
+The second one is automatically true of course, and to make the first equation true, we need to choose the values of $\color{red}\theta_0$ and $\color{teal}k$ so that the term goes to 0.\\
+
+You can set $\color{teal}k$ $=0$ but that's not very interesting because that's a single point at a constant $\color{teal}v$.
+Another option is to make the $\sin$ part go to zero by setting $\sin(\begingroup\color{red}\theta_0\endgroup)$ $=0$, that's basically $\color{red}\theta_0$ $=0$ or $\color{red}\theta_0$ $=\pi$, but this also 
+is not very interesting because it's a single point at north/south pole of the sphere.\\
+
+The other option is to have the $\cos$ part go to zero, and this requires $\color{red}\theta_0$ $=\pi/2$ which is a curve around the equator.\\
+
+So the path along the equator
+
+\begin{align*}
+    \begingroup\color{red}u\endgroup &= \pi/2\\
+    \begingroup\color{teal}v\endgroup &= \begingroup\color{teal}k\endgroup \begingroup\color{brown}\lambda\endgroup
+\end{align*}
+
+is a geodesic curve on the sphere, which means that the shortest way to get between two points on the equator, is to travel straight along the equator
+on the geodesic path.\\
+Other circles of latitude are not geodesics, like if you take a latitude path on the northern emisphere, you will find out that the geodesic is not along
+the same latitude path, but it curves slighlty above it.\\
+The only circle of latitude that it's a geodesic, is the equator, which makes sense because if we think of traveling along the equator, our
+accelerator vectors always point directly inward towards the center of the circle, which is also the center of the sphere, hence completely normal to the surface (geodesic requirement).
+Instead, if we travel along another circle of latitude, the accelerator vectors point to the center of the circle, which in this case, is not the center of the sphere, so we end up with a tangential 
+component as well as a normal component.\\
+Now, the equator being a geodesic, by rotational symmetry, all great circles (which center is located at the center of the sphere) are geodesics.
