@@ -1,1 +1,66 @@
 \section{Covariant Derivative}
+
+If we want to give a one-sentence definition of the  Covariant Derivative, we can
+say it's the \textbf{understanding the rate of change of vector (tensor) fields
+that takes changing basis vectors into account}
+
+There's obviously some explanation and proof required, and we're going to define the 
+Covariant Derivative first in the flat space, which is the easiest way to look at it, 
+and then follow along, increasing the challenge, by looking at it in curved-space, first extrinsic and 
+then intrinsic, and finally giving its most abstract definition.\\
+
+\subsection{Covariant derivate in flat-space}
+
+Let's start by recalling that, given a certain basis, we can define a vector $\color{orange}\vec{v}$ as a 
+linear conbination of the basis vectors, for example in cartesian basis $\color{blue}\vec{e_i}$ or polar $\color{red}\tilde{\vec{e_j}}$:
+
+\begin{align*}
+    \begingroup\color{orange}\vec{v}\endgroup = \begingroup\color{cyan}v^i\endgroup \begingroup\color{blue}\vec{e_i}\endgroup\\
+    \begingroup\color{orange}\vec{v}\endgroup = \begingroup\color{magenta}v^i\endgroup \begingroup\color{red}\tilde{\vec{e_i}}\endgroup
+\end{align*}
+
+If we try to differentiate the vector with respect to one of the coordinates in cartesian basis in $\mathbb{R}^2$, let's say x:
+
+\begin{align*}
+    \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} (\begingroup\color{orange}\vec{v}\endgroup) &= 
+    \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} \left(\begingroup\color{cyan}v^x\endgroup \begingroup\color{blue}\vec{e_x}\endgroup + \begingroup\color{cyan}v^y\endgroup \begingroup\color{blue}\vec{e_y}\endgroup\right)\\ &=
+    \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} \left(\begingroup\color{cyan}v^x\endgroup \begingroup\color{blue}\vec{e_x}\endgroup\right) + \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} \left(\begingroup\color{cyan}v^y\endgroup \begingroup\color{blue}\vec{e_y}\endgroup\right)\\ &=
+    \frac{\partial \begingroup\color{cyan}v^x\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \begingroup\color{blue}\vec{e_x}\endgroup + \begingroup\color{cyan}v^x\endgroup \cancel{\frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} \left(\begingroup\color{blue}\vec{e_x}\endgroup\right)}
+    + \frac{\partial \begingroup\color{cyan}v^y\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \begingroup\color{blue}\vec{e_y}\endgroup + \cancel{\begingroup\color{cyan}v^y\endgroup \frac{\partial}{\partial \begingroup\color{cyan}x\endgroup} \left(\begingroup\color{blue}\vec{e_y}\endgroup\right)}\\
+    &= \frac{\partial \begingroup\color{cyan}v^x\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \begingroup\color{blue}\vec{e_x}\endgroup + \frac{\partial \begingroup\color{cyan}v^y\endgroup}{\partial \begingroup\color{cyan}x\endgroup} \begingroup\color{blue}\vec{e_y}\endgroup
+\end{align*}
+
+where the canceled components are due to the fact that, in cartesian coordinates, the basis vectors are just constant, so the derivative is reduced to be 
+a linear combination of the basis vectors, with coefficients given by the derivative of the vector components.\\
+
+Different is the case of polar coordinates though, because the vector basis are not constant in space, but change from point to poing.
+In polar coordinates, we end up with 4 components, 2 of them track the rate of change of components, and 2 of them track the change of the basis vectors.\\
+
+In general, this is actually the simplest definition of the covariant derivative, so an ordinary derivative 
+that takes into account the change of basis, so it makes sure to differentiate both the components and the basis vectors.\\
+Writing that down using Einstein summation convention:
+
+\begin{align*}
+    \frac{\partial}{\partial \begingroup\color{cyan}c^i\endgroup} (\begingroup\color{orange}\vec{v}\endgroup) &= 
+    \frac{\partial}{\partial \begingroup\color{cyan}c^i\endgroup} \left(\begingroup\color{cyan}v^j\endgroup \begingroup\color{blue}\vec{e_j}\endgroup\right)\\
+    &= \frac{\partial \begingroup\color{cyan}v^j\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \begingroup\color{blue}\vec{e_j}\endgroup
+    + \begingroup\color{cyan}v^j\endgroup \frac{\partial \begingroup\color{blue}\vec{e_j}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup}
+\end{align*}
+
+Sometimes, the basis vector derivative, is commonly expanded into a linear combination of the basis 
+vectors themselves, so:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{blue}\vec{e_j}\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} &= 
+    \begingroup\color{cyan}\Gamma^1_{ij}\endgroup \begingroup\color{blue}\vec{e_1}\endgroup + \begingroup\color{cyan}\Gamma^2_{ij}\endgroup \begingroup\color{blue}\vec{e_2}\endgroup\\
+    &= \begingroup\color{cyan}\Gamma^k_{ij}\endgroup \begingroup\color{blue}\vec{e_k}\endgroup
+\end{align*}
+
+So the covariant derivative can be re-written as:
+
+\begin{align*}
+    \frac{\partial}{\partial \begingroup\color{cyan}c^i\endgroup} (\begingroup\color{orange}\vec{v}\endgroup) &= 
+    \frac{\partial \begingroup\color{cyan}v^k\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \begingroup\color{blue}\vec{e_k}\endgroup
+    + \begingroup\color{cyan}v^j\endgroup \begingroup\color{cyan}\Gamma^k_{ij}\endgroup \begingroup\color{blue}\vec{e_k}\endgroup\\
+    &= \left(\frac{\partial \begingroup\color{cyan}v^k\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} + \begingroup\color{cyan}v^j\endgroup \begingroup\color{cyan}\Gamma^k_{ij}\endgroup\right)\begingroup\color{blue}\vec{e_k}\endgroup
+\end{align*}
