@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        note: [ "tensors-for-beginners", "tensor-calculus" ]
+        note: [ "tensors-for-beginners", "tensor-calculus", "relativity" ]
 
     steps:
       - uses: actions/checkout@v4
