@@ -123,3 +123,37 @@ crosses the train vagon in one direction. This would be given by:
 Now consider this from the point of reference of the scientist on the platform ground.\\
 Since the train is passing by at speed $v$ on the right, he sees the beam of light traveling in a triangle
 shape because of the train motion.
+
+\begin{center}
+\includegraphics[scale=0.3]{figures/train-lorentz.png}
+\end{center}
+
+So in the frame of the platform, the light takes $\color{red}\Delta\tilde{t}$ time to cross the train:
+
+\begin{align*}
+    d^2 + \left(v \begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2 &= \left(c \begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2\\
+    \frac{d^2}{c^2} + \frac{v^2}{c^2}\left(\begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2 &= \left(\begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2\\
+    \frac{d^2}{c^2} &= \left(\begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2 \left(1-\frac{v^2}{c^2}\right)
+\end{align*}
+
+which means that:
+
+\begin{align*}
+    \left(\begingroup\color{teal}\Delta t\endgroup\right)^2 &= \left(\begingroup\color{red}\Delta\tilde{t}\endgroup\right)^2 \left(1-\frac{v^2}{c^2}\right)\\
+    \begingroup\color{red}\Delta\tilde{t}\endgroup &= \begingroup\color{teal}\Delta t\endgroup \left(\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\right) = \begingroup\color{teal}\Delta t\endgroup \gamma_v
+\end{align*}
+
+This factor that you see, it's called the Lorentz factor, and we often write it as $\gamma_v$.\\
+
+This tells us that, the time calculated by the scientist on the ground platform $\color{red}\Delta\tilde{t}$ is actually greater 
+than the time calculated by the moving train $\color{teal}\Delta t$.\\
+In other words, the travel time for the light beam in each reference frame is not equal. When we measure the time between clock ticks for a moving 
+clock, and measure the time between clock ticks for a stationary clock, we find that the time between clock ticks for the moving clock is larger.\\
+This effect is called time dilation.\\
+
+There is a similar effect called length contraction, where rods that are moving appear to have a shorter length than the same 
+rods when they are standing still. However length contraction only happens along the direction of motion, in the direction perpendicular to motion, no length contraction happens.
+
+\begin{equation}
+    \begingroup\color{red}\Delta\tilde{l}\endgroup = \begingroup\color{teal}\Delta l\endgroup \frac{1}{\gamma_v}
+\end{equation}
