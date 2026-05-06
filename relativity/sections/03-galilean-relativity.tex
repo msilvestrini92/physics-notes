@@ -1,0 +1,153 @@
+\section{Galilean Relativity}
+
+\subsection{Spacetime Diagrams}
+
+Remind that Gelilean relativity states that the laws of motion are the same in all inertial reference frames.\\
+We discussed before that, observers in different reference frames will agree on certain things, like the time and space (or space/time, $\Delta x$), the mass and indeed the laws of motion, but
+they will disagree on other quantities like the velocity, momentum, kinetic energy, and even the position of physical objects.\\
+
+The most important quantity is actually the position of an object $x$, and to understand how observers disagree on positions, we'll be 
+studying spacetime diagrams.
+A spacetime diagram is a tool for visualizing the motion of objects in different frames of reference.\\
+
+A specetime diagram has the time $t$ on the vertical axis, increasing towards north, and the position $x$ as horizontal axis, increasing towards the right.
+Let's first try to visualize an object standing still, starting at the origin at position $x = 0$.\\
+As time passes, if the object stays still, no movement is done on its position, so the movement is simply a straight vertical line. It's traveling
+through time but not through space. The path followed is called world-line. \\
+
+Another example is an object moving at a constant speed of $25 m/s$ to the right. If this starts at the origin, after 1 second, 
+it will have traveled $25 m$ to the right, after 2 seconds, its position will be $50 m$ to the right and so on.\\
+Its world-line is a diagonal line pointint to the upper right.\\
+
+The fastest the speed, the closer the world-line is to the horizontal axis. The slower, the closer to the vertical.\\
+
+\textbf{Now, a really important point}, remember that in Galilean relativity, all motion is relative to something else, and that there's no
+special reference frame that's at rest. Let's take a person, stationary, with a world-line moving only vertically through time, and a car, moving 
+also through space at a constant speed.\\
+From the point of view of the person, he's stationary, and the car is moving to the right. But from the point of view of the moving car, it's stationary, and the person is moving
+to the left, along with the road and the entire neighborhood.
+So, if we draw on the spacetime diagram, the person world-line as vertical, and the car moving world-line as diagonally pointing to the upper right, we're
+drawing the spacetime diagram from the point of view of the person.\\
+But it would equally correct drawing the spacetime diagram from the car's point of view, where the car is stationary, and the person is diagonally moving to the upper left.
+Even though the two spacetime diagrams look different, they actually describe the exact same situation and the same physics, just from different points of view.\\
+
+\textbf{We can always re-arrange a spacetime diagram, so that any object of our choice is stationary (i.e. representing the physics from the point of view of the object).
+In order to do so, we have to re-arrange the time "slices" to make that object world-line vertical.
+There's no special stationary frame of reference, and we can always change reference frames by sliding time slices back and forth.}
+
+\subsection{Spacetime Interval, transforms, covariance/contravariance}
+
+When we talk about the spacetime separation vector, or spacetime interval, we refer to the vector that measurees, in space and time, the separation between two event points.
+We can measure the spacetime interval using the time and space basis vectors, and different inertial frames will always agree on the time of all events, but they will disagree on 
+the position of events, and this is because each inertial frame uses a different set of spacetime basis vectors.\\
+\textbf{Spacetime vectors are invariant, its components change based on the reference frame used to measure it.}
+
+Now, we can always try to plot different events and reference frames on a spacetime diagram to see how events 
+are differently described when we go from one frame to another, but it would be nice to have formal equations in order to do that.
+In order to do that, let's try to do it with an example, considering two frames: one scientist stationary in his lab, only moving through time, 
+and a car moving at constant speed to the right. Let's remind ourselves that, in Galilean relativity, time is universal, whereas different observers will
+disagree on position.\\
+Let's say that, from the person perspective, after 1 time unit passes, the spatial separation of the car looks to be 1/2, after 2 time units, this spatial 
+separation is 1, after 3 time units, the separation is 1.5 and so on and so forth. So we can write down:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{t}_{car}\endgroup &= \begingroup\color{blue}t_{man}\endgroup\\
+    \begingroup\color{red}\tilde{x}_{car}\endgroup &= \begingroup\color{blue}x_{man}\endgroup - 1/2 \begingroup\color{blue}t_{man}\endgroup
+\end{align*}
+
+But remember that we cannot only consider the coordinate transformation, but also the basis vectors transformation, as they're both required to go a bit deeper and eventually move 
+on to special and general relativity.\\
+
+So let's try to understand how we move from the scientist's basis to the car's basis. 
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/gelilean-basis-change-01.png}
+\end{center}
+
+Just visualizing it, we can write down that:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e}}_t\endgroup &= 1 \begingroup\color{blue}\vec{e}_t\endgroup + 1/2 \begingroup\color{blue}\vec{e}_x\endgroup = \begingroup\color{blue}\vec{e}_t\endgroup + 1/2 \begingroup\color{blue}\vec{e}_x\endgroup\\
+    \begingroup\color{red}\tilde{\vec{e}}_x\endgroup &= 0 \begingroup\color{blue}\vec{e}_t\endgroup + 1 \begingroup\color{blue}\vec{e}_x\endgroup = \begingroup\color{blue}\vec{e}_x\endgroup
+\end{align*}
+
+In the other direction, we can also write down:
+
+\begin{align*}
+    \begingroup\color{blue}\vec{e}_t\endgroup &= \begingroup\color{red}\tilde{\vec{e}}_t\endgroup - 1/2 \begingroup\color{red}\tilde{\vec{e}}_x\endgroup\\
+    \begingroup\color{blue}\vec{e}_x\endgroup &= \begingroup\color{red}\tilde{\vec{e}}_x\endgroup
+\end{align*}
+
+So now we have equations to move from one basis (scientist frame) to the other (car frame).
+In terms of math, we can also prove easily that, one trasformation is the opposite to the other.\\
+
+To prove that this is also valid generically, we can substitute the $1/2$ with the constant velocity the car's going $v$, both for the basis vectors and the 
+components, to find out that we can write:\\ \\
+
+\textbf{Basis: Man $\to$ Car}
+\begin{align*}
+    \begingroup\color{red}\tilde{\vec{e}}_t\endgroup &= \begingroup\color{blue}\vec{e}_t\endgroup + \begingroup\color{teal}v\endgroup \begingroup\color{blue}\vec{e}_x\endgroup \\
+    \begingroup\color{red}\tilde{\vec{e}}_x\endgroup &= \begingroup\color{blue}\vec{e}_x\endgroup
+\end{align*}
+
+\textbf{Basis: Car $\to$ Man}
+\begin{align*}
+    \begingroup\color{blue}\vec{e}_t\endgroup &= \begingroup\color{red}\tilde{\vec{e}}_t\endgroup - \begingroup\color{teal}v\endgroup \begingroup\color{red}\tilde{\vec{e}}_x\endgroup\\
+    \begingroup\color{blue}\vec{e}_x\endgroup &= \begingroup\color{red}\tilde{\vec{e}}_x\endgroup
+\end{align*}
+
+\textbf{Components: Man $\to$ Car}
+\begin{align*}
+    \begingroup\color{red}\tilde{t}\endgroup &= \begingroup\color{blue}t\endgroup\\
+    \begingroup\color{red}\tilde{x}\endgroup &= -\begingroup\color{teal}v\endgroup \begingroup\color{blue}t\endgroup + \begingroup\color{blue}x\endgroup
+\end{align*}
+
+\textbf{Components: Car $\to$ Man}
+\begin{align*}
+    \begingroup\color{blue}t\endgroup &= \begingroup\color{red}\tilde{t}\endgroup\\
+    \begingroup\color{blue}x\endgroup &= \begingroup\color{teal}v\endgroup \begingroup\color{red}\tilde{t}\endgroup + \begingroup\color{red}\tilde{x}\endgroup 
+\end{align*}
+
+The Galilean transform are basically all these formulas put together.\\
+All of it becomes much easier if we write these down in matrix/array notation. 
+Starting with the basis vector change from Man to Car, we can write down those in this form:
+
+\begin{align*}
+    \begin{bmatrix}
+        \begingroup\color{red}\tilde{\vec{e}}_t\endgroup & \begingroup\color{red}\tilde{\vec{e}}_x\endgroup
+    \end{bmatrix} &= 
+    \begin{bmatrix}
+        \begingroup\color{blue}\vec{e}_t\endgroup & \begingroup\color{blue}\vec{e}_x\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0\\
+        \begingroup\color{teal}v\endgroup & 1
+    \end{bmatrix}
+\end{align*}
+
+The components from Man to Car:
+ 
+\begin{align*}
+    \begin{bmatrix}
+        \begingroup\color{red}\tilde{t}\endgroup\\ 
+        \begingroup\color{red}\tilde{x}\endgroup
+    \end{bmatrix} &= 
+     \begin{bmatrix}
+        1 & 0\\
+        -\begingroup\color{teal}v\endgroup & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{blue}t\endgroup\\ 
+        \begingroup\color{blue}x\endgroup
+    \end{bmatrix}
+\end{align*}
+
+The two Galilean matrixes are inverse of each other, you can easily prove that by multiplying by each other and obtaining the Identity matrix.\\
+And then, you can easily prove yourself that, the Galilean matrix used to bring the basis vectors from Man to Car is the one to use
+to bring the components from the Car to Man, and that the other Galilean matrix used to bring the basis vectors from Car to Man, is the one to use
+to bring the components from Man to Car. If you read this carefully, you will then understand the reason of calling basis vectors covariant, and 
+components contravariant.\\
+Change-of-basis equation and Change-of-component equation use inverse Galilean matrices because of covariance and contravariance.\\
+
+When writing in matrix/array form, remember to write the covariant basis vectors as rows, and place them on the left of matrix equation, 
+and components (contravariant) vectors as column, on the right of the matrix multiplication. This in order to have the correct formulaes coming out of them.
