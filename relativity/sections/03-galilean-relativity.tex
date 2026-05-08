@@ -151,3 +151,77 @@ Change-of-basis equation and Change-of-component equation use inverse Galilean m
 
 When writing in matrix/array form, remember to write the covariant basis vectors as rows, and place them on the left of matrix equation, 
 and components (contravariant) vectors as column, on the right of the matrix multiplication. This in order to have the correct formulaes coming out of them.
+
+\subsection{Metric Tensor}
+
+The metric tensor concept, in the spacetime diagrams of Galilean relativity do not make much sense, so 
+we'll discuss briefly this concept using the 2D flat plane. Briefly because this has been covered very well
+in the Tensor for Beginners and Tensor Calculus lecture notes.\\
+
+The metric tensor answers the question on how do we properly measure lengths in space.
+If you simply plot a vector on the 2D plane, you can straight forward think that, by decomponsing it 
+as linear combination of the two basis vectors, you can apply Pythagora's theorem and call it a day.\\
+Unfortunately this does not work consistently, and only works out the real vector length when using orthonormal basis vectors (i.e. 
+perpendicular basis vectors with units of 1).
+If you try computing the length of a vector in different non-orthonormal basis, you end up with different answers.\\
+
+The proper way of calculating the length is by using the dot product of the vector with itself. This works regardless
+of the basis vectors/reference frame utilized.\\
+
+\begin{equation}
+    \|\begingroup\color{violet}\vec{R}\endgroup \|^2 =  \begingroup\color{violet}\vec{R}\endgroup \cdot \begingroup\color{violet}\vec{R}\endgroup
+\end{equation}
+
+If you write the vector as linear combination of the basis vectors you use, for example in 2D flat plane:
+
+\begin{align*}
+    \|\begingroup\color{violet}\vec{R}\endgroup \|^2 &=  \begingroup\color{violet}\vec{R}\endgroup \cdot \begingroup\color{violet}\vec{R}\endgroup\\
+    &= \left(\begingroup\color{cyan}x\endgroup\begingroup\color{blue}\vec{e_x}\endgroup + \begingroup\color{cyan}y\endgroup\begingroup\color{blue}\vec{e_y}\endgroup\right) \cdot
+    \left(\begingroup\color{cyan}x\endgroup\begingroup\color{blue}\vec{e_x}\endgroup + \begingroup\color{cyan}y\endgroup\begingroup\color{blue}\vec{e_y}\endgroup\right)\\
+    &= \begingroup\color{cyan}xx\endgroup\left(\begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_x}\endgroup\right) 
+    + \begingroup\color{cyan}xy\endgroup\left(\begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup\right) 
+    + \begingroup\color{cyan}yx\endgroup\left(\begingroup\color{blue}\vec{e_y}\endgroup \cdot \begingroup\color{blue}\vec{e_x}\endgroup\right) 
+    + \begingroup\color{cyan}yy\endgroup\left(\begingroup\color{blue}\vec{e_y}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup\right)\\
+    &= \begin{bmatrix}
+        \begingroup\color{cyan}x\endgroup&
+        \begingroup\color{cyan}y\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_x}\endgroup & \begingroup\color{blue}\vec{e_x}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup\\
+        \begingroup\color{blue}\vec{e_y}\endgroup \cdot \begingroup\color{blue}\vec{e_x}\endgroup & \begingroup\color{blue}\vec{e_y}\endgroup \cdot \begingroup\color{blue}\vec{e_y}\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{cyan}x\endgroup\\
+        \begingroup\color{cyan}y\endgroup
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        \begingroup\color{cyan}x\endgroup&
+        \begingroup\color{cyan}y\endgroup
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{blue}g_{xx}\endgroup & \begingroup\color{blue}g_{xy}\endgroup \\
+        \begingroup\color{blue}g_{yx}\endgroup & \begingroup\color{blue}g_{yy}\endgroup  
+    \end{bmatrix}
+    \begin{bmatrix}
+        \begingroup\color{cyan}x\endgroup\\
+        \begingroup\color{cyan}y\endgroup
+    \end{bmatrix}
+\end{align*}
+
+where that matrix is the representation of the metric tensor, and its components are basically the 
+dot products of the basis vectors.\\
+
+Trying to tie up everything together with the concept of invariance, we can say that, the length (or length squared) of a vector 
+$\color{violet}\vec{R}$ has different formulas when computed in different reference frames, but the results are always equal and invariant 
+as long as we use the metric tensor components related to the specific basis.\\
+
+The metric tensor itself is a function, which takes two vectors as input, and spits out their dot product as output.
+The output does not depend on the specific coordinate systems, which means that \textbf{the metric tensor itself is an invariant.}
+It will just have different numbers/components in different coordinate systems, but so will the vector components of the two input vectors.\\
+
+Worth noticing what happens to the metric tensor in terms of covariance/contravariance, so like, 
+whay happens to the components of the metric tensor when we shrink/grow/rotate the basis vectors from one set to another?
+It can be easily seen that, the metric tensor is 2-covariant, which means that when the basis vectors change, the metric tensor
+changes in the same way, twice.
+
+\subsection{Problems of Galilean Relativity}
