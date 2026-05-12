@@ -179,4 +179,88 @@ And as we said, when this difference quantity is zero, it's when the vector fiel
 So we can say that, when the covariant derivative $\nabla_{\begingroup\color{teal}\vec{w}\endgroup}\begingroup\color{violet}\vec{v}\endgroup = \vec{0}$, it means
 that the vector field is parallel transported in the direction $\color{teal}\vec{w}$.\\
 
-All of this can be clarified by giving an example, of the covariant derivative + parallel transport on a sphere of radius = 1.
+All of this can be clarified by giving an example, of the covariant derivative + parallel transport on a sphere of radius = 1.\\
+We'll use the 2D plane of coordinates $\color{red}u^1$ and $\color{teal}u^2$, knowing from previous section, that the parametrization
+of the sphere in 3D, using these 2D coordinates can be written as:
+
+\begin{align*}
+    \begingroup\color{cyan}X\endgroup &= \cos(\begingroup\color{teal}u^2\endgroup)\sin(\begingroup\color{red}u^1\endgroup)\\
+    \begingroup\color{cyan}Y\endgroup &= \sin(\begingroup\color{teal}u^2\endgroup)\sin(\begingroup\color{red}u^1\endgroup)\\
+    \begingroup\color{cyan}Z\endgroup &= \cos(\begingroup\color{red}u^1\endgroup)
+\end{align*}
+
+So, each point on the 2D plane $\color{red}u^1$, $\color{teal}u^2$ gives us a vector $\color{violet}\vec{R}$ which lives in the $\color{cyan}X, Y, Z$ 3D space.\\
+The $\color{red}u^1$ curves are the lines of longitude running from north to south and the $\color{teal}u^2$ are the curves of latitude, 
+running from west to east.\\
+Also as a reminder, the tangent basis vectors on the sphere are given by the two partial derivatives of the position vector, where $\color{red}\vec{e_1}$ are  
+vectors tangent to the $\color{red}u^1$ curves, and $\color{teal}\vec{e_2}$ are vectors tangent to the $\color{teal}u^2$ curves:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} &= \begingroup\color{red}\vec{e_1}\endgroup\\
+    \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}u^2\endgroup} &= \begingroup\color{teal}\vec{e_2}\endgroup
+\end{align*}
+
+And now let's try to compute the covariant derivative of some \textcolor{violet}{tangent vector field} $\color{violet}\vec{v}$ in the direction of the $\color{red}u^i$ \textcolor{red}{coordinate}.\\
+Please note that we're considering the \textbf{vector field to be tangent to the surface}, and in most physics application, this is indeed the case for curved surfaces.\\
+
+Allright, so remind yourself that the covariant derivative, we just said it's the ordinary derivative with the normal component subtracted:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup = \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \begingroup\color{red}\hat{n}\endgroup
+\end{align*}
+
+Being the vector field composed by vectors always tangent to the surface, we can expand them as a linear combination of the basis vectors:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \begingroup\color{red}\hat{n}\endgroup\\
+    &= \frac{\partial}{\partial \begingroup\color{red}u^i\endgroup} \left[\begingroup\color{magenta}v^j\endgroup \begingroup\color{red}\vec{e_j}\endgroup\right] - \begingroup\color{red}\hat{n}\endgroup\\
+    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\hat{n}\endgroup
+\end{align*}
+
+As you can remember, we can write down the second term in the squared brackets, the derivative of the basis vectors, as a linear combination of the Chrystoffel symbols and Second Fundamental form:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\hat{n}\endgroup\\
+    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \begingroup\color{red}\vec{e_k}\endgroup \right] + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\hat{n}\endgroup
+\end{align*}
+
+We can now factor out the $\color{red}\vec{e_k}$ changing the summation index of the first term, which is just a dummy one:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup 
+    &= \left[\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \right]\begingroup\color{red}\vec{e_k}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\hat{n}\endgroup
+\end{align*}
+
+Since we need to subtract the whole normal component, we can just cancel out the last two terms, and what remains is just the tangential component:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup 
+    &= \left[\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \right]\begingroup\color{red}\vec{e_k}\endgroup
+\end{align*}
+
+which is our final formula for the covariant derivative.\\
+
+Before, in the geodesic part, we already derived how to compute the Chrystoffel symbols, so now we're ready to go proceed and actually calculate the covariant derivative in this case.
+We also already calculated the symbols for the sphere of radius one, and the only non-zero ones are:
+
+\begin{align*}
+    \begingroup\color{blue}\Gamma^{1}_{22}\endgroup &= -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup)\\
+    \begingroup\color{blue}\Gamma^{2}_{12}\endgroup &= \begingroup\color{blue}\Gamma^{2}_{21}\endgroup = \frac{\cos(\begingroup\color{red}u\endgroup)}{\sin(\begingroup\color{red}u\endgroup)}
+\end{align*}
+
+Our summations run over i, j and k for the covariant derivative, but considering only the non-zero terms, we're left with the following two 
+formulas for $i=1$ ($\color{red}u^1$), and $i=2$ ($\color{teal}u^2$):
+
+\begin{align*}
+    \nabla_{\begingroup\color{red}\vec{e_1}\endgroup}\begingroup\color{violet}\vec{v}\endgroup 
+    &= \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^1\endgroup} + \begingroup\color{magenta}v^2\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup\\
+    \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup 
+    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} - \begingroup\color{magenta}v^2\endgroup - 1/2 \sin(2 \begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_1}\endgroup
+    + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup} + \begingroup\color{magenta}v^1\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup
+\end{align*}
+
+A practical example would be considering curve running from $\color{red}u^2 = 0$ to $\color{red}u^2 = \pi/2$:
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/covariant-sphere-01.png}
+\end{center}
