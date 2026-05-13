@@ -253,14 +253,233 @@ formulas for $i=1$ ($\color{red}u^1$), and $i=2$ ($\color{teal}u^2$):
 
 \begin{align*}
     \nabla_{\begingroup\color{red}\vec{e_1}\endgroup}\begingroup\color{violet}\vec{v}\endgroup 
-    &= \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^1\endgroup} + \begingroup\color{magenta}v^2\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup\\
+    &= \frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^1\endgroup}\begingroup\color{red}\vec{e_1}\endgroup + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^1\endgroup} + \begingroup\color{magenta}v^2\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup\\
     \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup 
-    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} - \begingroup\color{magenta}v^2\endgroup - 1/2 \sin(2 \begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_1}\endgroup
+    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} -  \frac{1}{2} \begingroup\color{magenta}v^2\endgroup \sin(2 \begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_1}\endgroup
     + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup} + \begingroup\color{magenta}v^1\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup
 \end{align*}
 
-A practical example would be considering curve running from $\color{red}u^2 = 0$ to $\color{red}u^2 = \pi/2$:
+A practical example would be considering curve running from $\color{red}u^2 = 0$ to $\color{red}u^2 = \pi/2$, with constant $\color{red}u^1 = \pi/2$. Practically a curve where when the parameter increases, we run along the equator:
 
 \begin{center}
-\includegraphics[scale=0.2]{figures/covariant-sphere-01.png}
+\includegraphics[scale=0.15]{figures/covariant-sphere-01.png}
 \end{center}
+
+So the parametrization is:
+
+\begin{equation}
+    \begingroup\color{brown}\lambda\endgroup \rightarrow \left(\begingroup\color{red}u^1\endgroup = \pi/2, \begingroup\color{red}u^2\endgroup = \begingroup\color{brown}\lambda\endgroup\right)
+\end{equation}
+
+If we now consider a hyphotetical vector field where the first component is equal to $\color{red}\vec{e_1}$ when $\color{red}u^2 = 0$, 
+and equal to $\color{red}\vec{e_2}$ when $\color{red}u^2 = \pi/2$:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{v}\endgroup = \cos(\begingroup\color{red}u^2\endgroup)\begingroup\color{red}\vec{e_1}\endgroup
+    + \sin(\begingroup\color{red}u^2\endgroup)\begingroup\color{red}\vec{e_2}\endgroup
+\end{equation}
+
+So this is a vector field that's definitely changing while going along the equator curve above:
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/covariant-sphere-02.png}
+\end{center}
+
+Intuitively then, we should expect its covariant derivative in the direction of the curve, to be different than zero, as this is clearly
+not a parallel transport:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{brown}\lambda\endgroup}}\begingroup\color{violet}\vec{v}\endgroup 
+    = \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^2\endgroup}}\begingroup\color{violet}\vec{v}\endgroup
+    &= \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup\\
+    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} -  \frac{1}{2} \begingroup\color{magenta}v^2\endgroup \sin(2 \begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_1}\endgroup
+    + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup} + \begingroup\color{magenta}v^1\endgroup \cot(\begingroup\color{red}u^1\endgroup)\right]\begingroup\color{red}\vec{e_2}\endgroup
+\end{align*}
+
+Since $\color{red}u^1$ is constant and equal to $\pi/2$, the term with $\sin$ and $\cot$ go to zero, then:
+
+\begin{align*}
+    \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup
+    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup}\right]\begingroup\color{red}\vec{e_1}\endgroup
+    + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup}\right]\begingroup\color{red}\vec{e_2}\endgroup\\
+    &= -\sin(\begingroup\color{red}u^2\endgroup)\begingroup\color{red}\vec{e_1}\endgroup + \cos(\begingroup\color{red}u^2\endgroup)\begingroup\color{red}\vec{e_2}\endgroup
+\end{align*}
+
+Which is indeed confirming that the covariant derivative is non-zero, and \textbf{it makes completely sense if you consider the tangent planes 
+for each of the vectors moving along the curve; They're sort of spinning around in the tangent planes, so its rate of change is not completely
+normal to the surface, there's a tangential part that exists in the tangent plane}
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/covariant-sphere-03.png}
+\end{center}
+
+If you instead, consider another vector field, simply described by:
+
+\begin{equation}
+    \begingroup\color{violet}\vec{v}\endgroup = \begingroup\color{red}\vec{e_2}\endgroup
+\end{equation}
+
+along the same curve
+
+\begin{center}
+\includegraphics[scale=0.2]{figures/covariant-sphere-04.png}
+\end{center}
+
+\textbf{And you try to compute its covariant derivative, you can easily see that all the terms go to zero. There's no vector 
+change in the tangent planes, the whole rate of change happens along the normal direction with respect to the surface: we are 
+parallel transporting this vector along the curve.}\\
+
+SO what we've done so far was, starting from a given vector field, we computed the covariant derivative and from its result, 
+we checked if the vector field involves the parallel transport of a vector.
+What we'd like to do now is go in the opposite direction, so starting from a single vector, and given a curve, 
+we will demand the parallel transport condition along a curve, and get the resulting vector field.\\
+
+Let's start with the simple initial vector $\color{violet}\vec{v_0}$, on the equator curve described above, 
+pointing along $\color{red}\vec{e_1}$ at the origin point of the curve. For this, we demand the parallel transport
+condition of the covariant derivative along the curve to be zero:
+
+\begin{equation}
+    \begingroup\color{brown}\lambda\endgroup \rightarrow \left(\begingroup\color{red}u^1\endgroup = \pi/2, \begingroup\color{red}u^2\endgroup = \begingroup\color{brown}\lambda\endgroup\right)
+\end{equation}
+\begin{equation}
+    \begingroup\color{violet}\vec{v_0}\endgroup = \begingroup\color{red}\vec{e_1}\endgroup
+\end{equation}
+\begin{equation}
+    \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup = \vec{0}
+\end{equation}
+
+We then start with the formula we used above, as before, the $\sin$ and $\cot$ terms go to zero, due to $\color{red}u^1$ being 
+constant and equal to $\pi/2$:
+
+\begin{align*}
+    \nabla_{\begingroup\color{red}\vec{e_2}\endgroup}\begingroup\color{violet}\vec{v}\endgroup
+    &= \left[\frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup}\right]\begingroup\color{red}\vec{e_1}\endgroup
+    + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup}\right]\begingroup\color{red}\vec{e_2}\endgroup = \vec{0}
+\end{align*}
+
+What this requires, is that both the vector field components are equal to zero, which means they have to be some constants:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} &= 0 \\
+    \frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup} &= 0
+\end{align*}
+
+\begin{align*}
+    \begingroup\color{magenta}v^1\endgroup(\begingroup\color{brown}\lambda\endgroup) &= c_1\\
+    \begingroup\color{magenta}v^2\endgroup(\begingroup\color{brown}\lambda\endgroup) &= c_2
+\end{align*}
+
+Remember that we need to respect the initial condition right? At $\color{brown}\lambda$ $=0$ we had that $\color{magenta}v^1$ $= 1$ and 
+$\color{magenta}v^2$ $= 0$, which simply means that the vector components have to always be constant and equal to:
+
+\begin{align*}
+    \begingroup\color{magenta}v^1\endgroup(\begingroup\color{brown}\lambda\endgroup) &= c_1 = 1\\
+    \begingroup\color{magenta}v^2\endgroup(\begingroup\color{brown}\lambda\endgroup) &= c_2 = 0
+\end{align*}
+
+\begin{equation}
+    \begingroup\color{violet}\vec{v}\endgroup(\begingroup\color{brown}\lambda\endgroup) = \begingroup\color{red}\vec{e_1}\endgroup 
+\end{equation}
+
+This is the vector field resulting by requiring the parallel transport of the initial vector given.\\
+
+\subsection{Covariant derivate in curved-space - intrinsic}
+
+Allright and here we are with another definition of the covariant derivative, this time using intrinsic geometry.\\
+You may wonder why we need this in the first place, if the extrinsic defintion gets the job done; Well the reason is that there are 
+cases, like General Relativity, where we cannot use any extrinsic world embedding our 2D surface, simply because it does not exist such thing.
+In GR, spacetime is a 4 dimentional space, and when Einstein explained his theory, it did not think about this space being inside a higher dimentional one, 
+where we could leverage the use of an origin or position vectors.\\
+The universe itself, the spacetime, is intrinsically curved with no outside space existing at all.\\
+
+So, when working using intrinsic geometry, we can forget about a higher dimentional XYZ coordinates we can use, we can 
+forget about position vectors, and global origin from where to define this.
+Remember that intrinsic can also be seen as a "bug's" view of the surface, where basis vectors
+are defined as partial derivative operators, and not derivative of the position vector like in extrinsic geometry.
+They live in the Tangent Vector Space $T_pM$ at some point p.\\
+
+So, let's try to compute the formula for the covariant derivative for intrinsically curved spaces. Before, we said that
+the covariant derivative of a vector field, is the ordinary derivative, with the normal component of the rate of change subtracted, but since
+we're dealing with intrinsic geometry now, there's no such thing as normal vectors, as this would imply there's an outside space 
+we can point to, and this is not the case now.\\
+
+So we ignore the normal part of the formula, and we can try writing down the covariant derivative, with the Christoffel symbols used to represent
+the basis vectors derivative coefficients, and then just re-arranging the dummy index to factor out the basis vectors:
+
+\begin{align*}
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= 
+    \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\\
+    &= \frac{\partial}{\partial \begingroup\color{red}u^i\endgroup} \left(\begingroup\color{magenta}v^j\endgroup \begingroup\color{red}\vec{e_j}\endgroup\right)\\
+    &= \frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\\
+    &= \left(\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma_{ik}^k\endgroup\right)\begingroup\color{red}\vec{e_k}\endgroup
+\end{align*}
+
+Now, the problem ends up being the Christoffel symbols, because before, when we derived the expression for these, we ended up with this formula, 
+which requires the dot product of the basis vectors with the derivative of the basis vectors:
+
+\begin{equation}
+    \begingroup\color{blue}\Gamma^{m}_{ij}\endgroup = \left(\frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup } \cdot \begingroup\color{red}\vec{e_l}\endgroup\right) \begingroup\color{purple}\mathfrak{g}^{lm}\endgroup
+\end{equation}
+
+Since we don't have now, the XYZ extrinsic basis, we can't easily compute these dot products, so we need a new strategy to compute the Christoffel symbols.\\
+There are two important facts to recognize before we proceed:
+
+\begin{itemize}
+    \item The metric tensor components are the dot products of the basis vectors $\begingroup\color{red}g_{ij}\endgroup = \begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup$
+    \item The order of the dot product does not matter, hence the metric tensor components are symmetric in the $i$ and $j$ indexes $\color{red}g_{ij}$ $=$ $\color{red}g_{ji}$ 
+    \item The Chrisoffel symbols are symmetric in their lower indexes, so $\color{blue}\Gamma_{ij}^k$ $=$ $\color{blue}\Gamma_{ji}^k$
+\end{itemize}
+
+Now, we start by taking the derivative of the metric tensor in the direction of the $\color{red}u_k$ coordinate, where we can leverage the metric tensor
+definition, and an important property called \textbf{metric compatibility} (more on this in the next section, we take it for granted now), which allows us to use 
+the derivative product rule applied to dot products:
+
+\begin{align*}
+    \frac{\partial}{\partial \begingroup\color{red}u^k\endgroup} \begingroup\color{red}g_{ij}\endgroup &= \frac{\partial}{\partial \begingroup\color{red}u^k\endgroup} \left(\begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right)\\
+    &= \frac{\partial \begingroup\color{red}\vec{e_i}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} \cdot \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{red}\vec{e_i}\endgroup \cdot \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^k\endgroup}\\
+    &= \left(\begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{red}\vec{e_l}\endgroup\right) \cdot \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{red}\vec{e_i}\endgroup \cdot \left(\begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}\vec{e_l}\endgroup\right)\\
+    &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \left(\begingroup\color{red}\vec{e_l}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right) + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \left(\begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right)\\
+    &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{red}g_{lj}\endgroup + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{il}\endgroup
+\end{align*}
+
+We're free to swap the lower indexes of the metric tensor, so we'll do so for the first term and we obtain:
+
+\begin{equation}
+    \frac{\partial \begingroup\color{red}g_{ij}\endgroup}{\partial \begingroup\color{red}u^k\endgroup}  = 
+    \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{red}g_{jl}\endgroup + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{il}\endgroup
+\end{equation}
+
+Now, note this down first, and then we're going to take other derivatives of the metric tensor, twice more, but with different indexes:
+
+\begin{align*}
+    \frac{\partial \begingroup\color{red}g_{ki}\endgroup}{\partial \begingroup\color{red}u^j\endgroup} &= \begingroup\color{blue}\Gamma^{l}_{kj}\endgroup \begingroup\color{red}g_{il}\endgroup + \begingroup\color{blue}\Gamma^{l}_{ij}\endgroup \begingroup\color{red}g_{kl}\endgroup\\
+    \frac{\partial \begingroup\color{red}g_{jk}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} &= \begingroup\color{blue}\Gamma^{l}_{ji}\endgroup \begingroup\color{red}g_{kl}\endgroup + \begingroup\color{blue}\Gamma^{l}_{ki}\endgroup \begingroup\color{red}g_{jl}\endgroup
+\end{align*}
+
+Let's watch carefully the three together, and I will color code the terms here:
+
+\begin{align*}
+    \frac{\partial g_{ij}}{\partial u^k} &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{blue}g_{jl}\endgroup + \begingroup\color{red}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{il}\endgroup\\
+    \frac{\partial g_{ki}}{\partial u^j} &= \begingroup\color{red}\Gamma^{l}_{kj}\endgroup \begingroup\color{red}g_{il}\endgroup + \begingroup\color{teal}\Gamma^{l}_{ij}\endgroup \begingroup\color{teal}g_{kl}\endgroup\\
+    \frac{\partial g_{jk}}{\partial u^i} &= \begingroup\color{teal}\Gamma^{l}_{ji}\endgroup \begingroup\color{teal}g_{kl}\endgroup + \begingroup\color{blue}\Gamma^{l}_{ki}\endgroup \begingroup\color{blue}g_{jl}\endgroup
+\end{align*}
+
+The terms with the same color, are actually the same, so we can do something here, let's sum them in this way:
+
+\begin{align*}
+    \frac{\partial g_{ij}}{\partial u^k} + \frac{\partial g_{ki}}{\partial u^j} - \frac{\partial g_{jk}}{\partial u^i} &= 
+    \begingroup\color{red}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{il}\endgroup + \begingroup\color{red}\Gamma^{l}_{kj}\endgroup \begingroup\color{red}g_{il}\endgroup\\
+     \frac{\partial g_{ij}}{\partial u^k} + \frac{\partial g_{ki}}{\partial u^j} - \frac{\partial g_{jk}}{\partial u^i} &= 2 \begingroup\color{red}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{li}\endgroup
+\end{align*}
+
+We can now sum on both sides, with the inverse metric tensor:
+
+\begin{align*}
+     \begingroup\color{purple}\mathfrak{g}^{im}\endgroup \left(\frac{\partial g_{ij}}{\partial u^k} + \frac{\partial g_{ki}}{\partial u^j} - \frac{\partial g_{jk}}{\partial u^i}\right) &= 2 \begingroup\color{red}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{li}\endgroup \begingroup\color{purple}\mathfrak{g}^{im}\endgroup
+\end{align*}
+
+Using the fact that the these metric tensors are inverse of each other, we finally obtain our new formula for the Christoffel symbols, only dependent on the metric tensor and its inverse:
+
+\begin{equation}
+    \begingroup\color{red}\Gamma^{m}_{jk}\endgroup = \frac{1}{2} \begingroup\color{purple}\mathfrak{g}^{im}\endgroup \left(\frac{\partial g_{ij}}{\partial u^k} + \frac{\partial g_{ki}}{\partial u^j} - \frac{\partial g_{jk}}{\partial u^i}\right)
+\end{equation}
