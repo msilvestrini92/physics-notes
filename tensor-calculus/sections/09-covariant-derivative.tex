@@ -483,3 +483,179 @@ Using the fact that the these metric tensors are inverse of each other, we final
 \begin{equation}
     \begingroup\color{red}\Gamma^{m}_{jk}\endgroup = \frac{1}{2} \begingroup\color{purple}\mathfrak{g}^{im}\endgroup \left(\frac{\partial g_{ij}}{\partial u^k} + \frac{\partial g_{ki}}{\partial u^j} - \frac{\partial g_{jk}}{\partial u^i}\right)
 \end{equation}
+
+One last topic on this section, related to Geodesics. We previously saw that geodesics define the most straight path in a curve surface/space.
+We can define this idea of walking forward along a geodesic, using the covariant derivative.\\
+This idea of walking forward on a curved space/surface is captured, mathematically, by the idea of parallel transporting a vector along itself.
+\textbf{When we say that a vector is parellel transported along itself, what we mean is that the vector we're taking the covariant derivative of, 
+and the direction that we choose, are the same.}\\
+
+\textbf{So when we say that the covariant derivative of a vector in the direction of itself is equal to zero, the resulting curve we get 
+is a geodesic curve.}
+
+If our curve is a function of the parameter $\color{brown}\lambda$, then the tangent vectors along the curve
+would be given by the derivative operators $\frac{d}{d\begingroup\color{brown}\lambda\endgroup}$. A geodesic curve is described by the 
+covariant derivative $\nabla_{\frac{d}{d\begingroup\color{brown}\lambda\endgroup}}\frac{d}{d\begingroup\color{brown}\lambda\endgroup} = \vec{0}$.\\
+
+Let's try this out, first expanding using the multi-variable chain-rule, and then the derivative product rule:
+
+\begin{align*}
+    \nabla_{\frac{d}{d\begingroup\color{brown}\lambda\endgroup}}\frac{d}{d\begingroup\color{brown}\lambda\endgroup} 
+    &= \frac{d}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d}{d\begingroup\color{brown}\lambda\endgroup}\right)\\
+    \vec{0} &= \frac{d}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial}{\partial\begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right)\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup} + 
+    \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d}{d\begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d^2\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup} + 
+    \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d}{d\begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d^2\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup} + 
+    \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{d\begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial}{\partial\begingroup\color{red}u^i\endgroup}\right)\left(\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup}\right)\\
+    &= \frac{d^2\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial}{\partial\begingroup\color{red}u^j\endgroup} + 
+    \frac{d\begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial^2}{\partial\begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup}\right)
+\end{align*}
+
+We can just re-write it now, using the basis vector notation and then use the Christoffel simbols to express 
+the derivative of the basis vectors:
+
+\begin{align*}
+    \vec{0} &= \frac{d^2\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\begingroup\color{red}\vec{e_j}\endgroup + 
+    \frac{d\begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \left(\frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial\begingroup\color{red}u^i\endgroup}\right)\\
+    &= \frac{d^2\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\begingroup\color{red}\vec{e_j}\endgroup + 
+    \frac{d\begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \begingroup\color{blue}\Gamma^k_{ij}\endgroup \begingroup\color{red}\vec{e_k}\endgroup
+\end{align*}
+
+We can just replace the first term's dummy index with k and factor the $\color{red}\vec{e_k}$ basis vector out:
+
+\begin{align*}
+    \vec{0} &= \left(\frac{d^2\begingroup\color{red}u^k\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2} + 
+    \frac{d\begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \begingroup\color{blue}\Gamma^k_{ij}\endgroup\right) \begingroup\color{red}\vec{e_k}\endgroup
+\end{align*}
+
+This is, as you may remember, exactly the geodesic equation. It's just that now, with the covariant derivative notion, we can state that
+the \textbf{geodesic is the curve resulting from paralle transporting a vector along itself.}
+
+\subsection{Covariant derivative - abstract definition}
+
+Now, finally, after having defined the covariant derivative first in flat space, then in curved spaces extrinsically, and afterward intrinsically, we're 
+ready to give the most abstract, and at the same time, most powerful, definition of covariant derivative.
+
+To save up some notation heavyness, we will use interchangeably, the following representations of the basis vectors:
+
+\begin{equation}
+    \begingroup\color{red}\vec{e_k}\endgroup \equiv \frac{\partial}{\partial \begingroup\color{red}u^k\endgroup} \equiv \begingroup\color{red}\partial_k\endgroup
+\end{equation}
+
+There are two main reasons why we want to study this abstract definition:
+
+\begin{itemize}
+    \item We're going to find that there are actually "several" covariant derivatives, not just one; The one we care about is called the \textcolor{red}{Levi-Civita connection}, which comes from the Fundamental Theorem of Rienmannian Geometry.
+    \item It extends the covariant derivative to all tensor fields.
+\end{itemize}
+
+To help understanding how we arrived at the definition of the abstract covariant derivative, it helps to think about how another concept has been invented in the first place: the concept of 
+vector spaces.\\
+
+Let's start thinking about $\mathbb{R}^2$, the set of pairs of real numbers. The members of this set serve as an inspiration to the vector space idea.
+If we start checking some properties of this set, you can clearly see that it's possible to find a reasonable way of adding two members of this set to obtain another
+member of the set, also there's a reasonable way to scale the members by multiplying them by a scalar element, and obtain new members of the set.\\
+
+Moreover, the order of addition does not matter, and we also find that there's a special zero element, that if we add to a member pair, gives back 
+the same member pair. Each element also, had a negative version of it, that when added to the opposite member pair, gives the zero element.\\
+
+On top of this, we have distribution properties for multiplication over addition:\\
+For $\vec{u}, \vec{v}, \vec{w} \in \mathbb{R}^2$:
+\begin{itemize}
+    \item $\vec{v} + \vec{w} \in \mathbb{R}^2$
+    \item $\vec{v} + \vec{w} = \vec{w} + \vec{v}$
+    \item $\vec{u} + (\vec{v} + \vec{w}) = (\vec{u} + \vec{v}) + \vec{w}$
+    \item $\exists \vec{0} \in \mathbb{R}^2 , \vec{v} + \vec{0} = \vec{v}$
+    \item $\exists(-\vec{v}) \in \mathbb{R}^2 , \vec{v} + (-\vec{v}) = \vec{0}$
+\end{itemize}
+
+For $\vec{v} \in \mathbb{R}^2, a, b \in \mathbb{R}$:
+\begin{itemize}
+    \item $a\vec{v} \in \mathbb{R}^2$
+    \item $a(b\vec{v}) = (ab)\vec{v}$
+    \item $1\vec{v} = \vec{v}$
+\end{itemize}
+
+For $\vec{v}, \vec{w} \in \mathbb{R}^2; a, b \in \mathbb{R}$:
+\begin{itemize}
+    \item $a(\vec{v} + \vec{w}) a\vec{v} + a\vec{w}$
+    \item $(a + b)\vec{v} = a\vec{v} + b\vec{v}$
+\end{itemize}
+
+We can take all these properties and turn them into a definition, we say that a vector space
+is a set of vectors and a set of scalars, along with rules of addition and scaling, that follow the properties above.\\
+
+So you see what the process was: we started with the properties of $\mathbb{R}^2$, and use them to define a vector space, 
+which is a more abstract idea.
+Now, given this new definition, we can find other examples of other things in mathematics, that obey the same rules, like the set
+of N-tuples of real numbers, set of polynomials in one variable, the set of partial derivatives of coordinate variables, etc..\\
+
+So, inventing the abstract definition of the covariant derivative, basically follows the same process. We start with the definition 
+of the covariant derivative we're familiar with, look at some of its properties and then use those properties to define an abstract definition for it.
+From there then, we can define many other types of covariant derivatives as well.\\
+
+So we start by looking at some properties of the covariant derivatives:
+
+\begin{itemize}
+    \item $\nabla_{\begingroup\color{cyan}a\vec{w}\endgroup + \begingroup\color{red}b\vec{t}\endgroup}\vec{v} = \begingroup\color{cyan}a\endgroup \nabla_{\begingroup\color{cyan}\vec{w}\endgroup}\vec{v} + \begingroup\color{red}b\endgroup \nabla_{\begingroup\color{red}\vec{t}\endgroup}\vec{v}$
+    \item $\nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup + \begingroup\color{teal}\vec{u}\endgroup) = \nabla_{\vec{w}}\begingroup\color{violet}\vec{v}\endgroup + \nabla_{\vec{w}}\begingroup\color{teal}\vec{u}\endgroup$
+    \item $\nabla_{\vec{w}}(\begingroup\color{cyan}a\endgroup \begingroup\color{violet}\vec{v}\endgroup) = (\nabla_{\vec{w}} \begingroup\color{cyan}a\endgroup) \begingroup\color{violet}\vec{v}\endgroup + \begingroup\color{cyan}a\endgroup (\nabla_{\vec{w}}\begingroup\color{violet}\vec{v}\endgroup)$
+    \item $\nabla_{\begingroup\color{red}\partial_i\endgroup} (\begingroup\color{cyan}a\endgroup) = \frac{\partial \begingroup\color{cyan}a\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$
+\end{itemize}
+
+So we're going to consider these 4 properties and take them as a definition of the abstract covariant derivative.
+A covariant derivative is an operator with two input slot, it takes a direction vector, and an input field, and the output
+will be the rate of change of that field along that direction, and this will be a new field.\\
+
+Sometimes, this covariant derivative operator, is also called "Connection". This is because of the paralle transport condition. We saw
+that in order to parallel transport a vector field along a curve, its covariant derivative has to be zero, if you look at this in terms of 
+tangent vector spaces where we start and we end along the curve, the parallel transport basically provides a connection between tangent spaces in a curved space.\\
+
+If you start at a point p, with the tangent space defined by $T_pM$, and end up at the point q with tangent space $T_qM$, the coveriant derivative provides you
+a connection between these two tangent spaces in the curved space.\\
+
+Now you remember how we defined the Christoffel symbols, well in this case we can simply write, in the most abstract way:
+
+\begin{equation}
+    \nabla_{\vec{e_i}}\vec{e_j} = \begingroup\color{blue}\Gamma^k_{ij}\endgroup\vec{e_k}
+\end{equation}
+
+Sometimes these are also called connection coefficients, and it turns out that, given the information we defined so far, 
+we don't have enough information on how to solve for a unique set of these symbols, that's why we stated at the beginning of this section, 
+that there are many possible covariant derivatives, it's because there are many possible ways to define these connection coefficients.\\
+
+Though, there's a way we can get a unique solution for the Christoffel symbols, and that's by introducing two new properties called:
+
+\begin{itemize}
+    \item The torsion-free property;
+    \item The metric compatibility property.
+\end{itemize}
+
+The torsion-free property says that, the covariant derivative of a basis vector $j$ along a direction $i$, is the same
+as the covariant derivative of the basis vector $j$, in the $i$ direction:
+
+\begin{equation}
+    \nabla_{\vec{e_i}}\vec{e_j} =  \nabla_{\vec{e_j}}\vec{e_i}
+\end{equation}
+
+This is what let us write, that the Christoffel symbols are symmetric on their lower indexed:
+
+\begin{align*}
+    \nabla_{\vec{e_i}}\vec{e_j} &= \begingroup\color{blue}\Gamma^k_{ij}\endgroup\vec{e_k}\\
+    \nabla_{\vec{e_j}}\vec{e_i} &= \begingroup\color{blue}\Gamma^k_{ji}\endgroup\vec{e_k}
+\end{align*}
+
+\begin{equation}
+    \boxed{\begingroup\color{blue}\Gamma^k_{ij}\endgroup = \begingroup\color{blue}\Gamma^k_{ji}\endgroup}
+\end{equation}
+
+The metric compatibility property is a sort of a special version of the derivation product rule, that's applied 
+to the dot product:
+
+\begin{equation}
+    \nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup \cdot \begingroup\color{teal}\vec{u}\endgroup) = (\nabla_{\vec{w}}\begingroup\color{violet}\vec{v}\endgroup) \cdot \begingroup\color{teal}\vec{u}\endgroup + \begingroup\color{violet}\vec{v}\endgroup \cdot (\nabla_{\vec{w}}\begingroup\color{teal}\vec{u}\endgroup)
+\end{equation}
+
+This might be a weird rule, but in plain english, what this is saying is that \textbf{when we parallel transport two vectors, their dot product will stay the same.}
