@@ -658,4 +658,43 @@ to the dot product:
     \nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup \cdot \begingroup\color{teal}\vec{u}\endgroup) = (\nabla_{\vec{w}}\begingroup\color{violet}\vec{v}\endgroup) \cdot \begingroup\color{teal}\vec{u}\endgroup + \begingroup\color{violet}\vec{v}\endgroup \cdot (\nabla_{\vec{w}}\begingroup\color{teal}\vec{u}\endgroup)
 \end{equation}
 
-This might be a weird rule, but in plain english, what this is saying is that \textbf{when we parallel transport two vectors, their dot product will stay the same.}
+This might be a weird rule, but in plain english, what this is saying is that \textbf{when we parallel transport two vectors, their dot product will stay the same.}\\
+
+If you take these two vectors $\color{violet}\vec{v}$ and $\color{teal}\vec{u}$ and you parallel transport them, the condition is that their covariant derivative is $\vec{0}$, so if you plug
+this result into the metric compatibility property, you find that the covariant derivative of their dot product is zero ($\nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup \cdot \begingroup\color{teal}\vec{u}\endgroup) = \vec{0}$), 
+which simply means that the dot product stays constant. Which eventually means that the length of a parallel transported vector stays constant, and in case of considering two vectors, if parallel transported, their 
+angle in between, stays constant.\\
+
+One consequence of the metric compatibility property can be obtained if we replace the vectors with the basis vectors:
+
+\begin{equation}
+       \nabla_{\vec{e_k}}(\vec{e_i} \cdot \vec{e_j}) = (\nabla_{\vec{e_k}}\vec{e_i}) \cdot \vec{e_j} + \vec{e_i} \cdot (\nabla_{\vec{e_k}}\vec{e_j}) 
+\end{equation}
+
+We can replace the covariant derivatives with the Christoffel symbols:
+
+\begin{equation}
+       \nabla_{\vec{e_k}}(\vec{e_i} \cdot \vec{e_j}) = (\begingroup\color{blue}\Gamma^l_{ik}\endgroup\vec{e_l}) \cdot \vec{e_j} + \vec{e_i} \cdot (\begingroup\color{blue}\Gamma^l_{jk}\endgroup\vec{e_l}) 
+\end{equation}
+
+The dot product is a scalar, so we can simply replace the covariant derivative with a partial derivative:
+
+\begin{equation}
+       \partial_k(\vec{e_i} \cdot \vec{e_j}) = (\begingroup\color{blue}\Gamma^l_{ik}\endgroup\vec{e_l}) \cdot \vec{e_j} + \vec{e_i} \cdot (\begingroup\color{blue}\Gamma^l_{jk}\endgroup\vec{e_l}) 
+\end{equation}
+
+Now, bringing the Christoffel symbols in front, will show the dot products, that we can simply re-write as metric tensor components:
+
+\begin{align*}
+    \partial_k(\vec{e_i} \cdot \vec{e_j}) &= \begingroup\color{blue}\Gamma^l_{ik}\endgroup(\vec{e_l} \cdot \vec{e_j}) + \begingroup\color{blue}\Gamma^l_{jk}\endgroup(\vec{e_i} \cdot \vec{e_l}) \\
+    \partial_k(\begingroup\color{red}g_{ij}\endgroup) &= \begingroup\color{blue}\Gamma^l_{ik}\endgroup(\begingroup\color{red}g_{lj}\endgroup) + \begingroup\color{blue}\Gamma^l_{jk}\endgroup(\begingroup\color{red}g_{il}\endgroup)
+\end{align*}
+
+Using the same, and switching around indexes, we can write down the following 3 equations then, and using the torsion-free property, we can color code the Christoffel symbols that
+are the same, due to the symmetry of their lower indexes:
+
+\begin{align*}
+    \partial_k g_{ij} &= \begingroup\color{blue}\Gamma^l_{ik}\endgroup\begingroup\color{red}g_{jl}\endgroup + \begingroup\color{red}\Gamma^l_{jk}\endgroup\begingroup\color{red}g_{il}\endgroup\\
+    \partial_j g_{ki} &= \begingroup\color{red}\Gamma^l_{kj}\endgroup\begingroup\color{red}g_{il}\endgroup + \begingroup\color{teal}\Gamma^l_{ij}\endgroup\begingroup\color{red}g_{kl}\endgroup\\
+    \partial_i g_{jk} &= \begingroup\color{teal}\Gamma^l_{ji}\endgroup\begingroup\color{red}g_{kl}\endgroup + \begingroup\color{blue}\Gamma^l_{ki}\endgroup\begingroup\color{red}g_{jl}\endgroup
+\end{align*}
