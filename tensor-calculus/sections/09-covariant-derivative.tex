@@ -698,3 +698,36 @@ are the same, due to the symmetry of their lower indexes:
     \partial_j g_{ki} &= \begingroup\color{red}\Gamma^l_{kj}\endgroup\begingroup\color{red}g_{il}\endgroup + \begingroup\color{teal}\Gamma^l_{ij}\endgroup\begingroup\color{red}g_{kl}\endgroup\\
     \partial_i g_{jk} &= \begingroup\color{teal}\Gamma^l_{ji}\endgroup\begingroup\color{red}g_{kl}\endgroup + \begingroup\color{blue}\Gamma^l_{ki}\endgroup\begingroup\color{red}g_{jl}\endgroup
 \end{align*}
+
+If we try to add them in this way
+
+\begin{equation}
+    \partial_k g_{ij} + \partial_j g_{ki} - \partial_i g_{jk}
+\end{equation}
+
+We clearly see that the blue and teal terms cancel, and we're left with:
+
+\begin{equation}
+    \partial_k g_{ij} + \partial_j g_{ki} - \partial_i g_{jk} = 2\begingroup\color{red}\Gamma^l_{jk}\endgroup\begingroup\color{red}g_{il}\endgroup
+\end{equation}
+
+And then summing on both sides for the inverse metric tensor, we obtain a formula to calculate the Christoffel symbols:
+
+\begin{equation}
+    \Gamma^m_{jk} - \frac{1}{2}\mathfrak{g^{im}}\left(\partial_k g_{ij} + \partial_j g_{ki} - \partial_i g_{jk}\right)
+\end{equation}
+
+So using both properties, we're able to solve for the Christoffel symbols, which means we found one particular version of a covariant derivative, and this 
+particular covariant derivative is called the \textcolor{red}{Levi-Civita connection}.\\
+
+And this is basically the result stated in the \textbf{Fundamental Theorem of Rienmannian Geometry} (where a Rienmannian Manifold is basically a curved space with a metric):
+there's a unique connection (covariant derivative) that is:
+\begin{itemize}
+    \item torsion-free
+    \item has metric compatibility
+\end{itemize}
+
+And this connections is called the \textcolor{red}{Levi-Civita connection}, and the connection coefficients (Christoffel symbols) are given by 
+the formula we found above.\\
+
+
