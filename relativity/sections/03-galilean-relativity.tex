@@ -225,3 +225,118 @@ It can be easily seen that, the metric tensor is 2-covariant, which means that w
 changes in the same way, twice.
 
 \subsection{Problems of Galilean Relativity}
+
+So to recap, in Galilean Relativity, time is absolute and observers in differente reference frames will indeed agree on time, but will disagree on position.
+We can convert between different reference frames using Galilean transform equations, for example between a man and a car reference frames:
+
+\begin{align*}
+    \begingroup\color{red}\tilde{t}_{car}\endgroup &= \begingroup\color{blue}t_{man}\endgroup = t\\
+    \begingroup\color{red}\tilde{x}_{car}\endgroup &= \begingroup\color{blue}x_{man}\endgroup - \begingroup\color{teal}v\endgroup \begingroup\color{blue}t_{man}\endgroup
+\end{align*}
+
+From these, we can easily find the velocities convertion by differentiating with respect to time:
+
+\begin{align*}
+    \frac{d \begingroup\color{red}\tilde{x}_{car}\endgroup}{dt} = \frac{d \begingroup\color{blue}x_{man}\endgroup}{dt} - \begingroup\color{teal}v\endgroup
+\end{align*}
+
+This gives us the momentum transformation formula for free:
+
+\begin{align*}
+    \begingroup\color{blue}p_{man}\endgroup &= m \frac{d \begingroup\color{blue}x_{man}\endgroup}{dt}\\
+    \begingroup\color{red}\tilde{p}_{car}\endgroup &= m \frac{d \begingroup\color{red}\tilde{x}_{car}\endgroup}{dt}
+\end{align*}
+
+And kinetic Energy:
+
+\begin{align*}
+    \begingroup\color{blue}E_{man}\endgroup &= \frac{1}{2} m \left(\frac{d \begingroup\color{blue}x_{man}\endgroup}{dt}\right)^2\\
+    \begingroup\color{red}\tilde{E}_{car}\endgroup &= \frac{1}{2} m \left(\frac{d \begingroup\color{red}\tilde{x}_{car}\endgroup}{dt}\right)^2
+\end{align*}
+
+So, the most difficult thing to do in Gelilean Relativity, is calculating the position in different reference frames, and from there, calculating 
+velocity, momentum and kinetic energy is very easy.\\
+
+But what about the things we agree on? We know we agree on the laws of motion in different reference frames, like Newton's second law, and Newton's law of gravity. They both should
+be invariant in different inertial reference frames.\\
+
+We can easily see that if we try to compute the Newton's second law of motion, considering a shift in position (which is indeed what changes between observers in Galilean relativity):
+
+\begin{align*}
+    F = m \frac{d^2}{dt^2}\left[\begingroup\color{blue}x\endgroup(t) + \begingroup\color{violet}k\endgroup\right] = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2} + m \cancel{\frac{d^2 \begingroup\color{violet}k\endgroup(t)}{dt^2}} = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2}
+\end{align*}
+
+The derivative of the shift in position goes to zero, as it's not dependent on time. Similar can be seen for a reference frame moving at constant speed with respect to another one, so:
+
+\begin{align*}
+    F = m \frac{d^2}{dt^2}\left[\begingroup\color{blue}x\endgroup(t) + \begingroup\color{teal}v\endgroup t\right] = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2} + m \frac{d^2}{dt^2}(\begingroup\color{teal}v\endgroup t) = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2} + m \cancel{\frac{d}{dt}(\begingroup\color{teal}v\endgroup)} = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2}
+\end{align*}
+
+So even in this case, we've shown that a constant speed shift in position does not alter the law of motion.\\
+
+Now let's try adding a second order term to the position, which is like changing coordinates to an accelerated reference frame:
+
+\begin{align*}
+    F = m \frac{d^2}{dt^2}\left[\begingroup\color{blue}x\endgroup(t) + \frac{1}{2}\begingroup\color{red}\alpha\endgroup t^2\right] = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2} + m \frac{d^2}{dt^2}\left(\frac{1}{2}\begingroup\color{red}\alpha\endgroup t^2\right) = m \frac{d^2 \begingroup\color{blue}x\endgroup(t)}{dt^2} + m \begingroup\color{red}\alpha\endgroup
+\end{align*}
+
+So this shows that in accelerating reference frame, Newton's second law does not hold true, as we end up with an extra term due to the fictitious force. This fictitious force is why 
+you feel your body pulled downward in an elevator that's accelerating upward, or thrown back into the seat in a car accelerating forward.\\
+
+Now what about Electromagnetism laws? Are they invariant under Galilean transform? In other words, is the force vector due to electricity and magnetism (aka Lorentz Force)
+the same in all inertial reference frames?
+
+\begin{equation}
+    \vec{F} = q\begingroup\color{blue}\vec{E}\endgroup + q\left(\begingroup\color{blue}\vec{v}\endgroup \times \begingroup\color{blue}\vec{B}\endgroup\right) = q\begingroup\color{red}\tilde{\vec{E}}\endgroup + q\left(\begingroup\color{red}\tilde{\vec{v}}\endgroup \times \begingroup\color{red}\tilde{\vec{B}}\endgroup\right)
+\end{equation}
+
+Well the short answer is no, laws of electromagnetism are not invariant under the Galilean transform, and the ultimate reason for this is that the speed of light is 
+invariant in all reference frames, which leads to special relativity. Which fixes the first of these problems.\\
+
+The proof can be seen with an example experiment of a moving charge, where you have an electric wire with current going through, and you examine what a moving charge 
+outside of the wire will experience. In the lab reference frame, the charge outside is moving with respect to the wire, and will experience a magnetic field resulting from the current density
+along the wire. As a result, the charge will experience a force due to the magnetic field.\\
+In the charge's rest frame, its velocity is stationary, and by Galilean relativity, there's no relative motion, so the observer concludes that the magnetic 
+force is zero, and they only observe a static electric field and the corresponding electrostatic force.\\
+
+The contradiction is solved by using Lorents transformation, which incorporates the constancy of the speed of light, length contraction, and time dilation. Because distances and time intervals change between moving reference frames, the charge density and electric/magnetic fields are also transformed. 
+This reveals that electric and magnetic fields are two sides of the same coin (the electromagnetic field).\\
+By using the Lorentz Transformation, both observers will calculate the exact same net physical force on the particle, even if one describes it as entirely magnetic and the other describes it as entirely electric.\\
+
+Furthermore, we can easily show by manipulating the Maxwell's equations, that the resulting Wave equations (Helmholtz Equations), clearly show the constant speed of light.\\
+
+Considering the Maxwell's Equations with no sources ($\rho = 0$, $\vec{J} = 0$), and using a vector identity for which the rotor of a the rotor is equal to the gradient of the divergence minus
+the laplacian, we obtain the electric and magnetic wave equations:
+
+\begin{align*}
+\nabla^2\vec{E} &= \begingroup\color{teal}\mu_0\endgroup \begingroup\color{brown}\epsilon_0\endgroup \frac{\partial^2 \vec{E}}{\partial t^2}\\
+\nabla^2\vec{B} &= \begingroup\color{teal}\mu_0\endgroup \begingroup\color{brown}\epsilon_0\endgroup \frac{\partial^2 \vec{B}}{\partial t^2}
+\end{align*}
+
+Knowing that in wave equations like these, the speed of the wave is given by the inverse of the coefficient multiplying the second-order time derivative, under square root:
+
+\begin{equation}
+    c = \frac{1}{\sqrt{\begingroup\color{teal}\mu_0\endgroup \begingroup\color{brown}\epsilon_0\endgroup}}
+\end{equation}
+
+These two numbers are respectively ($\begingroup\color{teal}\mu_0\endgroup$), the magnetic permeability of the vacuum, and ($\begingroup\color{brown}\epsilon_0\endgroup$)
+the electric permittivity of the vacuum. Both are well known physical constants, and if you plug them in, you will find out that the speed of an electromagnetic wave is equal 
+to the well know value:
+
+\begin{equation}
+    c = \frac{1}{\sqrt{\begingroup\color{teal}\mu_0\endgroup \begingroup\color{brown}\epsilon_0\endgroup}} = 
+    \frac{1}{\sqrt{(8.854 \times 10^{-12})(1.257 \times 10^{-6})}} = 2.998 \times 10^{8} m/s
+\end{equation}
+
+This is strong theoretical evidence that the speed of light is a law of physics itself, and the same in all reference frames. Of course, theory does not mean anything
+unless it agreed with physical experimental evidence.\\
+
+Physicists have tried in the past, in the late 1800, to validate that their theory that light travels in a special reference frame, absolutely stationary, called ether.\\
+The famous Michelson-Morley experiment had shown no difference in the speed of light in perpendicular directions, which provided strong experimental evidence that there's no special absolute frame of reference, 
+and that the speed of light is constant in all inertial reference frames.\\
+
+This led to Einstein's postulates of Special Relativity, that we'll study in the next section.
+We'll see how different inertial reference frames disagree on time (time dilation) and lenghts (length contraction), as well as 
+how to take derivative with respect to time (i.e. velocity), we'll also see that we cannot simply add velocities together, as the speed of light $c$ is constant, 
+and the laws of motion will require some re-thinking to be maintained the same between inertial reference frames.\\
+
