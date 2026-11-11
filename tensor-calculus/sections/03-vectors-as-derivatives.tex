@@ -119,7 +119,7 @@ Now we can just use these and replace the basis vectors with their new basis tra
     \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}
 \end{equation}
 
-This is a linear combination of the new basis vector $\color{magenta}p^j$, and since we know that we can write:
+This is a linear combination of the new basis vectors $\frac{\partial \vec{R}}{\partial \color{magenta}p^j}$, and since we know that we can write:
 
 \begin{equation}
     \frac{\dd \begingroup\color{violet}\vec{R}\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup} = 
@@ -219,9 +219,9 @@ Their product gives the identity;\\
 Therefore the geometric vector is coordinate-invariant.}
 
 
-\begin{subequations}\label{eq:forward-backward}
+\begin{subequations}\label{eq:vector-field-summary}
 \begin{empheq}[box=\widefbox]{align}
-    \frac{\dd }{\dd \begingroup\color{orange}\lambda\endgroup} &= 
+    \frac{\dd }{\dd \begingroup\color{orange}\lambda\endgroup} &=
     \frac{\dd \begingroup\color{magenta}p^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
     \frac{\partial }{\partial \begingroup\color{magenta}p^i\endgroup} =
     \frac{\dd \begingroup\color{cyan}c^i\endgroup}{\dd \begingroup\color{orange}\lambda\endgroup}
@@ -247,8 +247,8 @@ We just a bit ahead of ourselves here, to explain the main reason of already wor
 of what we're going to deal with, and then we'll get back to our flat space for now.\\
 
 We saw that if we consider the difference between two position vectors, a small distance h apart from each other in the direction of one coordinate axis, 
-divide this by this distance h, and consider the limit when h approaches 0, gives us as result the basis vector of magnitude 1 in the considered 
-axis direction. We we said that this position vector derivative along the axis-variable and the unit vector along this axis are equivalent.\\
+divide this by this distance h, and consider the limit when h approaches 0, gives us as result the basis vector along the considered
+coordinate direction (which has unit length only in special coordinates like Cartesian ones). We said that this position vector derivative along the coordinate is what we take as the basis vector.\\
 
 We also shown that, for tangent vectors along a curve, parametrized by the paramter $\lambda$, considering the position vector at a certain position $\lambda$ and another
 one a small step h away, we can compute the tangent vector to this curve at position $\lambda$, by taking the difference and consider the limit when h approaches 0.\\

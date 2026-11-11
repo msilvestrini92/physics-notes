@@ -121,7 +121,7 @@ So we can now substitute in the previous expression of the acceleration vector:
     + \frac{d \begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup \partial\begingroup\color{teal}v\endgroup}
     + \frac{d^2 \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup^2}\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup} 
     + \frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{red}u\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup \partial\begingroup\color{red}u\endgroup}
-    + \left(\frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right)^2 \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial\begingroup\color{teal}v\endgroup}
+    + \left(\frac{d \begingroup\color{teal}v\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\right)^2 \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial\begingroup\color{teal}v\endgroup^2}
 \end{align*}
 
 To get a bit more compact notation, we can define $\color{red}u^1 = u$ and $\begingroup\color{red}u^2\endgroup = \begingroup\color{teal}v\endgroup$ and using Einstein summation convention:
@@ -132,12 +132,12 @@ To get a bit more compact notation, we can define $\color{red}u^1 = u$ and $\beg
     + \frac{d \begingroup\color{red}u^i\endgroup}{d\begingroup\color{brown}\lambda\endgroup}\frac{d\begingroup\color{red}u^j\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup}
 \end{align*}
 
-Now, the first terms (only summed over index i) are just coefficients (second order derivatives) multiplied by the tangent vectors $\frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$, so are
+Now, the first terms (only summed over index i) are just coefficients (second order derivatives) multiplied by the tangent vectors $\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$, so are
 a linear combination of the tangent vectors, hence we're sure they're purely lying on the tangent plane to the surface.\\
 The same is not valid for the other terms (summed both over i and j), as they measure how the tangent vectors themselves change, so it can have both a tangent component, but also a normal component to the tangent plane on the surface.\\
 
 Let's then study these terms, and we're going to do to by expaning these in some basis. At the end of the day these are 3D vectors and can be expanded, for example, on the X, Y, Z coordinates we've seen, but we prefer
-to expand these in the tangent plane using the tangent plane basis vectors themselves $\frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$.
+to expand these in the tangent plane using the tangent plane basis vectors themselves $\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$.
 
 \begin{center}
 \includegraphics[scale=0.3]{figures/tangent-plane.png}
@@ -148,7 +148,7 @@ So we can write these as linear combination with some coefficients we define as 
 \begin{align*}
     \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} &=
     \begingroup\color{blue}\Gamma^{1}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^1\endgroup} 
-    + \begingroup\color{blue}\Gamma^{2}_{ij}\endgroup \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup}
+    + \begingroup\color{blue}\Gamma^{2}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^2\endgroup}
     + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\\
     &= \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} + \begingroup\color{teal}L_{ij}\endgroup \begingroup\color{red}\hat{n}\endgroup\\
 \end{align*}
@@ -194,7 +194,7 @@ In a similar way we can derive the coefficients of the second fundamental forms,
 So we have, also considering a more concrete expression for the normal vector to the tangent plane of the surface:
 
 \begin{equation}
-    \begingroup\color{teal}L_{ij}\endgroup = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\begingroup\color{red}\vec{e_i}\endgroup \cross \begingroup\color{red}\vec{e_j}\endgroup}{\|\begingroup\color{red}\vec{e_i}\endgroup \cross \begingroup\color{red}\vec{e_j}\endgroup \|}
+    \begingroup\color{teal}L_{ij}\endgroup = \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup \partial\begingroup\color{red}u^j\endgroup} \cdot \frac{\begingroup\color{red}\vec{e_1}\endgroup \cross \begingroup\color{red}\vec{e_2}\endgroup}{\|\begingroup\color{red}\vec{e_1}\endgroup \cross \begingroup\color{red}\vec{e_2}\endgroup \|}
 \end{equation}
 
 We can finally plug these additional terms into the equation of the second order derivative of the position vector, to end up with:
@@ -307,7 +307,7 @@ All of this, is just a single position vector of a point on the plane ($\vec{q}$
 \includegraphics[scale=0.3]{figures/geodesic-plane.png}
 \end{center}
 
-Where the constants simply specify the initial position ($\color{red}u_0$ and $\color{teal}v_0$) and initial velocity ($\color{red}k_0$ and $\color{teal}k_0$).\\
+Where the constants simply specify the initial position ($\color{red}u_0$ and $\color{teal}v_0$) and initial velocity ($\color{red}k_u$ and $\color{teal}k_v$).\\
 So, given an initial position and velocity, there's a unique geodesic on the 2D surface, which is just the straight line heading in the direction 
 of the velocity vector.\\
 
@@ -410,7 +410,7 @@ We start with the dot products:
 
 \begin{align*}
     \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
-    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2} &= 
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup^2} &= 
     \begin{bmatrix}
         \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
         \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
@@ -423,7 +423,7 @@ We start with the dot products:
     \end{bmatrix} = -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup) + \cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup) = 0
 \\
     \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
-    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup^2} &= 
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{teal}v\endgroup^2} &= 
     \begin{bmatrix}
         \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
         \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
@@ -436,7 +436,7 @@ We start with the dot products:
     \end{bmatrix} = -\cos(\begingroup\color{red}u\endgroup)\sin(\begingroup\color{red}u\endgroup)
 \\
     \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup} \cdot
-    \frac{\begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup\partial \begingroup\color{teal}v\endgroup} &= 
+    \frac{\partial^2 \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u\endgroup\partial \begingroup\color{teal}v\endgroup} &= 
     \begin{bmatrix}
         \cos(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\
         \sin(\begingroup\color{teal}v\endgroup)\cos(\begingroup\color{red}u\endgroup)\\

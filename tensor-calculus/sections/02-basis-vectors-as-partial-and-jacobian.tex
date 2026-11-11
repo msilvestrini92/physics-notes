@@ -55,7 +55,7 @@ The position vector becomes
 We define the radial unit vector as
 
 \[
-\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+\begingroup\color{red}\hat{e}_r\endgroup
 = \cos\theta \,\begingroup\color{blue}\vec{e_x}\endgroup 
 + \sin\theta \,\begingroup\color{blue}\vec{e_y}\endgroup.
 \]
@@ -64,7 +64,7 @@ This points directly away from the origin.\\
 And then define the angular unit vector as
 
 \[
-\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup
+\begingroup\color{red}\hat{e}_\theta\endgroup
 = -\sin\theta \,\begingroup\color{blue}\vec{e_x}\endgroup
 + \cos\theta \,\begingroup\color{blue}\vec{e_y}\endgroup
 \]
@@ -73,11 +73,11 @@ This points in the direction of increasing $\theta$.\\
 These vectors satisfy
 
 \[
-\begingroup\color{red}\tilde{\vec{e_r}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_r}}\endgroup = 1,
+\begingroup\color{red}\hat{e}_r\endgroup \cdot \begingroup\color{red}\hat{e}_r\endgroup = 1,
 \quad
-\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup = 1,
+\begingroup\color{red}\hat{e}_\theta\endgroup \cdot \begingroup\color{red}\hat{e}_\theta\endgroup = 1,
 \quad
-\begingroup\color{red}\tilde{\vec{e_r}}\endgroup \cdot \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup = 0
+\begingroup\color{red}\hat{e}_r\endgroup \cdot \begingroup\color{red}\hat{e}_\theta\endgroup = 0
 \]
 
 So they form an orthonormal basis at each point, but polar basis vectors depend on $\theta$\\
@@ -85,39 +85,39 @@ So they form an orthonormal basis at each point, but polar basis vectors depend 
 Compute derivatives:
 
 \[
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial \theta}
+\frac{\partial \begingroup\color{red}\hat{e}_r\endgroup}{\partial \theta}
 =
 -\sin\theta\,\begingroup\color{blue}\vec{e_x}\endgroup
 +
 \cos\theta\,\begingroup\color{blue}\vec{e_y}\endgroup
 =
-\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup
+\begingroup\color{red}\hat{e}_\theta\endgroup
 \]
 
 \[
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial \theta}
+\frac{\partial \begingroup\color{red}\hat{e}_\theta\endgroup}{\partial \theta}
 =
 -\cos\theta\,\begingroup\color{blue}\vec{e_x}\endgroup
 -
 \sin\theta\,\begingroup\color{blue}\vec{e_y}\endgroup
 =
--\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+-\begingroup\color{red}\hat{e}_r\endgroup
 \]
 
 Thus,
 
 \[
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial r} = 0,
+\frac{\partial \begingroup\color{red}\hat{e}_r\endgroup}{\partial r} = 0,
 \qquad
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial r} = 0
+\frac{\partial \begingroup\color{red}\hat{e}_\theta\endgroup}{\partial r} = 0
 \]
 
 Key result:
 
 \[
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_r}}\endgroup}{\partial \theta} = \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup,
+\frac{\partial \begingroup\color{red}\hat{e}_r\endgroup}{\partial \theta} = \begingroup\color{red}\hat{e}_\theta\endgroup,
 \qquad
-\frac{\partial \begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup}{\partial \theta} = -\begingroup\color{red}\tilde{\vec{e_r}}\endgroup
+\frac{\partial \begingroup\color{red}\hat{e}_\theta\endgroup}{\partial \theta} = -\begingroup\color{red}\hat{e}_r\endgroup
 \]
 
 The basis vectors rotate as $\theta$ changes.\\
@@ -139,17 +139,17 @@ Think about $\mathbf{R}$ as a function of the coordinates x and y for example, a
 consider adding a small value $\Delta x$ to the x coordinate. The difference between these two position
 vectors results in a vector that is parallel to the x coordinate axis.
 So this resultant vector has the direction of the basis vector $\color{blue}\vec{e_x}$. \\
-This observation is interesting, but we need to solve tha fact that the magnitude of this vector
-is varying , depending on the value of the $\Delta x$ used. \\
-This can be solved by dividing the resultant vector by the quantity $\Delta x$.
-By doing so, we obtain a vector pointing in the x-basis vector direction and magnitude 1...now we 
-can proceed further by taking the limit as $\Delta x$ approaches to 0:
+This observation is interesting, but the magnitude of this difference vector depends on the
+value of $\Delta x$ used. \\
+This can be solved by dividing the resultant vector by the quantity $\Delta x$, which turns it into
+a \textit{rate of change} of the position with respect to the coordinate. Taking the limit as $\Delta x$ approaches 0:
 
 \begin{equation}
     \frac{\partial \vec{R}}{\partial x} = \lim_{\Delta x \to 0}\frac{\vec{R} (x + \Delta x, y) - \vec{R}(x,y)}{\Delta x}
 \end{equation}
 
-Since this derivative always has a length of one and points the x-axis, we can regard it as the basis vector:
+In Cartesian coordinates this derivative has length one and points along the x-axis, so it coincides with the
+usual basis vector:
 
 \begin{equation}
     \begingroup\color{blue}\vec{e_x}\endgroup \equiv \frac{\partial \vec{R}}{\partial \begingroup\color{blue}x\endgroup}
@@ -157,11 +157,15 @@ Since this derivative always has a length of one and points the x-axis, we can r
 
 This reasoning can be easily applied to the other direction, but generalized further
 to any coordinate system.\\
+\textbf{Important:} dividing by $\Delta x$ does \textit{not} normalize the vector in general. The length of
+$\partial \vec{R}/\partial c$ tells us how much distance we travel per unit change of the coordinate $c$, and this
+is only equal to 1 for special coordinates like the Cartesian ones. We'll see below that in polar coordinates
+$\partial \vec{R}/\partial \theta$ has length $r$.\\
 The neat thing about this construction is that you can do it for any position vector, and you 
 will still get your basis vectors. Fundamentally, this trick work because, in obtaining a slightly 
 off position vector, a small change in coordinate is added in one coordinate only while keeping other coordinates constant. 
-Then, we divide the resultant vector (obtained from the difference between the original position vector and the new slightly off one) 
-by that small change to normalize the vector.\\\\
+Then, we divide the resultant vector (obtained from the difference between the original position vector and the new slightly off one)
+by that small change, to get a rate of change that doesn't depend on the step size.\\\\
 
 Now you should remember when we discussed, in the other notes for "Tensors for Beginners" about the 
 forward and backward transformations when we move from one basis vector coordinate system to another.\\
@@ -189,7 +193,7 @@ y = r \sin\theta.
 so it's a matter of taking the derivatives to find that the Jacobian matrix, or forward matrix is:
 
 \begin{align*}
-    \frac{\partial \vec{R}}{\partial r} &= \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial r} = cos\theta \frac{\partial \vec{R}}{\partial x} + sin\theta \frac{\partial \vec{R}}{\partial y}\\
+    \frac{\partial \vec{R}}{\partial r} &= \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial r} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial r} = \cos\theta \frac{\partial \vec{R}}{\partial x} + \sin\theta \frac{\partial \vec{R}}{\partial y}\\
     \frac{\partial \vec{R}}{\partial \theta} &= \frac{\partial \vec{R}}{\partial x}\frac{\partial x}{\partial \theta} + \frac{\partial \vec{R}}{\partial y}\frac{\partial y}{\partial \theta} = -r\sin\theta \frac{\partial \vec{R}}{\partial x} + r\cos\theta \frac{\partial \vec{R}}{\partial y}
 \end{align*}
 
@@ -202,10 +206,21 @@ So:
         \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta}
     \end{bmatrix} = 
     \begin{bmatrix}
-        cos\theta & -r\sin\theta\\
+        \cos\theta & -r\sin\theta\\
         \sin\theta & r\cos\theta
     \end{bmatrix}
 \end{equation}
+
+Notice that the second column has length $r$:
+\[
+\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup = \frac{\partial \vec{R}}{\partial \theta}
+= -r\sin\theta\,\begingroup\color{blue}\vec{e_x}\endgroup + r\cos\theta\,\begingroup\color{blue}\vec{e_y}\endgroup
+= r\,\hat{e}_\theta
+\]
+So the coordinate basis vector $\begingroup\color{red}\tilde{\vec{e_\theta}}\endgroup$ is \textbf{not} the unit vector $\hat{e}_\theta$
+defined at the start of this section: it is $r$ times longer, because a unit change in $\theta$ moves us a distance $r$ along the circle.
+Only $\begingroup\color{red}\tilde{\vec{e_r}}\endgroup = \hat{e}_r$ has unit length. This is exactly why the polar metric tensor has
+$\tilde{g}_{\theta\theta} = r^2$, as we'll see later.\\
 
 And you can tackle, with the same derivation logic, the inverse Jacobian matrix, of backward transformation 
 matrix, to obviously find out that the multiplication of the two yields the identity matrix.\\

@@ -9,7 +9,7 @@ Covariant Derivative first in the flat space, which is the easiest way to look a
 and then follow along, increasing the challenge, by looking at it in curved-space, first extrinsic and 
 then intrinsic, and finally giving its most abstract definition.\\
 
-\subsection{Covariant derivate in flat-space}
+\subsection{Covariant derivative in flat-space}
 
 Let's start by recalling that, given a certain basis, we can define a vector $\color{orange}\vec{v}$ as a 
 linear conbination of the basis vectors, for example in cartesian basis $\color{blue}\vec{e_i}$ or polar $\color{red}\tilde{\vec{e_j}}$:
@@ -65,7 +65,7 @@ So the covariant derivative can be re-written as:
     &= \left(\frac{\partial \begingroup\color{cyan}v^k\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} + \begingroup\color{cyan}v^j\endgroup \begingroup\color{cyan}\Gamma^k_{ij}\endgroup\right)\begingroup\color{blue}\vec{e_k}\endgroup
 \end{align*}
 
-\subsection{Covariant derivate in curved-space - extrinsic}
+\subsection{Covariant derivative in curved-space - extrinsic}
 
 So now we're moving on into looking at the rate of change of vector fields, on curved surfaces.\\
 It turns out that it's a lot trickier dealing with vector spaces here, when compared to flat ones, and we're going to explain why.
@@ -122,7 +122,8 @@ when it started, so the starting and ending vectors are not the same:
 \end{center}
 
 This means that \textbf{parallel transport DOES NOT keep vectors constant.}\\
-The reason for that is that's \textbf{impossible to define a constant vector field on a curved surface.}\\
+The reason for that is that on a curved surface \textbf{parallel transport is path-dependent}: transporting the same vector along two different paths
+to the same point generally gives two different results, so in general there's no way to define a globally constant vector field.\\
 The parallel transport keeps vectors "as constant as possible" while moving along the surface step-by-step, and 
 this is the best we can do, and the downside is that if traveling in a loop, we may and up
 with a vector that looks differently than the one with started with.\\
@@ -143,13 +144,16 @@ Bringing this vector along this path, basically gives us a vector field defined 
 this vector field obeys this relationship:
 
 \begin{equation}
-    \frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} = \begingroup\color{red}\vec{n}\endgroup
+    \frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} =
+    \left(\frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup\right)\begingroup\color{red}\hat{n}\endgroup
 \end{equation}
- 
-Or, in other words, the difference between the rate of change of this vector field, and its normal part, is equal ot $\vec{0}$:
+
+i.e. the rate of change is purely normal: it equals its own projection onto the unit normal $\color{red}\hat{n}$.
+Or, in other words, the difference between the rate of change of this vector field, and its normal part, is equal to $\vec{0}$:
 
 \begin{equation}
-    \frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} - \begingroup\color{red}\vec{n}\endgroup = \vec{0}
+    \frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} -
+    \left(\frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup\right)\begingroup\color{red}\hat{n}\endgroup = \vec{0}
 \end{equation}
 
 So, the best that we can do to define a "constant" vector field on a curved surface, is parallel transporting a vector along
@@ -171,7 +175,8 @@ The covariant derivative of this vector field in a direction given by $d/d\lambd
 along the curve, would be the rate of change of the vector field, in the lambda direction, with the component normal to the surface subtracted.
 
 \begin{equation}
-    \nabla_{\frac{d}{d\begingroup\color{brown}\lambda\endgroup}}\begingroup\color{violet}\vec{v}\endgroup = \frac{d\begingroup\color{violet}\vec{v}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} - \begingroup\color{red}\vec{n}\endgroup
+    \nabla_{\frac{d}{d\begingroup\color{brown}\lambda\endgroup}}\begingroup\color{violet}\vec{v}\endgroup = \frac{d\begingroup\color{violet}\vec{v}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} -
+    \left(\frac{d \begingroup\color{violet}\vec{v}\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup\right)\begingroup\color{red}\hat{n}\endgroup
 \end{equation}
 
 And as we said, when this difference quantity is zero, it's when the vector field is being parallel transported along the curve.\\
@@ -206,32 +211,35 @@ Please note that we're considering the \textbf{vector field to be tangent to the
 Allright, so remind yourself that the covariant derivative, we just said it's the ordinary derivative with the normal component subtracted:
 
 \begin{align*}
-    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup = \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \begingroup\color{red}\hat{n}\endgroup
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup = \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \left(\frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup\right)\begingroup\color{red}\hat{n}\endgroup
 \end{align*}
 
+To keep the notation lighter, let's call the normal part $\begingroup\color{red}\vec{N}_i\endgroup \equiv \left(\frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \begingroup\color{red}\hat{n}\endgroup\right)\begingroup\color{red}\hat{n}\endgroup$.
 Being the vector field composed by vectors always tangent to the surface, we can expand them as a linear combination of the basis vectors:
 
 \begin{align*}
-    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \begingroup\color{red}\hat{n}\endgroup\\
-    &= \frac{\partial}{\partial \begingroup\color{red}u^i\endgroup} \left[\begingroup\color{magenta}v^j\endgroup \begingroup\color{red}\vec{e_j}\endgroup\right] - \begingroup\color{red}\hat{n}\endgroup\\
-    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\hat{n}\endgroup
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} - \begingroup\color{red}\vec{N}_i\endgroup\\
+    &= \frac{\partial}{\partial \begingroup\color{red}u^i\endgroup} \left[\begingroup\color{magenta}v^j\endgroup \begingroup\color{red}\vec{e_j}\endgroup\right] - \begingroup\color{red}\vec{N}_i\endgroup\\
+    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\vec{N}_i\endgroup
 \end{align*}
 
-As you can remember, we can write down the second term in the squared brackets, the derivative of the basis vectors, as a linear combination of the Chrystoffel symbols and Second Fundamental form:
+As you can remember, we can write down the second term in the squared brackets, the derivative of the basis vectors, as a linear combination of the Christoffel symbols and Second Fundamental form:
 
 \begin{align*}
-    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\hat{n}\endgroup\\
-    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \begingroup\color{red}\vec{e_k}\endgroup \right] + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\hat{n}\endgroup
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \right] - \begingroup\color{red}\vec{N}_i\endgroup\\
+    &= \left[\frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \begingroup\color{red}\vec{e_k}\endgroup \right] + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\vec{N}_i\endgroup
 \end{align*}
 
 We can now factor out the $\color{red}\vec{e_k}$ changing the summation index of the first term, which is just a dummy one:
 
 \begin{align*}
-    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup 
-    &= \left[\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \right]\begingroup\color{red}\vec{e_k}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\hat{n}\endgroup
+    \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup
+    &= \left[\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^{k}_{ij}\endgroup \right]\begingroup\color{red}\vec{e_k}\endgroup + \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup - \begingroup\color{red}\vec{N}_i\endgroup
 \end{align*}
 
-Since we need to subtract the whole normal component, we can just cancel out the last two terms, and what remains is just the tangential component:
+The term in square brackets is a combination of tangent vectors, so the only normal piece of $\frac{\partial \vec{v}}{\partial u^i}$ is
+$\begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup$, which means $\begingroup\color{red}\vec{N}_i\endgroup = \begingroup\color{magenta}v^j\endgroup \begingroup\color{teal}L_{ij}\endgroup\begingroup\color{red}\hat{n}\endgroup$.
+The last two terms cancel out, and what remains is just the tangential component:
 
 \begin{align*}
     \nabla_{\frac{\partial}{\partial \begingroup\color{red}u^i\endgroup}}\begingroup\color{violet}\vec{v}\endgroup 
@@ -240,7 +248,7 @@ Since we need to subtract the whole normal component, we can just cancel out the
 
 which is our final formula for the covariant derivative.\\
 
-Before, in the geodesic part, we already derived how to compute the Chrystoffel symbols, so now we're ready to go proceed and actually calculate the covariant derivative in this case.
+Before, in the geodesic part, we already derived how to compute the Christoffel symbols, so now we're ready to go proceed and actually calculate the covariant derivative in this case.
 We also already calculated the symbols for the sphere of radius one, and the only non-zero ones are:
 
 \begin{align*}
@@ -271,7 +279,7 @@ So the parametrization is:
     \begingroup\color{brown}\lambda\endgroup \rightarrow \left(\begingroup\color{red}u^1\endgroup = \pi/2, \begingroup\color{red}u^2\endgroup = \begingroup\color{brown}\lambda\endgroup\right)
 \end{equation}
 
-If we now consider a hyphotetical vector field where the first component is equal to $\color{red}\vec{e_1}$ when $\color{red}u^2 = 0$, 
+If we now consider a hypothetical vector field that is equal to $\color{red}\vec{e_1}$ when $\color{red}u^2 = 0$,
 and equal to $\color{red}\vec{e_2}$ when $\color{red}u^2 = \pi/2$:
 
 \begin{equation}
@@ -357,7 +365,7 @@ constant and equal to $\pi/2$:
     + \left[\frac{\partial \begingroup\color{magenta}v^2\endgroup}{\partial \begingroup\color{red}u^2\endgroup}\right]\begingroup\color{red}\vec{e_2}\endgroup = \vec{0}
 \end{align*}
 
-What this requires, is that both the vector field components are equal to zero, which means they have to be some constants:
+What this requires, is that the derivatives of both vector field components are equal to zero, which means the components have to be some constants:
 
 \begin{align*}
     \frac{\partial \begingroup\color{magenta}v^1\endgroup}{\partial \begingroup\color{red}u^2\endgroup} &= 0 \\
@@ -383,7 +391,7 @@ $\color{magenta}v^2$ $= 0$, which simply means that the vector components have t
 
 This is the vector field resulting by requiring the parallel transport of the initial vector given.\\
 
-\subsection{Covariant derivate in curved-space - intrinsic}
+\subsection{Covariant derivative in curved-space - intrinsic}
 
 Allright and here we are with another definition of the covariant derivative, this time using intrinsic geometry.\\
 You may wonder why we need this in the first place, if the extrinsic defintion gets the job done; Well the reason is that there are 
@@ -411,7 +419,7 @@ the basis vectors derivative coefficients, and then just re-arranging the dummy 
     \frac{\partial \begingroup\color{violet}\vec{v}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\\
     &= \frac{\partial}{\partial \begingroup\color{red}u^i\endgroup} \left(\begingroup\color{magenta}v^j\endgroup \begingroup\color{red}\vec{e_j}\endgroup\right)\\
     &= \frac{\partial \begingroup\color{magenta}v^j\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{magenta}v^j\endgroup \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\\
-    &= \left(\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma_{ik}^k\endgroup\right)\begingroup\color{red}\vec{e_k}\endgroup
+    &= \left(\frac{\partial \begingroup\color{magenta}v^k\endgroup}{\partial \begingroup\color{red}u^i\endgroup} + \begingroup\color{magenta}v^j\endgroup \begingroup\color{blue}\Gamma^k_{ij}\endgroup\right)\begingroup\color{red}\vec{e_k}\endgroup
 \end{align*}
 
 Now, the problem ends up being the Christoffel symbols, because before, when we derived the expression for these, we ended up with this formula, 
@@ -422,15 +430,15 @@ which requires the dot product of the basis vectors with the derivative of the b
 \end{equation}
 
 Since we don't have now, the XYZ extrinsic basis, we can't easily compute these dot products, so we need a new strategy to compute the Christoffel symbols.\\
-There are two important facts to recognize before we proceed:
+There are three important facts to recognize before we proceed:
 
 \begin{itemize}
     \item The metric tensor components are the dot products of the basis vectors $\begingroup\color{red}g_{ij}\endgroup = \begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup$
     \item The order of the dot product does not matter, hence the metric tensor components are symmetric in the $i$ and $j$ indexes $\color{red}g_{ij}$ $=$ $\color{red}g_{ji}$ 
-    \item The Chrisoffel symbols are symmetric in their lower indexes, so $\color{blue}\Gamma_{ij}^k$ $=$ $\color{blue}\Gamma_{ji}^k$
+    \item The Christoffel symbols are symmetric in their lower indexes, so $\color{blue}\Gamma_{ij}^k$ $=$ $\color{blue}\Gamma_{ji}^k$
 \end{itemize}
 
-Now, we start by taking the derivative of the metric tensor in the direction of the $\color{red}u_k$ coordinate, where we can leverage the metric tensor
+Now, we start by taking the derivative of the metric tensor in the direction of the $\color{red}u^k$ coordinate, where we can leverage the metric tensor
 definition, and an important property called \textbf{metric compatibility} (more on this in the next section, we take it for granted now), which allows us to use 
 the derivative product rule applied to dot products:
 
@@ -438,7 +446,7 @@ the derivative product rule applied to dot products:
     \frac{\partial}{\partial \begingroup\color{red}u^k\endgroup} \begingroup\color{red}g_{ij}\endgroup &= \frac{\partial}{\partial \begingroup\color{red}u^k\endgroup} \left(\begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right)\\
     &= \frac{\partial \begingroup\color{red}\vec{e_i}\endgroup}{\partial \begingroup\color{red}u^k\endgroup} \cdot \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{red}\vec{e_i}\endgroup \cdot \frac{\partial \begingroup\color{red}\vec{e_j}\endgroup}{\partial \begingroup\color{red}u^k\endgroup}\\
     &= \left(\begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{red}\vec{e_l}\endgroup\right) \cdot \begingroup\color{red}\vec{e_j}\endgroup + \begingroup\color{red}\vec{e_i}\endgroup \cdot \left(\begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}\vec{e_l}\endgroup\right)\\
-    &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \left(\begingroup\color{red}\vec{e_l}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right) + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \left(\begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right)\\
+    &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \left(\begingroup\color{red}\vec{e_l}\endgroup \cdot \begingroup\color{red}\vec{e_j}\endgroup\right) + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \left(\begingroup\color{red}\vec{e_i}\endgroup \cdot \begingroup\color{red}\vec{e_l}\endgroup\right)\\
     &= \begingroup\color{blue}\Gamma^{l}_{ik}\endgroup \begingroup\color{red}g_{lj}\endgroup + \begingroup\color{blue}\Gamma^{l}_{jk}\endgroup \begingroup\color{red}g_{il}\endgroup
 \end{align*}
 
@@ -531,7 +539,7 @@ We can just replace the first term's dummy index with k and factor the $\color{r
 \end{align*}
 
 This is, as you may remember, exactly the geodesic equation. It's just that now, with the covariant derivative notion, we can state that
-the \textbf{geodesic is the curve resulting from paralle transporting a vector along itself.}
+the \textbf{geodesic is the curve resulting from parallel transporting a vector along itself.}
 
 \subsection{Covariant derivative - abstract definition}
 
@@ -547,7 +555,7 @@ To save up some notation heavyness, we will use interchangeably, the following r
 There are two main reasons why we want to study this abstract definition:
 
 \begin{itemize}
-    \item We're going to find that there are actually "several" covariant derivatives, not just one; The one we care about is called the \textcolor{red}{Levi-Civita connection}, which comes from the Fundamental Theorem of Rienmannian Geometry.
+    \item We're going to find that there are actually "several" covariant derivatives, not just one; The one we care about is called the \textcolor{red}{Levi-Civita connection}, which comes from the Fundamental Theorem of Riemannian Geometry.
     \item It extends the covariant derivative to all tensor fields.
 \end{itemize}
 
@@ -580,7 +588,7 @@ For $\vec{v} \in \mathbb{R}^2, a, b \in \mathbb{R}$:
 
 For $\vec{v}, \vec{w} \in \mathbb{R}^2; a, b \in \mathbb{R}$:
 \begin{itemize}
-    \item $a(\vec{v} + \vec{w}) a\vec{v} + a\vec{w}$
+    \item $a(\vec{v} + \vec{w}) = a\vec{v} + a\vec{w}$
     \item $(a + b)\vec{v} = a\vec{v} + b\vec{v}$
 \end{itemize}
 
@@ -605,11 +613,14 @@ So we start by looking at some properties of the covariant derivatives:
     \item $\nabla_{\begingroup\color{red}\partial_i\endgroup} (\begingroup\color{cyan}a\endgroup) = \frac{\partial \begingroup\color{cyan}a\endgroup}{\partial \begingroup\color{red}u^i\endgroup}$
 \end{itemize}
 
+Note that in the first and third properties, $a$ and $b$ are allowed to be scalar \textit{fields} (functions on the surface), not just constants.
+In particular, $\nabla_{a\vec{w}}\vec{v} = a\nabla_{\vec{w}}\vec{v}$ even when $a$ varies from point to point: scaling the direction only scales the result.\\
+
 So we're going to consider these 4 properties and take them as a definition of the abstract covariant derivative.
 A covariant derivative is an operator with two input slot, it takes a direction vector, and an input field, and the output
 will be the rate of change of that field along that direction, and this will be a new field.\\
 
-Sometimes, this covariant derivative operator, is also called "Connection". This is because of the paralle transport condition. We saw
+Sometimes, this covariant derivative operator, is also called "Connection". This is because of the parallel transport condition. We saw
 that in order to parallel transport a vector field along a curve, its covariant derivative has to be zero, if you look at this in terms of 
 tangent vector spaces where we start and we end along the curve, the parallel transport basically provides a connection between tangent spaces in a curved space.\\
 
@@ -633,12 +644,16 @@ Though, there's a way we can get a unique solution for the Christoffel symbols, 
     \item The metric compatibility property.
 \end{itemize}
 
-The torsion-free property says that, the covariant derivative of a basis vector $j$ along a direction $i$, is the same
-as the covariant derivative of the basis vector $j$, in the $i$ direction:
+The torsion-free property says that, the covariant derivative of the basis vector $\vec{e_j}$ along the direction $\vec{e_i}$, is the same
+as the covariant derivative of the basis vector $\vec{e_i}$ along the direction $\vec{e_j}$:
 
 \begin{equation}
     \nabla_{\vec{e_i}}\vec{e_j} =  \nabla_{\vec{e_j}}\vec{e_i}
 \end{equation}
+
+This simple form holds for a \textit{coordinate} basis ($\vec{e_i} = \partial_i$), where partial derivatives commute ($\partial_i\partial_j = \partial_j\partial_i$).
+For general vector fields the torsion-free condition reads $\nabla_{\vec{u}}\vec{w} - \nabla_{\vec{w}}\vec{u} = [\vec{u}, \vec{w}]$, where $[\vec{u}, \vec{w}]$ is the Lie bracket,
+which vanishes for coordinate basis vectors.
 
 This is what let us write, that the Christoffel symbols are symmetric on their lower indexed:
 
@@ -661,7 +676,7 @@ to the dot product:
 This might be a weird rule, but in plain english, what this is saying is that \textbf{when we parallel transport two vectors, their dot product will stay the same.}\\
 
 If you take these two vectors $\color{violet}\vec{v}$ and $\color{teal}\vec{u}$ and you parallel transport them, the condition is that their covariant derivative is $\vec{0}$, so if you plug
-this result into the metric compatibility property, you find that the covariant derivative of their dot product is zero ($\nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup \cdot \begingroup\color{teal}\vec{u}\endgroup) = \vec{0}$), 
+this result into the metric compatibility property, you find that the covariant derivative of their dot product is zero ($\nabla_{\vec{w}}(\begingroup\color{violet}\vec{v}\endgroup \cdot \begingroup\color{teal}\vec{u}\endgroup) = 0$), 
 which simply means that the dot product stays constant. Which eventually means that the length of a parallel transported vector stays constant, and in case of considering two vectors, if parallel transported, their 
 angle in between, stays constant.\\
 
@@ -714,13 +729,13 @@ We clearly see that the blue and teal terms cancel, and we're left with:
 And then summing on both sides for the inverse metric tensor, we obtain a formula to calculate the Christoffel symbols:
 
 \begin{equation}
-    \Gamma^m_{jk} - \frac{1}{2}\mathfrak{g^{im}}\left(\partial_k g_{ij} + \partial_j g_{ki} - \partial_i g_{jk}\right)
+    \Gamma^m_{jk} = \frac{1}{2}\mathfrak{g^{im}}\left(\partial_k g_{ij} + \partial_j g_{ki} - \partial_i g_{jk}\right)
 \end{equation}
 
 So using both properties, we're able to solve for the Christoffel symbols, which means we found one particular version of a covariant derivative, and this 
 particular covariant derivative is called the \textcolor{red}{Levi-Civita connection}.\\
 
-And this is basically the result stated in the \textbf{Fundamental Theorem of Rienmannian Geometry} (where a Rienmannian Manifold is basically a curved space with a metric):
+And this is basically the result stated in the \textbf{Fundamental Theorem of Riemannian Geometry} (where a Riemannian Manifold is basically a curved space with a metric):
 there's a unique connection (covariant derivative) that is:
 \begin{itemize}
     \item torsion-free

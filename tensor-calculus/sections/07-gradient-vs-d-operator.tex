@@ -43,7 +43,7 @@ In a sense, this means that $d{\begingroup\color{orange}f\endgroup} = \grad{\beg
 Now, remember that from the raising/lowering indexes notes, we know that:
 
 \begin{equation}
-    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} = \begingroup\color{orange}v^i\endgroup \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^i\endgroup
+    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} = \begingroup\color{orange}v^i\endgroup \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^j\endgroup
 \end{equation}
 
 And:
@@ -127,7 +127,7 @@ This is easily visible as soon as we move from one basis to another, and you can
 having to calculate the gradient in different basis.\\
 
 No strange things happen in cartesian basis, as the metric tensor is the simple identity matrix, hence the inverse is also the identity matrix, so the gradient itself 
-is simply $d\begingroup\color{orange}f\endgroup = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \begingroup\color{blue}\vec{e_i}\endgroup$
+is simply $\grad{\begingroup\color{orange}f\endgroup} = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} \begingroup\color{blue}\vec{e_i}\endgroup$, with the same components as $d\begingroup\color{orange}f\endgroup = \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{cyan}c^i\endgroup} d\begingroup\color{cyan}c^i\endgroup$
 
 The same does not happen in polar or spherical coordinates though, and as you may already know, the gradient components are requiring a scaling factor, 
 which is indeed given by the components of the inverse metric tensor in the specific basis.
@@ -149,15 +149,20 @@ So, the components of the gradient in this system are:
 
 \begin{align*}
     \grad{\begingroup\color{orange}f\endgroup} &=  
-    \begingroup\color{red}\mathfrak{\tilde{g^{ij}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}
+    \begingroup\color{red}\mathfrak{\tilde{g^{jk}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}p^j\endgroup}
     \frac{\partial}{\partial \begingroup\color{red}p^k\endgroup}\\
     &= \begingroup\color{red}\mathfrak{\tilde{g^{rr}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}r\endgroup}
     \frac{\partial}{\partial \begingroup\color{red}r\endgroup} +
     \begingroup\color{red}\mathfrak{\tilde{g^{\theta\theta}}}\endgroup \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
     \frac{\partial}{\partial \begingroup\color{red}\theta\endgroup}\\
-    &=  \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}r\endgroup} +
-    \frac{1}{\begingroup\color{magenta}r\endgroup^2} \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup}
+    &=  \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}r\endgroup} \frac{\partial}{\partial \begingroup\color{red}r\endgroup} +
+    \frac{1}{\begingroup\color{magenta}r\endgroup^2} \frac{\partial \begingroup\color{orange}f\endgroup}{\partial \begingroup\color{magenta}\theta\endgroup} \frac{\partial}{\partial \begingroup\color{red}\theta\endgroup}
 \end{align*}
+
+This might look different from the polar gradient formula you may know from calculus books, $\grad{f} = \frac{\partial f}{\partial r}\hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \theta}\hat{e}_\theta$.
+The difference is only the basis: textbooks use the \textit{unit} vectors $\hat{e}_r, \hat{e}_\theta$, while here we use the coordinate basis
+$\frac{\partial}{\partial r}, \frac{\partial}{\partial \theta}$. Since $\frac{\partial}{\partial \theta} = r\,\hat{e}_\theta$ (it has length $r$), the second term becomes
+$\frac{1}{r^2}\frac{\partial f}{\partial \theta}\, r\,\hat{e}_\theta = \frac{1}{r}\frac{\partial f}{\partial \theta}\hat{e}_\theta$, matching the textbook result.
 
 To give a bit more formal proof, it's good to recall the tensor product of two covectors, which is a sort of double covector, 
 getting as input two vectors and outputting a scalar, in this way:
@@ -259,7 +264,7 @@ So in a sense, we can write down our metric tensor as a linear combination of:
 We can try to re-proof the below formula in these terms:
 
 \begin{equation}
-    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} = \begingroup\color{orange}v^i\endgroup \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^i\endgroup
+    \begingroup\color{orange}\vec{v}\endgroup \cdot  {{} - {}} = \begingroup\color{orange}v^i\endgroup \begingroup\color{cyan}g_{ij}\endgroup \begingroup\color{blue}\epsilon^j\endgroup
 \end{equation}
 
 \begin{align*}

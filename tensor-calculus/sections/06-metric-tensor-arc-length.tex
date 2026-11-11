@@ -1,4 +1,4 @@
-\section{The metric tensor and arch length - flat and curved spaces}
+\section{The metric tensor and arc length - flat and curved spaces}
 
 We already saw in the \textit{Tensor for beginners} notes, that the metric tensor is used to compute 
 the length of a vector, the dot product between two vectors and the angle in between, and we also saw that 
@@ -16,7 +16,7 @@ it transforms using 2 covariant rules, hence is a (0,2)-tensor (bilinear form).
 
 We'll here focus on using the metric tensor to compute lengths of curves in flat space.\\
 
-\subsection{Arch length in flat spaces}
+\subsection{Arc length in flat spaces}
 We recall that in order to get the length of a curve in multi-variable calculus, basically we approximate 
 the curve by a series of straight line segments, sum them up and take the limit as the $\Delta$ parameter used
 to parametrize the curve approaches to 0.\\
@@ -96,7 +96,7 @@ And its transformation rules:
     \begingroup\color{blue}g_{kl}\endgroup = \frac{\partial \begingroup\color{magenta}p^i\endgroup}{\partial \begingroup\color{cyan}c^k\endgroup} \frac{\partial \begingroup\color{magenta}p^j\endgroup}{\partial \begingroup\color{cyan}c^l\endgroup} \begingroup\color{red}\tilde{g_{ij}}\endgroup
 \end{align*}
 
-\subsection{Arch length in curved spaces}
+\subsection{Arc length in curved spaces}
 Now we'll move on computing arc lengths for curved space, and in particular we're going to focus on the surface of sphere for our maine example.\\
 
 The first question we can ask ourselves is, how do we describe a 2D surface mathematically? Well, the most common and straight forward way is to start with a flat 2D 
@@ -185,7 +185,7 @@ If we try to do that, we obtain:
     &= \left(\frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}\right)
     + \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\right)
     + \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)\\
-    &+ \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)
+    &+ \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}\right)
     + \left(\frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\right)^2 \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup}\right)
     + \frac{d \begingroup\color{cyan}Y\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Y\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup}\right)\\
     &+ \frac{d \begingroup\color{cyan}Z\endgroup}{d \begingroup\color{brown}\lambda\endgroup} \frac{d \begingroup\color{cyan}X\endgroup}{d \begingroup\color{brown}\lambda\endgroup}\left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}Z\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{cyan}X\endgroup}\right)
@@ -261,7 +261,7 @@ Calculating the magnitude using this tangent vector would give us, in a more com
     \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
     \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
     &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right) \cdot 
-    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
     &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
     \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\right)\\
     &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \begingroup\color{red}g_{ij}\endgroup
@@ -320,7 +320,7 @@ And finally, we can compute the arc length as per the equation above:
     \norm{\frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}}^2 &=
     \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup} \cdot \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{orange}\lambda\endgroup}\\
     &= \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right) \cdot 
-    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
+    \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}\right)\\
     &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup}
     \left(\frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^i\endgroup} \cdot \frac{\partial \begingroup\color{violet}\vec{R}\endgroup}{\partial \begingroup\color{red}u^j\endgroup}\right)\\
     &= \frac{d \begingroup\color{red}u^i\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \frac{d \begingroup\color{red}u^j\endgroup}{d \begingroup\color{orange}\lambda\endgroup} \begingroup\color{red}g_{ij}\endgroup\\

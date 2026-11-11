@@ -74,7 +74,7 @@ Now, for a bit more meaningful example, consider the force field due to the grav
 earch exercit on a smaller mass m, at a distance $\begingroup\color{violet}\vec{R}\endgroup$:
 
 \begin{equation}
-    \begingroup\color{cyan}\vec{F}\endgroup = \frac{GMm}{\|\begingroup\color{violet}\vec{R}^2\endgroup\|} (-\begingroup\color{red}\vec{e_r}\endgroup)
+    \begingroup\color{cyan}\vec{F}\endgroup = \frac{GMm}{\|\begingroup\color{violet}\vec{R}\endgroup\|^2} (-\begingroup\color{red}\vec{e_r}\endgroup)
 \end{equation}
 
 Giving a curved path with an object traveling along, how do we compute the work done on this object, by
@@ -105,7 +105,7 @@ Let's compute this for a couple of different paths, circular and straight out fr
     \frac{d\begingroup\color{magenta}\theta\endgroup}{d\begingroup\color{brown}\lambda\endgroup} \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{magenta}\theta\endgroup}\\ 
     \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} &= 
     0 \begingroup\color{red}\vec{e_r}\endgroup + 1\begingroup\color{red}\vec{e_{\theta}}\endgroup\\
-    W &= \int_{\begingroup\color{orange}P\endgroup} \left(\frac{GMm}{\|\begingroup\color{violet}\vec{R}^2\endgroup\|}(-\begingroup\color{red}\vec{e_r}\endgroup)\right) \cdot (\begingroup\color{red}\vec{e_{\theta}}\endgroup) d\begingroup\color{brown}\lambda\endgroup = 0
+    W &= \int_{\begingroup\color{orange}P\endgroup} \left(\frac{GMm}{\|\begingroup\color{violet}\vec{R}\endgroup\|^2}(-\begingroup\color{red}\vec{e_r}\endgroup)\right) \cdot (\begingroup\color{red}\vec{e_{\theta}}\endgroup) d\begingroup\color{brown}\lambda\endgroup = 0
 \end{align*}
 
 Because the two basis vectors are orthogonal to each other.\\
@@ -115,8 +115,9 @@ This means that over a circular path with constant radius, no work gets done by 
 
 \begin{align*}
     \frac{d\begingroup\color{violet}\vec{R}\endgroup}{d\begingroup\color{brown}\lambda\endgroup} &= 1\begingroup\color{red}\vec{e_r}\endgroup + 0\begingroup\color{red}\vec{e_{\theta}}\endgroup\\
-    W &= \int_{\begingroup\color{orange}P\endgroup} \left(\frac{GMm}{\|\begingroup\color{violet}\vec{R}^2\endgroup\|}(-\begingroup\color{red}\vec{e_r}\endgroup)\right) \cdot (\begingroup\color{red}\vec{e_r}\endgroup) d\begingroup\color{brown}\lambda\endgroup\\
-    &= GMm \left[\tfrac{1}{3} x^3 \right]^b_a\\
+    W &= \int_{\begingroup\color{orange}P\endgroup} \left(\frac{GMm}{\|\begingroup\color{violet}\vec{R}\endgroup\|^2}(-\begingroup\color{red}\vec{e_r}\endgroup)\right) \cdot (\begingroup\color{red}\vec{e_r}\endgroup) d\begingroup\color{brown}\lambda\endgroup\\
+    &= \int_a^b -\frac{GMm}{\begingroup\color{brown}\lambda\endgroup^2} d\begingroup\color{brown}\lambda\endgroup
+    = GMm \left[\frac{1}{\begingroup\color{brown}\lambda\endgroup} \right]^b_a\\
     &= GMm\left(\tfrac{1}{b} - \tfrac{1}{a}\right)
 \end{align*}
 
